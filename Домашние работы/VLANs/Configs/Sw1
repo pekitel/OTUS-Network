@@ -17,3 +17,12 @@ interface GigabitEthernet0/1
 switchport mode access
 switchport access vlan 10
 exit
+interface GigabitEthernet0/2
+switchport mode access
+switchport access vlan 20
+exit
+interface GigabitEthernet0/3
+switchport mode access
+switchport access vlan 30
+exit
+do wr
