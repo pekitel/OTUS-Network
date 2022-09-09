@@ -5,8 +5,10 @@ vlan 20
 vlan 30
 interface GigabitEthernet1/0
 switchport trunk encapsulation dot1q
+switchport trunk allowed vlan 2,10,20,30
+switchport trunk native vlan 2
 switchport mode trunk
-switchport trunk allowed vlan 10,20,30
+switchport nonegotiate
 exit
 interface GigabitEthernet0/1
 switchport mode access
