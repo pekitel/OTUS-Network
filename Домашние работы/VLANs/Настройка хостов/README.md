@@ -1,34 +1,36 @@
 ## Настройка R1
 1. Заходим в превилегированый режим **enable**
 2. Переходим в режим конфигурации устройства **configure terminal**
-3. Создаём сабинтерфейс для VLAN 10  **interface gigabitEthernet 0/0.10**
-4. Задаем интефейсу работу с VLAN 10  **encapsulation dot1Q 10**
-5. Задаем ip адрес и маску подсети  **ip address 192.168.10.1 255.255.255.0**
-6. Записываем конфигурация во flash память **do wr**
-7. Аналогичным образом (п3-5) создаём и настраиваем сабинтерфейсы для VLAN 20 и VLAN 30
-8. Также создаем сабинтерфейс для VLAN 2 и делаем его нативным **encapsulation dot1Q 2 native**
+3. Задаём имя для роутера **hostname R1**
+4. Создаём сабинтерфейс для VLAN 10  **interface gigabitEthernet 0/0.10**
+5. Задаем интефейсу работу с VLAN 10  **encapsulation dot1Q 10**
+6. Задаем ip адрес и маску подсети  **ip address 192.168.10.1 255.255.255.0**
+7. Записываем конфигурация во flash память **do wr**
+8. Аналогичным образом (п3-5) создаём и настраиваем сабинтерфейсы для VLAN 20 и VLAN 30
+9. Также создаем сабинтерфейс для VLAN 2 и делаем его нативным **encapsulation dot1Q 2 native**
 
 ## Настройка Sw1 и Sw2
 1. Заходим в превилегированый режим **enable**
 2. Переходим в режим конфигурации **configure terminal**
-3. Создаём VLAN 2  **vlan 2** 
-4. Аналогичным образом создаём и VLANs 10, 20 и 30
-5. ***Настраиваем trunk порты***
-6. Переходим в интерфейс Gi0/0 **interface GigabitEthernet0/0**
-7. Задаем интефейсу работу с VLAN  **switchport trunk encapsulation dot1q**
-8. Назначим транковые VLANs **switchport trunk allowed vlan 2,10,20,30**
-9. Назначим VLAN 2 нативный **switchport trunk native vlan 2**
-10. Переводим порт в режим trunk  **switchport mode trunk**
-11. Выключаем передачу сообщений DTP  **switchport nonegotiate**
-12. Записываем конфигурация во flash память **do wr**
-13. Аналогичным образом (п6-11) настраиваем транковый порты *Gi1/0* на *Sw1* и *Gi1/0* на *Sw2*
-14. ***Настраиваем access порты***
-15. Переходим в интерфейс Gi0/1 **interface GigabitEthernet0/1**
-16. Переводим порт в режим access **switchport mode access**
-17. Настраиваем порт для работы в 10 vlan **switchport access vlan 10**
-18. Выключаем передачу сообщений DTP  **switchport nonegotiate**
-19. Записываем конфигурация во flash память **do wr**
-20. Аналогичным образом (п15-18) настраиваем порты для VLANs 20 и 30
+3. Задаём имя для Коммутатора **hostname Sw1**
+4. Создаём VLAN 2  **vlan 2** 
+5. Аналогичным образом создаём и VLANs 10, 20 и 30
+6. ***Настраиваем trunk порты***
+7. Переходим в интерфейс Gi0/0 **interface GigabitEthernet0/0**
+8. Задаем интефейсу работу с VLAN  **switchport trunk encapsulation dot1q**
+9. Назначим транковые VLANs **switchport trunk allowed vlan 2,10,20,30**
+10. Назначим VLAN 2 нативный **switchport trunk native vlan 2**
+11. Переводим порт в режим trunk  **switchport mode trunk**
+12. Выключаем передачу сообщений DTP  **switchport nonegotiate**
+13. Записываем конфигурация во flash память **do wr**
+14. Аналогичным образом (п6-11) настраиваем транковый порты *Gi1/0* на *Sw1* и *Gi1/0* на *Sw2*
+15. ***Настраиваем access порты***
+16. Переходим в интерфейс Gi0/1 **interface GigabitEthernet0/1**
+17. Переводим порт в режим access **switchport mode access**
+18. Настраиваем порт для работы в 10 vlan **switchport access vlan 10**
+19. Выключаем передачу сообщений DTP  **switchport nonegotiate**
+20. Записываем конфигурация во flash память **do wr**
+21. Аналогичным образом (п15-18) настраиваем порты для VLANs 20 и 30
 ## Настраиваем PC
 1. Задаем ip адрес для PC1  **ip 192.168.10.10 255.255.255.0 192.168.10.1**
 2. Сохраняем настройки **save**
