@@ -1,28 +1,36 @@
 en
 conf t
+vlan 2
 vlan 10
 vlan 20
 vlan 30
 interface GigabitEthernet0/0
 switchport trunk encapsulation dot1q
+switchport trunk allowed vlan 2,10,20,30
+switchport trunk native vlan 2
 switchport mode trunk
-switchport trunk allowed vlan 10,20,30
+switchport nonegotiate
 exit
 interface GigabitEthernet1/0
 switchport trunk encapsulation dot1q
+switchport trunk allowed vlan 2,10,20,30
+switchport trunk native vlan 2
 switchport mode trunk
-switchport trunk allowed vlan 10,20,30
+switchport nonegotiate
 exit
 interface GigabitEthernet0/1
 switchport mode access
 switchport access vlan 10
+switchport nonegotiate
 exit
 interface GigabitEthernet0/2
 switchport mode access
 switchport access vlan 20
+switchport nonegotiate
 exit
 interface GigabitEthernet0/3
 switchport mode access
 switchport access vlan 30
+switchport nonegotiate
 exit
 do wr
