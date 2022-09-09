@@ -24,4 +24,5 @@
 14. Переходим в интерфейс Gi0/1 **interface GigabitEthernet0/1**
 15. Переводим порт в режим access **switchport mode access**
 16. Говорим что порт работает в 10 vlan **switchport access vlan 10**
-17. Аналогичным образом настраивае порты для VLANs 20 и 30
+17. Выключаем передачу сообщений DTP  **switchport nonegotiate**
+18. Аналогичным образом настраивае порты для VLANs 20 и 30
