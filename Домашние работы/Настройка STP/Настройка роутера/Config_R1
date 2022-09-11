@@ -1,10 +1,24 @@
-## Настройка R1
-1. Заходим в превилегированый режим **enable**
-2. Переходим в режим конфигурации устройства **configure terminal**
-3. Задаём имя для роутера **hostname R1**
-4. Создаём сабинтерфейс для VLAN 10  **interface gigabitEthernet 0/0.10**
-5. Задаем интефейсу работу с VLAN 10  **encapsulation dot1Q 10**
-6. Задаем ip адрес и маску подсети  **ip address 192.168.10.1 255.255.255.0**
-7. Записываем конфигурация во flash память **do wr**
-8. Аналогичным образом (п3-6) создаём и настраиваем сабинтерфейсы для VLAN 20 и VLAN 30
-9. Также создаем сабинтерфейс для VLAN 2 и делаем его нативным **encapsulation dot1Q 2 native**
+interface GigabitEthernet0/0/0
+ no ip address
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/0/0.2
+ encapsulation dot1Q 2 native
+ no ip address
+!
+interface GigabitEthernet0/0/0.10
+ encapsulation dot1Q 10
+ ip address 192.168.10.1 255.255.255.0
+!
+interface GigabitEthernet0/0/0.20
+ encapsulation dot1Q 20
+ ip address 192.168.20.1 255.255.255.0
+!
+interface GigabitEthernet0/0/0.30
+ encapsulation dot1Q 30
+ ip address 192.168.30.1 255.255.255.0
+!
+interface GigabitEthernet0/0/0.40
+ encapsulation dot1Q 40
+ ip address 192.168.40.1 255.255.255.0
