@@ -6,7 +6,7 @@
 5. Аналогичным образом создаём и VLANs 10, 20 ,30 и 40
 6. Включаем протокол STP **spanning-tree mode rapid-pvst**
 7. Настраивае приоритет для VLANs 10,20 **spanning-tree vlan 10,20 priority 4096**
-8. ***Настраиваем trunk порты
+8. ***Настраиваем trunk порты***
 9. Переходим в интерфейс Gi0/0 interface GigabitEthernet0/0
 10. Задаем интефейсу работу с VLAN switchport trunk encapsulation dot1q
 11. Назначим транковые VLANs switchport trunk allowed vlan 2,10,20,30
