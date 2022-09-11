@@ -29,7 +29,7 @@
 22. Отключаем получения BPDU пакетов **spanning-tree bpduguard enable**
 23. Записываем конфигурация во flash память **do wr**
 > ![321](https://user-images.githubusercontent.com/112701413/189531252-07590096-f1b4-4474-9432-e44acf9c8065.jpg)
-24. Аналогичным образом (п17-23) настраиваем порт для VLAN 30
+24. Аналогичным образом (п17-23) настраиваем порт Fa0/11 для VLAN 30
 25. Переходим в интерфейсы Fa0/1 и Fa0/2 **interface range fastEthernet 0/1-2**
 26. Переводим порты в режим access **switchport mode access**
 27. Настраиваем порты для работы в 10 vlan **switchport access vlan 10**
