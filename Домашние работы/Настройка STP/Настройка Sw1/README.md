@@ -32,3 +32,4 @@
 28. Выключаем передачу сообщений DTP  **switchport nonegotiate**
 29. Видим что порт Fa0/2 перешол в режим *backup* чтобы предотвратить петлю
 > ![222](https://user-images.githubusercontent.com/112701413/189533072-af367c05-c77d-49c0-83a9-c8586accf03c.jpg)
+30. Записываем конфигурация во flash память **do wr**
