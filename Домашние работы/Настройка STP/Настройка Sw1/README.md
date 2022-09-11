@@ -16,6 +16,10 @@
 14. Выключаем передачу сообщений DTP **switchport nonegotiate**
 15. Записываем конфигурация во flash память **do wr**
 > ![123](https://user-images.githubusercontent.com/112701413/189531124-1e73940b-52a8-4c21-b5b0-dc485f0aefdf.jpg)
+
+**Видим что порты *Gi0/1* и *Gi0/2* перешли в режим *Designated***
+
+> ![111](https://user-images.githubusercontent.com/112701413/189541225-7b8ead3c-0bbf-423f-b440-113b132b6bd6.jpg)
 16. ***Настраиваем access порты***
 17. Переходим в интерфейс Fa0/10 **interface fastEthernet 0/10**
 18. Переводим порт в режим access **switchport mode access**
