@@ -44,3 +44,5 @@
 2. Сохраняем настройки **save**
 >![10](https://user-images.githubusercontent.com/112701413/189709701-1444c263-9439-4542-ba81-5a042853bdec.jpg)
 3. Аналогичным образом настраиваем остальные PC для каждого VLAN
+4. Проверяем видят ли PC1 PC2 через протакол icmp **ping 192.168.10.11**
+>![11](https://user-images.githubusercontent.com/112701413/189711292-0677d9e3-3c76-4bc1-81bb-14ed7bf12628.jpg)
