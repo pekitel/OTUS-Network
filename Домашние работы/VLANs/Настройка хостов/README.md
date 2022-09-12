@@ -34,10 +34,13 @@
 16. Переходим в интерфейс Gi0/1 **interface GigabitEthernet0/1**
 17. Переводим порт в режим access **switchport mode access**
 18. Настраиваем порт для работы в 10 vlan **switchport access vlan 10**
+>![8](https://user-images.githubusercontent.com/112701413/189708599-c21a7be6-8280-4962-a19a-40f96932dda7.jpg)
 19. Выключаем передачу сообщений DTP  **switchport nonegotiate**
 20. Записываем конфигурация во flash память **do wr**
+>![9](https://user-images.githubusercontent.com/112701413/189708968-6ba15280-be36-4577-813c-9694bfec925a.jpg)
 21. Аналогичным образом (п15-18) настраиваем порты для VLANs 20 и 30
 ## Настраиваем PC
 1. Задаем ip адрес для PC1  **ip 192.168.10.10 255.255.255.0 192.168.10.1**
 2. Сохраняем настройки **save**
+>![10](https://user-images.githubusercontent.com/112701413/189709701-1444c263-9439-4542-ba81-5a042853bdec.jpg)
 3. Аналогичным образом настраиваем остальные PC для каждого VLAN
