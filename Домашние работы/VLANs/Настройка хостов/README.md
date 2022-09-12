@@ -2,13 +2,15 @@
 1. Заходим в превилегированый режим **enable**
 2. Переходим в режим конфигурации устройства **configure terminal**
 3. Задаём имя для роутера **hostname R1**
+>![1](https://user-images.githubusercontent.com/112701413/189698770-fa6f5f81-f215-4878-98aa-78ae22549d72.jpg)
 4. Создаём сабинтерфейс для VLAN 10  **interface gigabitEthernet 0/0.10**
 5. Задаем интефейсу работу с VLAN 10  **encapsulation dot1Q 10**
 6. Задаем ip адрес и маску подсети  **ip address 192.168.10.1 255.255.255.0**
+>![2](https://user-images.githubusercontent.com/112701413/189699752-132eb6bd-3e2d-4f52-ae22-88ab3d115c5e.jpg)
 7. Записываем конфигурация во flash память **do wr**
 8. Аналогичным образом (п3-6) создаём и настраиваем сабинтерфейсы для VLAN 20 и VLAN 30
 9. Также создаем сабинтерфейс для VLAN 2 и делаем его нативным **encapsulation dot1Q 2 native**
-
+>![3](https://user-images.githubusercontent.com/112701413/189700617-c325b4d6-5767-4287-adef-a7825076d4d6.jpg)
 ## Настройка Sw1 и Sw2
 1. Заходим в превилегированый режим **enable**
 2. Переходим в режим конфигурации **configure terminal**
