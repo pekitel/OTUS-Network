@@ -15,16 +15,20 @@
 1. Заходим в превилегированый режим **enable**
 2. Переходим в режим конфигурации **configure terminal**
 3. Задаём имя для коммутатора **hostname Sw1**
+>![4](https://user-images.githubusercontent.com/112701413/189706233-77643bf9-167e-4995-8150-80d963f15fbb.jpg)
 4. Создаём VLAN 2  **vlan 2** 
 5. Аналогичным образом создаём и VLANs 10, 20 и 30
+>![5](https://user-images.githubusercontent.com/112701413/189706711-f19118f3-9871-4e44-b0dd-eab291cb1998.jpg)
 6. ***Настраиваем trunk порты***
 7. Переходим в интерфейс Gi0/0 **interface GigabitEthernet0/0**
 8. Задаем интефейсу работу с VLAN  **switchport trunk encapsulation dot1q**
 9. Назначим транковые VLANs **switchport trunk allowed vlan 2,10,20,30**
+>![6](https://user-images.githubusercontent.com/112701413/189707614-ccd98760-c2a4-458b-af02-d3d49f234454.jpg)
 10. Назначим VLAN 2 нативный **switchport trunk native vlan 2**
 11. Переводим порт в режим trunk  **switchport mode trunk**
 12. Выключаем передачу сообщений DTP  **switchport nonegotiate**
 13. Записываем конфигурация во flash память **do wr**
+>![7](https://user-images.githubusercontent.com/112701413/189707984-1a9fa236-4b58-44dd-9288-5cca15ebe15c.jpg)
 14. Аналогичным образом (п7-12) настраиваем транковый порты *Gi1/0* на *Sw1* и *Gi1/0* на *Sw2*
 15. ***Настраиваем access порты***
 16. Переходим в интерфейс Gi0/1 **interface GigabitEthernet0/1**
