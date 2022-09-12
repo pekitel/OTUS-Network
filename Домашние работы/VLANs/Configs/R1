@@ -1,8 +1,7 @@
 en
 conf t
 interface gigabitEthernet 0/0.2
-encapsulation dot1Q 2 native 
-ip address 192.168.2.1 255.255.255.0
+encapsulation dot1Q 2 native
 exit
 interface gigabitEthernet 0/0.10
 encapsulation dot1Q 10
