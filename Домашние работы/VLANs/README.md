@@ -64,3 +64,5 @@ VLAN | ip address | host |
 3. Аналогичным образом настраиваем остальные PC для каждого VLAN
 4. Проверяем видят ли PC1 PC2 через протакол icmp **ping 192.168.10.11**
 >![11](https://user-images.githubusercontent.com/112701413/189711292-0677d9e3-3c76-4bc1-81bb-14ed7bf12628.jpg)
+
+**Конфигурацию хостов можно посмотреть тут** [Configs](https://github.com/pekitel/OTUS-Network/tree/main/%D0%94%D0%BE%D0%BC%D0%B0%D1%88%D0%BD%D0%B8%D0%B5%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%8B/VLANs/Configs)
