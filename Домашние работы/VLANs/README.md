@@ -2,6 +2,9 @@
   1. Настройка DTP.
   2. Добавление сетей VLAN и назначение портов.
 
+## Схема сети
+![Схема сети](https://user-images.githubusercontent.com/112701413/189729033-b2935d93-53a7-4c19-9b48-7cba33f09db5.jpg)
+
 ## ip address
 VLAN | ip address | host |
 :----: | :----------: | :----: |
@@ -11,9 +14,6 @@ VLAN | ip address | host |
 20 | 192.168.20.11 | PC5 |
 30 | 192.168.30.10 | PC3 |
 30 | 192.168.30.11 | PC4 |
-
-## Схема сети
-![Схема сети](https://user-images.githubusercontent.com/112701413/189729033-b2935d93-53a7-4c19-9b48-7cba33f09db5.jpg)
 
 ## Настройка R1
 1. Заходим в превилегированый режим **enable**
