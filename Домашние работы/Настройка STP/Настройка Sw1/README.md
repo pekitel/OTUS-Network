@@ -12,7 +12,7 @@
 8. ***Настраиваем trunk порты***
 9. Переходим в интерфейсы Gi0/1 и Gi0/2 **interface range gigabitEthernet 0/1-2**
 10. Задаем интефейсу работу с VLAN **switchport trunk encapsulation dot1q**
-11. Назначим транковые VLANs **switchport trunk allowed vlan 2,10,20,30**
+11. Назначим транковые VLANs **switchport trunk allowed vlan add 2,10,20,30**
 12. Назначим VLAN 2 нативный **switchport trunk native vlan 2**
 13. Переводим порт в режим **trunk switchport mode trunk**
 14. Выключаем передачу сообщений DTP **switchport nonegotiate**
