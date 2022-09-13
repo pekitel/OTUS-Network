@@ -2,8 +2,10 @@
 1. Заходим в превилегированый режим **enable**
 2. Переходим в режим конфигурации **configure terminal**
 3. Задаём имя для коммутатора **hostname Sw1**
+>![4](https://user-images.githubusercontent.com/112701413/189899271-123d4305-6359-40c9-a3de-f6533148938a.jpg)
 4. Создаём VLAN 2  **vlan 2** 
 5. Аналогичным образом создаём и VLANs 10, 20 ,30 и 40
+>![5](https://user-images.githubusercontent.com/112701413/189900167-498707a8-d0ad-40b3-b6c9-52595e99f4c3.jpg)
 6. Включаем протокол STP **spanning-tree mode rapid-pvst**
 7. Настраивае приоритет для VLANs 10,20 **spanning-tree vlan 10,20 priority 4096** 
 > ![444](https://user-images.githubusercontent.com/112701413/189536106-40a9960c-f649-4e65-bf7c-0d90a34e9b04.jpg)
