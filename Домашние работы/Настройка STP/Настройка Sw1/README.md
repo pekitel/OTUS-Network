@@ -28,7 +28,7 @@
 19. Настраиваем порт для работы в 40 vlan **switchport access vlan 40**
 20. Выключаем передачу сообщений DTP  **switchport nonegotiate**
 21. Включаем *portfast* **spanning-tree portfast trunk**
-22. Отключаем получения BPDU пакетов **spanning-tree bpduguard enable**
+22. Отключаем получения BPDU пакетов **spanning-tree bpduguard disable**
 23. Записываем конфигурация во flash память **do wr**
 > ![321](https://user-images.githubusercontent.com/112701413/189531252-07590096-f1b4-4474-9432-e44acf9c8065.jpg)
 24. Аналогичным образом (п17-23) настраиваем порт Fa0/11 для VLAN 30
