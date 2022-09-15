@@ -6,22 +6,24 @@
 4. Создаём VLAN 2  **vlan 2** 
 5. Аналогичным образом создаём и VLANs 10, 20 ,30 и 40
 >![5](https://user-images.githubusercontent.com/112701413/189900167-498707a8-d0ad-40b3-b6c9-52595e99f4c3.jpg)
-6. Включаем протокол STP **spanning-tree mode rapid-pvst**
+6. Включаем протокол RSTP **spanning-tree mode rapid-pvst**
+>![6](https://user-images.githubusercontent.com/112701413/190339033-3264d734-634b-4769-9d87-e37363c320d3.jpg)
 7. Настраивае приоритет для VLANs 10,20 **spanning-tree vlan 10,20 priority 4096** 
-> ![444](https://user-images.githubusercontent.com/112701413/189536106-40a9960c-f649-4e65-bf7c-0d90a34e9b04.jpg)
+>![7](https://user-images.githubusercontent.com/112701413/190339427-331fe1da-5f3b-4ecf-be32-9a01ca2d0448.jpg)
 8. ***Настраиваем trunk порты***
 9. Переходим в интерфейсы Gi0/1 и Gi0/2 **interface range gigabitEthernet 0/1-2**
 10. Задаем интефейсу работу с VLAN **switchport trunk encapsulation dot1q**
 11. Назначим транковые VLANs **switchport trunk allowed vlan add 2,10,20,30**
 12. Назначим VLAN 2 нативный **switchport trunk native vlan 2**
-13. Переводим порт в режим **trunk switchport mode trunk**
+13. Переводим порт в режим trunk **switchport mode trunk**
 14. Выключаем передачу сообщений DTP **switchport nonegotiate**
+>![8](https://user-images.githubusercontent.com/112701413/190342233-86a23351-0280-4055-b60e-4b3e21de487e.jpg)
 15. Записываем конфигурация во flash память **do wr**
 > ![123](https://user-images.githubusercontent.com/112701413/189531124-1e73940b-52a8-4c21-b5b0-dc485f0aefdf.jpg)
 
-**Видим что порты *Gi0/1* и *Gi0/2* перешли в режим *Designated***
+**Видим что порты *Gi0/1* и *Gi0/2* перешли в режим *Designated* и для 10 и 20 vlan Sw1 стал корневым**
 
-> ![111](https://user-images.githubusercontent.com/112701413/189541225-7b8ead3c-0bbf-423f-b440-113b132b6bd6.jpg)
+>![9](https://user-images.githubusercontent.com/112701413/190343120-dca93d73-f027-492a-a40b-1a6c4f93b1b5.jpg)
 16. ***Настраиваем access порты***
 17. Переходим в интерфейс Fa0/10 **interface fastEthernet 0/10**
 18. Переводим порт в режим access **switchport mode access**
