@@ -20,24 +20,19 @@
 >![8](https://user-images.githubusercontent.com/112701413/190342233-86a23351-0280-4055-b60e-4b3e21de487e.jpg)
 15. Записываем конфигурация во flash память **do wr**
 > ![123](https://user-images.githubusercontent.com/112701413/189531124-1e73940b-52a8-4c21-b5b0-dc485f0aefdf.jpg)
-
-**Видим что порты *Gi0/1* и *Gi0/2* перешли в режим *Designated* и для 10 и 20 vlan Sw1 стал корневым**
-
->![9](https://user-images.githubusercontent.com/112701413/190343120-dca93d73-f027-492a-a40b-1a6c4f93b1b5.jpg)
-16. ***Настраиваем access порты***
-17. Переходим в интерфейс Fa0/10 **interface fastEthernet 0/10**
-18. Переводим порт в режим access **switchport mode access**
-19. Настраиваем порт для работы в 40 vlan **switchport access vlan 40**
-20. Выключаем передачу сообщений DTP  **switchport nonegotiate**
-21. Включаем *portfast* **spanning-tree portfast trunk**
-22. Отключаем получения BPDU пакетов **spanning-tree bpduguard disable**
+16. Переходим в настройку порта Gi0/1 **interface gigabitEthernet 0/1**
+17. Установливаем *Cost-20* для VLAN 10 **spanning-tree vlan 10 cost 20**
+18. Установливаем *Cost-50* для VLAN 20 **spanning-tree vlan 20 cost 50**
+19. Аналогичным образом настраиваем *Cost* для порта Gi0/2
+20. Переходим в настройку порта Gi0/2 **interface gigabitEthernet 0/2**
+21. Установливаем *Cost-50* для VLAN 10 **spanning-tree vlan 10 cost 50**
+22. Установливаем *Cost-20* для VLAN 20 **spanning-tree vlan 20 cost 20**
 23. Записываем конфигурация во flash память **do wr**
-> ![321](https://user-images.githubusercontent.com/112701413/189531252-07590096-f1b4-4474-9432-e44acf9c8065.jpg)
-24. Аналогичным образом (п17-23) настраиваем порт Fa0/11 для VLAN 30
-25. Переходим в интерфейсы Fa0/1 и Fa0/2 **interface range fastEthernet 0/1-2**
-26. Переводим порты в режим access **switchport mode access**
-27. Настраиваем порты для работы в 10 vlan **switchport access vlan 10**
-28. Выключаем передачу сообщений DTP  **switchport nonegotiate**
-29. Видим что порт Fa0/2 перешол в режим *backup* чтобы предотвратить петлю
-> ![222](https://user-images.githubusercontent.com/112701413/189533072-af367c05-c77d-49c0-83a9-c8586accf03c.jpg)
-30. Записываем конфигурация во flash память **do wr**
+
+>![10](https://user-images.githubusercontent.com/112701413/190414253-b883c438-d498-4e65-b582-4dd0a9918b7f.jpg)
+
+Таким образом трафик для VLAN 10 пойдет через Gi0/1 ,а трафик для VLAN 20 пойдет через Gi0/2
+
+24. Проверяем конфигурацию командой **show running-config**
+>![11](https://user-images.githubusercontent.com/112701413/190416815-e480e673-c133-436b-9aca-42257f25dd5d.jpg)
+
