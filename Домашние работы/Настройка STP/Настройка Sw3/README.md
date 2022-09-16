@@ -19,43 +19,31 @@
 >![25](https://user-images.githubusercontent.com/112701413/190706226-6f08aab7-a575-47bf-a17a-36bee3d29f78.jpg)
 14. Записываем конфигурация во flash память **do wr**
 15. Переходим в настройку порта Gi0/1 **interface gigabitEthernet 0/1**
-16. Установливаем *Cost-20* для VLAN 30 **spanning-tree vlan 10 cost 20**
-17. Установливаем *Cost-50* для VLAN 40 **spanning-tree vlan 20 cost 50**
-
-
-
-
-
-
-
-
+16. Установливаем *Cost-50* для VLAN 30 **spanning-tree vlan 30 cost 50**
+17. Установливаем *Cost-20* для VLAN 40 **spanning-tree vlan 40 cost 20**
 18. Аналогичным образом настраиваем *Cost* для порта Gi0/2
 19. Переходим в настройку порта Gi0/2 **interface gigabitEthernet 0/2**
-20. Установливаем *Cost-50* для VLAN 10 **spanning-tree vlan 10 cost 50**
-21. Установливаем *Cost-20* для VLAN 20 **spanning-tree vlan 20 cost 20**
+20. Установливаем *Cost-50* для VLAN 30 **spanning-tree vlan 30 cost 20**
+21. Установливаем *Cost-20* для VLAN 40 **spanning-tree vlan 40 cost 50**
 22. Записываем конфигурация во flash память **do wr**
+>![26](https://user-images.githubusercontent.com/112701413/190712524-c552e0d1-dbe9-4f4b-88c1-c10cd518a656.jpg)
 
->![10](https://user-images.githubusercontent.com/112701413/190414253-b883c438-d498-4e65-b582-4dd0a9918b7f.jpg)
-
-Таким образом трафик для VLAN 10 пойдет через Gi0/1 ,а трафик для VLAN 20 пойдет через Gi0/2
+Таким образом трафик для VLAN 40 пойдет через Gi0/1 ,а трафик для VLAN 30 пойдет через Gi0/2
 
 28. Проверяем конфигурацию командой **show running-config**
->![11](https://user-images.githubusercontent.com/112701413/190674725-b15c673c-dfdb-43ef-b66a-c52351d3ff8c.jpg)
-
-
-29. Посмотрим настройки spanning-tree для VLANs 10,20 **show spanning-tree vlan 10,20**
-30. Видим что Sw1 стал корневым для VLANs 10,20
->![9](https://user-images.githubusercontent.com/112701413/190575360-a7b9cc0d-86df-4ec6-9e87-afe7e16581a3.jpg)
+>![27](https://user-images.githubusercontent.com/112701413/190712817-531f2888-20d3-403b-9d31-c298a88087bb.jpg)
+29. Посмотрим настройки spanning-tree для VLANs 30,40 **show spanning-tree vlan 30,40**
+30. Видим что Sw3 стал корневым для VLANs 30,40
+>![28](https://user-images.githubusercontent.com/112701413/190713334-a5803f9e-8091-4ce8-be70-ca52fd8ae91a.jpg)
 31. ***Настраиваем access порты***
-32. Переходим в интерфейс Fa0/1 **interface fastEthernet 0/1**
-33. Переводим порт в режим access **switchport mode access**
-34. Настраиваем порт для работы в 10 vlan **switchport access vlan 10**
->![12](https://user-images.githubusercontent.com/112701413/190576031-0a8381e9-614c-4a24-8516-87c633672e82.jpg)
-35. Выключаем передачу сообщений DTP  **switchport nonegotiate**
-36. Включаем *portfast* **spanning-tree portfast**
-37. Отключаем получения BPDU пакетов **spanning-tree bpduguard enable**
-38. Записываем конфигурация во flash память **do wr**
->![13](https://user-images.githubusercontent.com/112701413/190577047-d86cae5a-a580-4f03-a7af-e785e39e49d2.jpg)
-39. Аналогичным образом настраиваем порт fa0/2 для Vlan 30
-40. Записываем конфигурация во flash память **do wr**
+32. Переходим в интерфейсы Fa0/1 и Fa0/2 **interface range fastEthernet 0/1-2**
+33. Переводим порты в режим access **switchport mode access**
+34. Настраиваем порты для работы в 10 vlan **switchport access vlan 10**
+>![29](https://user-images.githubusercontent.com/112701413/190713824-063c9aa1-3e5d-4e4e-9105-013c0e05b504.jpg)
+35. Записываем конфигурация во flash память **do wr**
+36. Посмотрим режим портов spanning-tree для VLANs 10,20
+>![30](https://user-images.githubusercontent.com/112701413/190715845-5e8352e0-1054-496c-b994-c16ccab1bdd8.jpg)
+37. Видим что порты Fa0/1 и Fa0/2 перешли в режим *Designated*
+38. Порты Gi0/1 и Gi0/2 перешли в режим *alternative* (для предотвращение петли)
+
 
