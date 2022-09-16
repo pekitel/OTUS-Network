@@ -36,3 +36,17 @@
 24. Проверяем конфигурацию командой **show running-config**
 >![11](https://user-images.githubusercontent.com/112701413/190416815-e480e673-c133-436b-9aca-42257f25dd5d.jpg)
 
+25. Посмотрим настройки spanning-tree для VLANs 10,20 **show spanning-tree vlan 10,20**
+26. Видим что Switch стал корневым для VLANs 10,20
+>![9](https://user-images.githubusercontent.com/112701413/190575360-a7b9cc0d-86df-4ec6-9e87-afe7e16581a3.jpg)
+27. ***Настраиваем access порты***
+28. Переходим в интерфейс Fa0/1 **interface fastEthernet 0/1**
+29. Переводим порт в режим access **switchport mode access**
+30. Настраиваем порт для работы в 10 vlan **switchport access vlan 10**
+>![12](https://user-images.githubusercontent.com/112701413/190576031-0a8381e9-614c-4a24-8516-87c633672e82.jpg)
+31. Выключаем передачу сообщений DTP  **switchport nonegotiate**
+32. Включаем *portfast* **spanning-tree portfast**
+33. Отключаем получения BPDU пакетов **spanning-tree bpduguard enable**
+34. Записываем конфигурация во flash память **do wr**
+>![13](https://user-images.githubusercontent.com/112701413/190577047-d86cae5a-a580-4f03-a7af-e785e39e49d2.jpg)
+35. Аналогичным образом настраиваем порт fa0/2 для Vlan 30
