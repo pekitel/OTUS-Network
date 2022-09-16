@@ -18,7 +18,7 @@
 13. Выключаем передачу сообщений DTP **switchport nonegotiate**
 >![14](https://user-images.githubusercontent.com/112701413/190673457-2d64c237-3798-41f1-b691-6902178fcf7b.jpg)
 14. Переходим в интерфейсы Gi0/1 и Gi0/2 **interface range gigabitEthernet 0/1-2**
-15. Назначим транковые VLANs **switchport trunk allowed vlan 2,10,20,30**
+15. Назначим транковые VLANs **switchport trunk allowed vlan 2,10,20,30,40**
 16. Назначим VLAN 2 нативный **switchport trunk native vlan 2**
 17. Переводим порт в режим trunk **switchport mode trunk**
 18. Выключаем передачу сообщений DTP **switchport nonegotiate**
