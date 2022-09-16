@@ -10,7 +10,7 @@
 >![17](https://user-images.githubusercontent.com/112701413/190698801-43a9051b-7c6d-46ea-a06b-6aca88fcc130.jpg)
 7. ***Настраиваем trunk порты***
 8. Переходим в интерфейсы Gi0/1 и Gi0/2 **interface range gigabitEthernet 0/1-2**
-9. Назначим транковые VLANs **switchport trunk allowed vlan 2,10,20,30**
+9. Назначим транковые VLANs **switchport trunk allowed vlan 2,10,20,30,40**
 10. Назначим VLAN 2 нативный **switchport trunk native vlan 2**
 11. Переводим порт в режим trunk **switchport mode trunk**
 12. Выключаем передачу сообщений DTP **switchport nonegotiate**
