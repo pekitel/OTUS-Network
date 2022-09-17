@@ -1,4 +1,6 @@
 # STP
+
+
 ## Схема сети
 ![Схема сети RSTP](https://user-images.githubusercontent.com/112701413/190674967-a550f022-a0b1-4739-a27e-bf13dc81209c.jpg)
 
