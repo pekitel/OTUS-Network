@@ -24,3 +24,14 @@
 >![40](https://user-images.githubusercontent.com/112701413/190782820-5479234b-6cdb-4360-98d1-40b34ea45417.jpg)
 
 Видим что порт fa0/2 перешёл в режим *backup* т.к. порты Fa0/1 и Fa0/2 смотрят в сторону *Hub* , а он не упровляемый, поэтому роль предотврящения петли взял на себя *Switch*
+
+19. Переходим в интерфейс Fa0/3 **interface fastEthernet 0/3**
+20. Переводим порт в режим access **switchport mode access**
+21. Настраиваем порт для работы в 40 vlan **switchport access vlan 40**
+>![41](https://user-images.githubusercontent.com/112701413/190855317-ecbc9d3f-f1b5-48bf-8d45-e360c3a3c60b.jpg)
+22. Выключаем передачу сообщений DTP  **switchport nonegotiate**
+23. Включаем *portfast* **spanning-tree portfast**
+24. Отключаем получения BPDU пакетов **spanning-tree bpduguard enable**
+25. Записываем конфигурация во flash память **do wr**
+>![42](https://user-images.githubusercontent.com/112701413/190855486-2754656b-5bfa-438e-be61-0e37e107ede1.jpg)
+26. Аналогичным образом настраиваем порт fa0/4 для Vlan 20
