@@ -22,3 +22,5 @@
 >![39](https://user-images.githubusercontent.com/112701413/190769732-1609b543-fa4a-4ee5-89d4-fbfaf6b0e44c.jpg)
 18. Посмотрим режим портов Fa0/1 и Fa0/2 spanning-tree для VLANs 20
 >![40](https://user-images.githubusercontent.com/112701413/190782820-5479234b-6cdb-4360-98d1-40b34ea45417.jpg)
+
+Видим что порт fa0/2 перешёл в режим *backup* т.к. порты Fa0/1 и Fa0/2 смотрят в сторону *Hub* , а он не упровляемый, поэтому роль предотврящения петли взял на себя *Switch*
