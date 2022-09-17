@@ -10,7 +10,7 @@
 7. Переходим в интерфейсы Fa0/1, Fa0/2 и Fa0/3 **interface range fastEthernet 0/1-3**
 8. Переводим порты в режим access **switchport mode access**
 9. Настраиваем порты для работы в 10 vlan **switchport access vlan 10**
-10 Записываем конфигурация во flash память **do wr**
+10. Записываем конфигурация во flash память **do wr**
 >![33](https://user-images.githubusercontent.com/112701413/190725588-c954f9a8-6ab4-4f03-9633-821c5ba522e3.jpg)
 11. Посмотрим режим портов spanning-tree для VLANs 10 **sh spanning-tree vlan 10**
 >![34](https://user-images.githubusercontent.com/112701413/190727393-581e0e91-8e74-47da-a4f1-467c17c7816c.jpg)
