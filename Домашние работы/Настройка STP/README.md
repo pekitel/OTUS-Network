@@ -26,9 +26,13 @@ VLAN | ip address | host |
 
 ## Проверка
   Так как на Sw1 для Vlan 10 приоритетный маршрут через интерфейс Gi0/1, то проверим что произайдет если пропадет *link* на этом парту
-  >![43](https://user-images.githubusercontent.com/112701413/190961183-143efe2d-1a8b-4de7-aaa8-f089c657586b.jpg)
-  Запустим *icmp* запросы от PC1 до PC5 и выключим порт Gi0/1 на Sw1
-  >  ![44](https://user-images.githubusercontent.com/112701413/190961216-c1da368a-03ec-40e3-b560-51c8a72822e5.jpg)
+
+>![43](https://user-images.githubusercontent.com/112701413/190961183-143efe2d-1a8b-4de7-aaa8-f089c657586b.jpg)
+ 
+ Запустим *icmp* запросы от PC1 до PC5 и выключим порт Gi0/1 на Sw1
+
+>  ![44](https://user-images.githubusercontent.com/112701413/190961216-c1da368a-03ec-40e3-b560-51c8a72822e5.jpg)
+
 Видим что STP перестроил ципочку дерева и связь востановилась через порт Gi0/2
 Порт Gi0/1 поменял режим с *alternative* на *root* , а порт Gi0/2 поменял режим c *root* на *Designated*
 >![45](https://user-images.githubusercontent.com/112701413/190962311-07929c0b-f057-427a-af4a-9a4d1f38b06c.jpg)
