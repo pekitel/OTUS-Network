@@ -79,3 +79,31 @@ VLAN | ip address dhcp | host |
 20. Записываем конфигурация во flash память **do wr**
 >![15](https://user-images.githubusercontent.com/112701413/192098017-f7337f01-719c-4905-a2c8-9ed62271af49.jpg)
 21. Аналогичным образом настраиваем порт Gi0/3 для Vlan 20
+## Настройка Sw2
+1. Заходим в превилегированый режим **enable**
+2. Переходим в режим конфигурации устройства **configure terminal**
+3. Задаём имя для роутера **hostname Sw2**
+>![17](https://user-images.githubusercontent.com/112701413/192098473-90d18850-6951-43cd-8d0c-f04a2aca9105.jpg)
+4. Создаем Vlan 2 **vlan 2**
+5. Аналогичным образом создаём и VLANs 10, 20
+>![18](https://user-images.githubusercontent.com/112701413/192098496-7ce9d548-20cb-4366-851e-a31562740566.jpg)
+6. ***Настраиваем trunk порт***
+7. Переходим в интерфейс Gi0/0 **interface gigabitEthernet 0/0**
+8. Задаем интефейсам работу с VLAN  **switchport trunk encapsulation dot1q**
+9. Назначим транковые VLANs **switchport trunk allowed vlan 2,10,20**
+>![19](https://user-images.githubusercontent.com/112701413/192098603-f41b114f-e10e-4edb-8a2e-de18a84c8630.jpg)
+10. Назначим VLAN 2 нативный **switchport trunk native vlan 2**
+11. Переводим порт в режим trunk  **switchport mode trunk**
+12. Выключаем передачу сообщений DTP  **switchport nonegotiate**
+>![20](https://user-images.githubusercontent.com/112701413/192098682-237b6ab9-2013-4e8b-867f-7068c9dd23cf.jpg)
+13. ***Настраиваем access порты***
+14. Переходим в интерфейс Gi0/1 **interface GigabitEthernet0/1**
+15. Переводим порт в режим access **switchport mode access**
+>![21](https://user-images.githubusercontent.com/112701413/192098784-9398815f-e66c-430f-9ec1-74d920017b4d.jpg)
+16. Настраиваем порт для работы в 10 vlan **switchport access vlan 10**
+>![22](https://user-images.githubusercontent.com/112701413/192098810-62c39596-84a9-458e-9938-01de7b6b8487.jpg)
+17. Выключаем передачу сообщений DTP  **switchport nonegotiate**
+18. Включаем *portfast* **spanning-tree portfast**
+19. Отключаем получения BPDU пакетов **spanning-tree bpduguard enable**
+>![23](https://user-images.githubusercontent.com/112701413/192098903-7f8c06b1-5113-4995-8f55-192abcb79548.jpg)
+20. Аналогичным образом настраиваем порт Gi0/2 для Vlan 20
