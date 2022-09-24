@@ -52,3 +52,30 @@ VLAN | ip address dhcp | host |
 >![2](https://user-images.githubusercontent.com/112701413/192096835-d5025c26-10a9-4c75-ab2c-1ccb102d3da3.jpg)
 
 ## Настройка Sw1
+1. Заходим в превилегированый режим **enable**
+2. Переходим в режим конфигурации устройства **configure terminal**
+3. Задаём имя для роутера **hostname Sw1**
+>![9](https://user-images.githubusercontent.com/112701413/192097353-0748eae8-0f77-4dcb-85be-be8f1a4dce24.jpg)
+4. Создаем Vlan 2 **vlan 2**
+5. Аналогичным образом создаём и VLANs 10, 20
+>![10](https://user-images.githubusercontent.com/112701413/192097430-b702cbe6-74be-4dfa-ab15-0bb7901ba060.jpg)
+6. ***Настраиваем trunk порты***
+7. Переходим в интерфейсы Gi0/0 и Gi0/1 **interface range gigabitEthernet 0/0-2**
+8. Задаем интефейсам работу с VLAN  **switchport trunk encapsulation dot1q**
+9. Назначим транковые VLANs **switchport trunk allowed vlan 2,10,20**
+>![11](https://user-images.githubusercontent.com/112701413/192097590-bea80ce9-6e4d-48ba-8c36-1f6eb696a4be.jpg)
+10. Назначим VLAN 2 нативный **switchport trunk native vlan 2**
+11. Переводим порт в режим trunk  **switchport mode trunk**
+12. Выключаем передачу сообщений DTP  **switchport nonegotiate**
+>![12](https://user-images.githubusercontent.com/112701413/192097630-e6ccff96-5732-4a64-8851-0c6d1d58581c.jpg)
+13. ***Настраиваем access порты***
+14. Переходим в интерфейс Gi0/2 **interface GigabitEthernet0/2**
+15. Переводим порт в режим access **switchport mode access**
+16. Настраиваем порт для работы в 10 vlan **switchport access vlan 10**
+>![14](https://user-images.githubusercontent.com/112701413/192097741-5be59c73-0c24-4502-8728-b05134e3a588.jpg)
+17. Выключаем передачу сообщений DTP  **switchport nonegotiate**
+18. Включаем *portfast* **spanning-tree portfast**
+19. Отключаем получения BPDU пакетов **spanning-tree bpduguard enable**
+20. Записываем конфигурация во flash память **do wr**
+>![15](https://user-images.githubusercontent.com/112701413/192098017-f7337f01-719c-4905-a2c8-9ed62271af49.jpg)
+21. Аналогичным образом настраиваем порт Gi0/3 для Vlan 20
