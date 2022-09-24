@@ -29,7 +29,8 @@ VLAN | ip address dhcp | host |
 8. Задаем ip адрес сети и маску **network 192.168.10.0 255.255.255.0**
 9. Задаем ip адрес шлюза **default-router 192.168.10.1**
 10. Задаем ip адрес *DNS* сервера **dns-server 8.8.8.8**
->![dhcp_pool_ipv4](https://user-images.githubusercontent.com/112701413/192094020-3ae24f72-59da-4aad-9dff-3b25cd441c9d.jpg)
+>![dhcp_pool_ipv4](https://user-images.githubusercontent.com/112701413/192094611-638d45b0-2de5-4806-a7bf-f006a2444ec1.jpg)
 11. Исключаем диапазон ip адресов которые не должны выдоваться по *dhcp* **ip dhcp excluded-address 192.168.10.1 192.168.10.10**
 12. И также исключим последний ip адрес **ip dhcp excluded-address 192.168.10.254**
 >![8](https://user-images.githubusercontent.com/112701413/192094228-cdf1a8b5-b15b-4879-b008-3a5891f01d95.jpg)
+13. Записываем конфигурация во flash память **do wr**
