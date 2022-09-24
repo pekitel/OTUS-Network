@@ -40,8 +40,8 @@ VLAN | ip address dhcp | host |
 16. Задаем ipv6 адрес **ipv6 address 2001:7BF:BAAD:A::1/64**
 >![25](https://user-images.githubusercontent.com/112701413/192095154-e990653f-a74d-4539-be95-e2d6c3bdc852.jpg)
 17. Настраиваем *DHCP POOL* **ip dhcp pool POOL_ipv6**
-18. Задаем диапазон ipv6 адресов для выдачи хостам **address prefix 2001:7BF:BAAD:A::/64
-19. Задаем доменное имя для этой подсети **domain-name lab2.ru
+18. Задаем диапазон ipv6 адресов для выдачи хостам **address prefix 2001:7BF:BAAD:A::/64**
+19. Задаем доменное имя для этой подсети **domain-name lab2.ru**
 >![26](https://user-images.githubusercontent.com/112701413/192095896-b27b8b13-99c9-4020-a445-508baec80b22.jpg)
 20. Включаем протакол ipv6 **ipv6 unicast-routing**
 >![28](https://user-images.githubusercontent.com/112701413/192096700-1b6d2838-bb7a-431f-9569-de0b7f573ebd.jpg)
