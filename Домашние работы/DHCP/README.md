@@ -50,3 +50,5 @@ VLAN | ip address dhcp | host |
 22. Также создаем сабинтерфейс для VLAN 2 и делаем его нативным **encapsulation dot1Q 2 native**
 23. Записываем конфигурация во flash память **do wr**
 >![2](https://user-images.githubusercontent.com/112701413/192096835-d5025c26-10a9-4c75-ab2c-1ccb102d3da3.jpg)
+
+## Настройка Sw1
