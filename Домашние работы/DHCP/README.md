@@ -107,3 +107,12 @@ VLAN | ip address dhcp | host |
 19. Отключаем получения BPDU пакетов **spanning-tree bpduguard enable**
 >![23](https://user-images.githubusercontent.com/112701413/192098903-7f8c06b1-5113-4995-8f55-192abcb79548.jpg)
 20. Аналогичным образом настраиваем порт Gi0/2 для Vlan 20
+21. ***Проверяем выдаются ли адреса в vlan 10 и vlan 20***
+22. PC1 должен получить адрес ipv4 **ip dhcp**
+>![30](https://user-images.githubusercontent.com/112701413/192099405-8e321707-7247-4ae6-ae05-71029f6d32cd.jpg)
+23. Проверяем настройки PC1 **show ip**
+>![31](https://user-images.githubusercontent.com/112701413/192099573-508a96cf-4815-4318-85b6-36c3fa9a8156.jpg)
+24. PC2 должен получить адрес ipv6 **ip auto**
+>![32](https://user-images.githubusercontent.com/112701413/192099634-04e54aea-9b92-4d54-bbcd-08fd458d9eac.jpg)
+25. Проверяем настройки PC2 **show ipv6**
+> ![33](https://user-images.githubusercontent.com/112701413/192099746-0a4c92ff-8c4b-4094-a0c7-248387ae72f4.jpg)
