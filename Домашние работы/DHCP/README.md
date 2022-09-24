@@ -25,7 +25,11 @@ VLAN | ip address dhcp | host |
 5. Задаем интефейсу работу с VLAN 10  **encapsulation dot1Q 10**
 6. Задаем ip адрес и маску подсети  **ip address 192.168.10.1 255.255.255.0**
 >![2](https://user-images.githubusercontent.com/112701413/189699752-132eb6bd-3e2d-4f52-ae22-88ab3d115c5e.jpg)
-7. Записываем конфигурация во flash память **do wr**
-8. Создаём сабинтерфейс для VLAN 20  **interface gigabitEthernet 0/0.20**
-9. Задаем интефейсу работу с VLAN 20  **encapsulation dot1Q 20**
-10. Задаем ipv6 адрес 
+7. Настраиваем *DHCP POOL* **ip dhcp pool POOL_ipv4**
+8. Задаем ip адрес сети и маску **network 192.168.10.0 255.255.255.0**
+9. Задаем ip адрес шлюза **default-router 192.168.10.1**
+10. Задаем ip адрес *DNS* сервера **dns-server 8.8.8.8**
+>![dhcp_pool_ipv4](https://user-images.githubusercontent.com/112701413/192094020-3ae24f72-59da-4aad-9dff-3b25cd441c9d.jpg)
+11. Исключаем диапазон ip адресов которые не должны выдоваться по *dhcp* **ip dhcp excluded-address 192.168.10.1 192.168.10.10**
+12. И также исключим последний ip адрес **ip dhcp excluded-address 192.168.10.254**
+>![8](https://user-images.githubusercontent.com/112701413/192094228-cdf1a8b5-b15b-4879-b008-3a5891f01d95.jpg)
