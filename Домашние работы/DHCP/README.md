@@ -47,4 +47,6 @@ VLAN | ip address dhcp | host |
 >![28](https://user-images.githubusercontent.com/112701413/192096700-1b6d2838-bb7a-431f-9569-de0b7f573ebd.jpg)
 21. Включаем интерфейс *Gi0/0* **no shutdown**
 >![29](https://user-images.githubusercontent.com/112701413/192096695-912ee851-117b-4e97-a986-ea327bf816e3.jpg)
-22. Записываем конфигурация во flash память **do wr**
+22. Также создаем сабинтерфейс для VLAN 2 и делаем его нативным **encapsulation dot1Q 2 native**
+23. >![2](https://user-images.githubusercontent.com/112701413/192096835-d5025c26-10a9-4c75-ab2c-1ccb102d3da3.jpg)
+24. Записываем конфигурация во flash память **do wr**
