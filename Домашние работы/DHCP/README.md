@@ -18,7 +18,9 @@ R2 | Gi0/0 | | |10.0.0.2/30 | | no
 | | Gi0/1.200 | 200 | MGMT |172.16.200.0/24 | | no
 | | Gi0/1.1000 | 1000 | Native | | | no
 Sw1 | e0/0 | 200| MGMT | 192.168.200.10/24 | | no
+|| e0/1 | 100| User | | | no
 Sw2 | e0/0 | 200| MGMT | 172.16.200.10/24 | | no
+|| e0/1 | 100| User | | | no
 PC1 | eth0 | 100 | User | | | yes
 PC2 | eth0 | 100 | User | | | yes
   ## ipv6 address 
