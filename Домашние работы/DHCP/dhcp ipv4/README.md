@@ -65,3 +65,23 @@ PC2 | eth0 | 100 | User | | | yes
 1. Заходим в превилегированый режим **enable**
 2. Переходим в режим конфигурации устройства **configure terminal**
 3. Задаём имя для роутера **hostname R2**
+>![6](https://user-images.githubusercontent.com/112701413/193917046-2349600d-cff7-467a-a2c7-3d84a0065a44.jpg)
+4. Перейдем в интерфейс Gi0/0 **interface gigabitEthernet 0/0**
+5. Зададем ip адрес **ip address 10.0.0.2 255.255.255.252**
+6. Включим интерфейс **no shutdown**
+>![7](https://user-images.githubusercontent.com/112701413/193917624-f47a8217-ed36-4b4f-a8e9-e85bbebe05a2.jpg)
+7. Создадим сабинтерфейс для Native vlan **interface gigabitEthernet 0/1.1000**
+8. Подпишим его **description Native**
+9. Сделаем его нативным **encapsulation dot1Q 1000 native**
+>![8](https://user-images.githubusercontent.com/112701413/193918088-1d0062e1-2cec-412a-bc08-d2965cbfece4.jpg)
+10. Создадим сабинтерфейс для vlan 100 **interface gigabitEthernet 0/1.100**
+11. Подпишим его **description User**
+12. Настроим его для работы с Vlan 100 **encapsulation dot1Q 100**
+13. Настроим ip адрес для сабинтерфейс Gi0/1.100 **ip address 172.16.100.1 255.255.255.0**
+14. Создадим сабинтерфейс для vlan 200 **interface gigabitEthernet 0/1.200**
+15. Подпишим его **description MGMT**
+16. Настроим его для работы с Vlan 200 **encapsulation dot1Q 200**
+17. Настроим ip адрес для сабинтерфейс Gi0/1.200 **ip address 172.16.200.1 255.255.255.0**
+18. И включим интерфейс Gi0/1 **no shutdown**
+>![9](https://user-images.githubusercontent.com/112701413/193918901-2e8c0b4d-0a92-4e9a-8dae-5a3c22d41e13.jpg)
+
