@@ -42,11 +42,28 @@ R4 | e0/0 | | 2001:db8:acad:2::2/64 | |
 5. Зададем ip адрес **ip address 10.0.0.1 255.255.255.252**
 6. Включим интерфейс **no shutdown**
 >![1](https://user-images.githubusercontent.com/112701413/193856079-d06ecdb4-4efc-46f3-a9b0-b2b811911b29.jpg)
-7. Создадим сабинтерфейс для Native vlan **interface gigabitEthernet 0/1.1000
+7. Создадим сабинтерфейс для Native vlan **interface gigabitEthernet 0/1.1000**
 8. Подпишим его **description Native**
 9. Сделаем его нативным **encapsulation dot1Q 1000 native**
 >![2](https://user-images.githubusercontent.com/112701413/193899081-5996f138-5fa1-4a42-ab13-0ca0d46a886d.jpg)
-10. Аналогичным образом создадим Vlan 100 "User" и Vlan 200 "MGMT"
-11. И включим интерфейс Gi0/1 **no shutdown**
->![3](https://user-images.githubusercontent.com/112701413/193900969-feb6e4e6-3139-47f2-b42d-12f0dbe836b2.jpg)
-12. 
+10. Создадим сабинтерфейс для vlan 100 **interface gigabitEthernet 0/1.100**
+11. Подпишим его **description User**
+12. Настроим его для работы с Vlan 100 **encapsulation dot1Q 100**
+13. Настроим ip адрес для сабинтерфейс Gi0/1.100 **ip address 192.168.100.1 255.255.255.0**
+14. Создадим сабинтерфейс для vlan 200 **interface gigabitEthernet 0/1.200**
+15. Подпишим его **description MGMT**
+16. Настроим его для работы с Vlan 200 **encapsulation dot1Q 200**
+17. Настроим ip адрес для сабинтерфейс Gi0/1.200 **ip address 192.168.200.1 255.255.255.0**
+18. И включим интерфейс Gi0/1 **no shutdown**
+>![3](https://user-images.githubusercontent.com/112701413/193903817-0540e7ca-303f-4b0d-83dc-64d9b0eaa2b8.jpg)
+19. Создадим POOL для Vlan 100 "User" **ip dhcp pool User**
+20. Назначим адрес сети и маску **network 192.168.100.0 255.255.255.0**
+21. Назначим адрес DNS сервера **dns-server 8.8.8.8**
+22. Назначим адрес роутера по умолчанию **default-router 192.168.100.1**
+>![4](https://user-images.githubusercontent.com/112701413/193906318-5641636b-16d9-4448-9435-8f7a91586208.jpg)
+23. Так как мы знаем ip адрес соседнего роутера "R2" и адресацию его подситей то сразу настроим роутинг между ними
+24. Скажем что подсеть с адресацией 172.16.100.0/24 находится за ip адресом "R2" **ip route 172.16.100.0 255.255.255.0 10.0.0.2**
+25. Скажем что подсеть с адресацией 172.16.200.0/24 находится за ip адресом "R2" **ip route 172.16.200.0 255.255.255.0 10.0.0.2**
+26. Записываем конфигурация во flash память **do wr**
+>![5](https://user-images.githubusercontent.com/112701413/193908463-311efd15-897a-40e1-ac9c-bd38f6c0b235.jpg)
+27. 
