@@ -84,4 +84,8 @@ PC2 | eth0 | 100 | User | | | yes
 17. Настроим ip адрес для сабинтерфейс Gi0/1.200 **ip address 172.16.200.1 255.255.255.0**
 18. И включим интерфейс Gi0/1 **no shutdown**
 >![9](https://user-images.githubusercontent.com/112701413/193918901-2e8c0b4d-0a92-4e9a-8dae-5a3c22d41e13.jpg)
-
+19. Создадим POOL для Vlan 100 "User" **ip dhcp pool User**
+20. Назначим адрес сети и маску **network 172.16.100.0 255.255.255.0**
+21. Назначим адрес DNS сервера **dns-server 8.8.8.8**
+22. Назначим адрес роутера по умолчанию **default-router 172.16.100.1**
+>![10](https://user-images.githubusercontent.com/112701413/193919903-c3ca88b2-c7c8-4ecd-8b30-d01a3e4dc643.jpg)
