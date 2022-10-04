@@ -5,7 +5,7 @@
   
   ## Схема сети
   
-![dhcp](https://user-images.githubusercontent.com/112701413/193837728-b23ae5df-c30f-409e-9d04-511a8697b7ea.jpg)
+![ipv4](https://user-images.githubusercontent.com/112701413/193915247-4c52f7e6-f0f8-4dd9-8c6e-0fc5e85cd5fc.jpg)
 
   ## ipv4 address 
 host | int | VLAN | name | ip address | excluded-address | DHCP |
@@ -26,13 +26,6 @@ Sw2 | e0/0 | 200| MGMT | 172.16.200.10/24 | | no
 || e0/1 | 100| User | | | no
 PC1 | eth0 | 100 | User | | | yes
 PC2 | eth0 | 100 | User | | | yes
-  ## ipv6 address 
-host | int | name | ip address | DHCP |
-:----:  | :---: | :----------: | :----: | :---: 
-R3 | e0/0 | |2001:db8:acad:2::1/64 | |
-| | e0/1 | User | 2001:db8:acad:1::1/64 |  yes
-R4 | e0/0 | | 2001:db8:acad:2::2/64 | |
-| | e0/1 | User | 2001:db8:acad:3::1/64 |  no
 
 ## Настройка R1
 1. Заходим в превилегированый режим **enable**
