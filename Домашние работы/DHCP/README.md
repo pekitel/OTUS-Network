@@ -4,13 +4,19 @@
   
   ## Схема сети
   
-![dhcp](https://user-images.githubusercontent.com/112701413/192091532-16f77aea-a9df-43d8-b8a6-df5aedf01443.jpg)
+![dhcp](https://user-images.githubusercontent.com/112701413/193837728-b23ae5df-c30f-409e-9d04-511a8697b7ea.jpg)
 
   ## ipv4 address 
-VLAN | ip address dhcp | excluded-address | host |
-:----: | :----------: | :----: | :---: 
-10 | 192.168.10.0/24 | 192.168.10.1-10; 192.168.10.254 | PC1 и PC3 
-
+host | int | VLAN | name | ip address | excluded-address | DHCP |
+:----: | :---: | :---: | :----------: | :----: | :---: | :---: 
+R1 | Gi0/0 | | |10.0.0.1/30 | |no
+| | Gi0/1.100 | 100 | User | 192.168.100.0/24 | 192.168.100.1-10; 192.168.100.254 |  yes
+| | Gi0/1.200 | 200 | MGMT |192.168.200.0/24 | |no
+| | Gi0/1.1000 | 1000 | Native | | |no
+R2 | Gi0/0 | | |10.0.0.2/30 | |no
+| | Gi0/1.100 | 100 | User | 172.16.100.0/24 | 172.16.100.1-10; 172.16.100.254 |  yes
+| | Gi0/1.200 | 200 | MGMT |172.16.200.0/24 | |no
+| | Gi0/1.1000 | 1000 | Native | | |no
   ## ipv6 address 
 VLAN | ip address dhcp | host |
 :----: | :----------: | :----: |
