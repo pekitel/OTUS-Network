@@ -1,3 +1,13 @@
+# DHCP ipv6
+
+
+#### Настройка [R1]
+#### Настройка [R2]
+
+## Схема сети
+
+![ipv6](https://user-images.githubusercontent.com/112701413/193928748-a9eab94c-1479-4985-905b-4e1732a61fce.jpg)
+
 
   ## ipv6 address 
 host | int | ip address |
