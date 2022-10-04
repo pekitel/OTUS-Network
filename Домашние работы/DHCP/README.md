@@ -18,8 +18,10 @@ R2 | Gi0/0 | | |10.0.0.2/30 | | no
 | | Gi0/1.200 | 200 | MGMT |172.16.200.0/24 | | no
 | | Gi0/1.1000 | 1000 | Native | | | no
 Sw1 | e0/0 | 200| MGMT | 192.168.200.10/24 | | no
+|| e0/0 | 1000| Native | | | no
 || e0/1 | 100| User | | | no
 Sw2 | e0/0 | 200| MGMT | 172.16.200.10/24 | | no
+|| e0/0 | 1000| Native | | | no
 || e0/1 | 100| User | | | no
 PC1 | eth0 | 100 | User | | | yes
 PC2 | eth0 | 100 | User | | | yes
@@ -40,4 +42,11 @@ R4 | e0/0 | | 2001:db8:acad:2::2/64 | |
 5. Зададем ip адрес **ip address 10.0.0.1 255.255.255.252**
 6. Включим интерфейс **no shutdown**
 >![1](https://user-images.githubusercontent.com/112701413/193856079-d06ecdb4-4efc-46f3-a9b0-b2b811911b29.jpg)
-7. 
+7. Создадим сабинтерфейс для Native vlan **interface gigabitEthernet 0/1.1000
+8. Подпишим его **description Native**
+9. Сделаем его нативным **encapsulation dot1Q 1000 native**
+>![2](https://user-images.githubusercontent.com/112701413/193899081-5996f138-5fa1-4a42-ab13-0ca0d46a886d.jpg)
+10. Аналогичным образом создадим Vlan 100 "User" и Vlan 200 "MGMT"
+11. И включим интерфейс Gi0/1 **no shutdown**
+>![3](https://user-images.githubusercontent.com/112701413/193900969-feb6e4e6-3139-47f2-b42d-12f0dbe836b2.jpg)
+12. 
