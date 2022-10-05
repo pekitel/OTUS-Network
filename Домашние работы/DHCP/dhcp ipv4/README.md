@@ -2,7 +2,7 @@
  
   #### Настройка [R1](https://github.com/pekitel/OTUS-Network/blob/main/%D0%94%D0%BE%D0%BC%D0%B0%D1%88%D0%BD%D0%B8%D0%B5%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%8B/DHCP/dhcp%20ipv4/README.md#%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B0-r1-1)
   #### Настройка [R2](https://github.com/pekitel/OTUS-Network/tree/main/%D0%94%D0%BE%D0%BC%D0%B0%D1%88%D0%BD%D0%B8%D0%B5%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%8B/DHCP/dhcp%20ipv4#%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B0-r2-1)
-  #### Настройка [Sw1]
+  #### Настройка [Sw1](https://github.com/pekitel/OTUS-Network/edit/main/%D0%94%D0%BE%D0%BC%D0%B0%D1%88%D0%BD%D0%B8%D0%B5%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%8B/DHCP/dhcp%20ipv4/README.md#%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B0-sw1-1)
   #### Настройка [Sw2]
   
   ## Схема сети
@@ -106,3 +106,8 @@ PC2 | eth0 | 100 | User | dhcp | |
 >![12](https://user-images.githubusercontent.com/112701413/193922869-bfc4aa5c-e8b0-470c-8ccc-569d7de9a40d.jpg)
 
 ## Настройка Sw1
+1. Заходим в превилегированый режим **enable**
+2. Переходим в режим конфигурации устройства **configure terminal**
+3. Задаём имя для роутера **hostname Sw1**
+>![14](https://user-images.githubusercontent.com/112701413/193993547-ddce9d9f-1aaf-480a-8b6e-5883fcc6352d.jpg)
+4. 
