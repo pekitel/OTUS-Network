@@ -120,6 +120,27 @@ PC2 | eth0 | 100 | User | dhcp | |
 10. Назначим VLAN 1000 нативный **switchport trunk native vlan 1000**
 11. Переводим порт в режим trunk  **switchport mode trunk**
 12. Выключаем передачу сообщений DTP  **switchport nonegotiate**
-13. Записываем конфигурация во flash память **do wr**
->![16](https://user-images.githubusercontent.com/112701413/194001820-40cc7aae-7641-43e3-9d25-9f9431f2cb84.jpg)
-14. 
+13. Подмишим порт что это *uplink* **description uplink**
+14. Записываем конфигурация во flash память **do wr**
+>![16](https://user-images.githubusercontent.com/112701413/194088341-1a4dd1dc-e04b-48d9-8a22-d5ece80bf0a2.jpg)
+15. Перейдем в интерфейс *vlan 200* **int vlan 200**
+16. Зададим ip адресс "т.к. для vlan 200 нет dhcp сервера" **ip address 192.168.200.10 255.255.255.0** 
+17. Настроим для Sw1 шлюз по умолчанию **ip default-gateway 192.168.200.1**
+>![17](https://user-images.githubusercontent.com/112701413/194086165-65658486-f75e-496d-a7c2-8d13082a4928.jpg)
+18. Перейдем в интерфейс e0/1 **int e0/1**
+19. Переводим порт в режим access **switchport mode access**
+20. Настраиваем порт для работы в 100 vlan **switchport access vlan 100**
+21. Записываем конфигурация во flash память **do wr**
+>![18](https://user-images.githubusercontent.com/112701413/194090476-916bc0f4-c812-42d4-bc4e-383b351ff5c0.jpg)
+22. Запросим ip адресс на PC1 **ip dhcp**
+23. Посмотрим полную информацию на сетевом интерфейсе **show ip**
+
+>![pc1v4](https://user-images.githubusercontent.com/112701413/194103008-adb7c614-98d7-47f0-88f3-e9038344697a.jpg)
+
+Перейдем к R1 
+
+23. Проверим pool *user* сколько ip адресов выдалось **show ip dhcp pool**
+>![19](https://user-images.githubusercontent.com/112701413/194101447-caa4f76e-e153-4094-8ffe-2fbe2489e59d.jpg)
+24. Посмотрим какие ip адреса выдались и кому **show ip dhcp binding**
+>![20](https://user-images.githubusercontent.com/112701413/194102179-9deca754-433c-45ed-8257-88df3c83325b.jpg)
+25. Видем что ip адрес выдался мак адресу PC1
