@@ -143,4 +143,4 @@ PC2 | eth0 | 100 | User | dhcp | |
 >![19](https://user-images.githubusercontent.com/112701413/194101447-caa4f76e-e153-4094-8ffe-2fbe2489e59d.jpg)
 24. Посмотрим какие ip адреса выдались и кому **show ip dhcp binding**
 >![20](https://user-images.githubusercontent.com/112701413/194102179-9deca754-433c-45ed-8257-88df3c83325b.jpg)
-25. Видем что ip адрес выдался мак адресу PC1
+25. Видем что ip адрес *192.168.100.11* выдался PC1
