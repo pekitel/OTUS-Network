@@ -110,4 +110,16 @@ PC2 | eth0 | 100 | User | dhcp | |
 2. Переходим в режим конфигурации устройства **configure terminal**
 3. Задаём имя для роутера **hostname Sw1**
 >![14](https://user-images.githubusercontent.com/112701413/193993547-ddce9d9f-1aaf-480a-8b6e-5883fcc6352d.jpg)
-4. 
+4. Создадим Vlan 100 для группы "User" **vlan 100**
+5. Зададим имя для vlan **name User**
+6. Аналогичным образом создадим vlan 200 "MGMT" и vlan 1000 "Native"
+>![15](https://user-images.githubusercontent.com/112701413/194000690-e6496995-cc4e-4b52-95c5-3eb62365a6aa.jpg)
+7. Перейдем к интерфейсу e0/0 **int e0/0**
+8. Задаем интефейсу работу с VLAN  **switchport trunk encapsulation dot1q**
+9. Назначим транковые VLANs **switchport trunk allowed vlan 100,200,1000**
+10. Назначим VLAN 1000 нативный **switchport trunk native vlan 1000**
+11. Переводим порт в режим trunk  **switchport mode trunk**
+12. Выключаем передачу сообщений DTP  **switchport nonegotiate**
+13. Записываем конфигурация во flash память **do wr**
+>![16](https://user-images.githubusercontent.com/112701413/194001820-40cc7aae-7641-43e3-9d25-9f9431f2cb84.jpg)
+14. 
