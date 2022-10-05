@@ -104,3 +104,5 @@ PC2 | eth0 | 100 | User | dhcp | |
 28. Исключим из выдачи по dhcp ещё один адрес **ip dhcp excluded-address 172.16.100.254**
 29. Записываем конфигурация во flash память **do wr**
 >![12](https://user-images.githubusercontent.com/112701413/193922869-bfc4aa5c-e8b0-470c-8ccc-569d7de9a40d.jpg)
+
+## Настройка Sw1
