@@ -4,6 +4,7 @@
   #### Настройка [R2](https://github.com/pekitel/OTUS-Network/tree/main/%D0%94%D0%BE%D0%BC%D0%B0%D1%88%D0%BD%D0%B8%D0%B5%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%8B/DHCP/dhcp%20ipv4#%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B0-r2-1)
   #### Настройка [Sw1](https://github.com/pekitel/OTUS-Network/blob/main/%D0%94%D0%BE%D0%BC%D0%B0%D1%88%D0%BD%D0%B8%D0%B5%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%8B/DHCP/dhcp%20ipv4/README.md#%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B0-sw1-1)
   #### Настройка [Sw2](https://github.com/pekitel/OTUS-Network/blob/main/%D0%94%D0%BE%D0%BC%D0%B0%D1%88%D0%BD%D0%B8%D0%B5%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%8B/DHCP/dhcp%20ipv4/README.md#%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B0-sw2-1)
+  #### Проверка [ping]()
   
   ## Схема сети
   
@@ -126,16 +127,17 @@ PC2 | eth0 | 100 | User | dhcp | |
 14. Записываем конфигурация во flash память **do wr**
 >![16](https://user-images.githubusercontent.com/112701413/194088341-1a4dd1dc-e04b-48d9-8a22-d5ece80bf0a2.jpg)
 15. Перейдем в интерфейс *vlan 200* **int vlan 200**
-16. Зададим ip адресс "т.к. для vlan 200 нет dhcp сервера" **ip address 192.168.200.10 255.255.255.0** 
-17. Настроим для Sw1 шлюз по умолчанию **ip default-gateway 192.168.200.1**
+16. Включим интерфейс **no shutdown**
+17. Зададим ip адресс "т.к. для vlan 200 нет dhcp сервера" **ip address 192.168.200.10 255.255.255.0** 
+18. Настроим для Sw1 шлюз по умолчанию **ip default-gateway 192.168.200.1**
 >![17](https://user-images.githubusercontent.com/112701413/194086165-65658486-f75e-496d-a7c2-8d13082a4928.jpg)
-18. Перейдем в интерфейс e0/1 **int e0/1**
-19. Переводим порт в режим access **switchport mode access**
-20. Настраиваем порт для работы в 100 vlan **switchport access vlan 100**
-21. Записываем конфигурация во flash память **do wr**
+19. Перейдем в интерфейс e0/1 **int e0/1**
+20. Переводим порт в режим access **switchport mode access**
+21. Настраиваем порт для работы в 100 vlan **switchport access vlan 100**
+22. Записываем конфигурация во flash память **do wr**
 >![18](https://user-images.githubusercontent.com/112701413/194090476-916bc0f4-c812-42d4-bc4e-383b351ff5c0.jpg)
-22. Запросим ip адресс на PC1 **ip dhcp**
-23. Посмотрим полную информацию на сетевом интерфейсе **show ip**
+23. Запросим ip адресс на PC1 **ip dhcp**
+24. Посмотрим полную информацию на сетевом интерфейсе **show ip**
 
 >![pc1v4](https://user-images.githubusercontent.com/112701413/194103008-adb7c614-98d7-47f0-88f3-e9038344697a.jpg)
 
@@ -148,3 +150,50 @@ PC2 | eth0 | 100 | User | dhcp | |
 25. Видем что ip адрес *192.168.100.11* выдался PC1
 
 ## Настройка Sw2
+1. Заходим в превилегированый режим **enable**
+2. Переходим в режим конфигурации устройства **configure terminal**
+3. Задаём имя для роутера **hostname Sw2**
+>![21](https://user-images.githubusercontent.com/112701413/194319757-16cb4815-4d09-47b1-8f39-32e304b037b2.jpg)
+4. Создадим Vlan 100 для группы "User" **vlan 100**
+5. Зададим имя для vlan **name User**
+6. Аналогичным образом создадим vlan 200 "MGMT" и vlan 1000 "Native"
+>![22](https://user-images.githubusercontent.com/112701413/194321006-92bd56be-1cad-43d5-a25e-67a1aa412a57.jpg)
+7. Перейдем к интерфейсу e0/0 **int e0/0**
+8. Задаем интефейсу работу с VLAN  **switchport trunk encapsulation dot1q**
+9. Назначим транковые VLANs **switchport trunk allowed vlan 100,200,1000**
+10. Назначим VLAN 1000 нативный **switchport trunk native vlan 1000**
+11. Переводим порт в режим trunk  **switchport mode trunk**
+12. Выключаем передачу сообщений DTP  **switchport nonegotiate**
+13. Подмишим порт что это *uplink* **description uplink**
+14. Записываем конфигурация во flash память **do wr**
+>![23](https://user-images.githubusercontent.com/112701413/194322327-db6592d1-740a-4e10-a514-d8d6b1622037.jpg)
+15. Перейдем в интерфейс *vlan 200* **int vlan 200**
+16. Включим интерфейс **no shutdown**
+17. Зададим ip адресс "т.к. для vlan 200 нет dhcp сервера" **ip address 172.16.200.10 255.255.255.0** 
+18. Настроим для Sw2 шлюз по умолчанию **ip default-gateway 172.16.200.1**
+>![24](https://user-images.githubusercontent.com/112701413/194323546-7b067c11-5276-4b1d-8f40-7b08b47498eb.jpg)
+19. Перейдем в интерфейс e0/1 **int e0/1**
+20. Переводим порт в режим access **switchport mode access**
+21. Подпишим его **description PC2**
+22. Настраиваем порт для работы в 100 vlan **switchport access vlan 100**
+23. Записываем конфигурация во flash память **do wr**
+>![25](https://user-images.githubusercontent.com/112701413/194324500-4e798be1-6533-484f-9b91-038fedf7556c.jpg)
+24. Запросим ip адресс на PC1 **ip dhcp**
+25. Посмотрим полную информацию на сетевом интерфейсе **show ip**
+
+>![26](https://user-images.githubusercontent.com/112701413/194325653-e7b71b1b-aa11-4d60-957e-5dd1da8d98c5.jpg)
+
+Перейдем к R2
+
+26. Проверим pool *user* сколько ip адресов выдалось **show ip dhcp pool**
+>![27](https://user-images.githubusercontent.com/112701413/194326561-4c33e62a-f967-4ac8-98aa-2b6b9ba2528a.jpg)
+27. Посмотрим какие ip адреса выдались и кому **show ip dhcp binding**
+>![28](https://user-images.githubusercontent.com/112701413/194326688-b0ae1a21-4cab-4683-9ab6-9a8a6171a569.jpg)
+28. Видем что ip адрес *172.16.100.11* выдался PC2
+
+##Проверим связоность PC1 и PC2
+
+1. С PC1 запустим icmp запросы на ip адрес PC2 **ping 172.16.100.11**
+>![29](https://user-images.githubusercontent.com/112701413/194331712-76eeba80-b236-40ad-bd6d-ded43750562d.jpg)
+2. С PC1 запустим icmp запросы на ip адрес PC2 **ping 172.16.100.11**
+>![30](https://user-images.githubusercontent.com/112701413/194333355-14f25e9c-2511-4a75-a102-ce9bdbfc617a.jpg)
