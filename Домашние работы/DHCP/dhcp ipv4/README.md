@@ -146,3 +146,5 @@ PC2 | eth0 | 100 | User | dhcp | |
 24. Посмотрим какие ip адреса выдались и кому **show ip dhcp binding**
 >![20](https://user-images.githubusercontent.com/112701413/194102179-9deca754-433c-45ed-8257-88df3c83325b.jpg)
 25. Видем что ip адрес *192.168.100.11* выдался PC1
+
+## Настройка Sw2
