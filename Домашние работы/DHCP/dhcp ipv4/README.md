@@ -191,7 +191,7 @@ PC2 | eth0 | 100 | User | dhcp | |
 >![28](https://user-images.githubusercontent.com/112701413/194326688-b0ae1a21-4cab-4683-9ab6-9a8a6171a569.jpg)
 28. Видем что ip адрес *172.16.100.11* выдался PC2
 
-#Проверим связоность PC1 и PC2
+## Проверим связоность PC1 и PC2
 
 1. С PC1 запустим icmp запросы на ip адрес PC2 **ping 172.16.100.11**
 >![29](https://user-images.githubusercontent.com/112701413/194331712-76eeba80-b236-40ad-bd6d-ded43750562d.jpg)
