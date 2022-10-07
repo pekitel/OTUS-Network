@@ -13,9 +13,13 @@
 host | int | ip address |
 :----:  | :----------: | :----: | 
 R1 | e0/0 |2001:db8:acad:2::1/64 |
+| |  |fe80::1 |
 | | e0/1 | 2001:db8:acad:1::1/64 |
+| |  |fe80::1 |
 R2 | e0/0 | 2001:db8:acad:2::2/64 |
+| |  |fe80::2 |
 | | e0/1 | 2001:db8:acad:3::1/64 |
+| |  |fe80::1 |
 PC1 | eth0 | dhcp |
 PC2 | eth0 | dhcp |
 
@@ -26,5 +30,7 @@ PC2 | eth0 | dhcp |
 >![1](https://user-images.githubusercontent.com/112701413/194334686-025df8c6-a8ea-43d3-ba4b-909d7d871875.jpg)
 4. Перейдем в интерфейс e0/0 **interface eth 0/0**
 5. Зададем ipv6 адрес **ipv6 address 2001:db8:acad:2::1/64**
-6. Включим интерфейс **no shutdown**
->![2](https://user-images.githubusercontent.com/112701413/194335846-e1c543bb-0e6a-458f-bb43-c6eb23a07927.jpg)
+6. Зададим ipv6 *link-local* адрес **ipv6 address fe80::1 link-local**
+7. Включим интерфейс **no shutdown**
+>![2](https://user-images.githubusercontent.com/112701413/194485974-970f3414-29b9-4f05-83e3-41c9cf835b1a.jpg)
+8. 
