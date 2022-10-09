@@ -75,13 +75,13 @@ PC2 | eth0 | dhcp |
 10. Зададем ipv6 адрес **ipv6 address 2001:db8:acad:3::1/64**
 11. Зададим ipv6 *link-local* адрес **ipv6 address fe80::1 link-local**
 12. Включим роутинг ipv6 **ipv6 unicast-routing**
->![12](https://user-images.githubusercontent.com/112701413/194764105-c5157bd6-5752-44ea-9f37-fc004b7c73c4.jpg)
+>![12](https://user-images.githubusercontent.com/112701413/194767435-ca0dff13-9828-4b02-a648-93e055c80697.jpg)
 13. Настроим DHCPv6 на R2 c отслеживания состояния **ipv6 dhcp pool IPV6-2**
 14. Назначим пулу имя домена **domain-name lab3-2.ru**
 15. Назначим адрес сервера DNS **dns-server 2a02:6b8::feed:0ff**
 16. Перейдем к интерфейсу e0/1 **int e0/1**
 17. Назначим пул DHCPv6 интерфейсу e0/1 **ipv6 dhcp server IPV6-2**
-18. Установим флаг *mamaged* **ipv6 nd managed-config-flag**
+18. Установим флаг *managed* **ipv6 nd managed-config-flag**
 19. Включим интерфейс **no shutdown**
 >![13](https://user-images.githubusercontent.com/112701413/194764292-60ad018a-1d4e-49e8-b09d-81ae24ebe7b8.jpg)
 20. Пропишим маршруты до подсетей R1 **ipv6 route 2001:db8:acad:1::1/64 2001:db8:acad:2::1**
