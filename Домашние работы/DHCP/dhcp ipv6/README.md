@@ -39,7 +39,7 @@ PC2 | eth0 | dhcp |
 10. Зададим ipv6 *link-local* адрес **ipv6 address fe80::1 link-local**
 11. Включим интерфейс **no shutdown**
 >![4](https://user-images.githubusercontent.com/112701413/194757899-550ca17f-1591-41ac-b870-a64f057aff8a.jpg)
-12. Включим роутинг ipv6
+12. Включим роутинг ipv6 **ipv6 unicast-routing**
 >![5](https://user-images.githubusercontent.com/112701413/194757985-0507561d-3c64-46b7-a9c0-c5544f6eef75.jpg)
 ## SLAAC 
 13. Проверим получает ли PC1 ipv6 адрес через SLAAC
@@ -75,4 +75,6 @@ PC2 | eth0 | dhcp |
 10. Зададем ipv6 адрес **ipv6 address 2001:db8:acad:3::1/64**
 11. Зададим ipv6 *link-local* адрес **ipv6 address fe80::1 link-local**
 12. Включим интерфейс **no shutdown**
-13. Включим роутинг ipv6 
+13. Включим роутинг ipv6 **ipv6 unicast-routing**
+>![12](https://user-images.githubusercontent.com/112701413/194762882-c76e4f78-f498-4b88-a334-a6b7ed3b3c84.jpg)
+14. 
