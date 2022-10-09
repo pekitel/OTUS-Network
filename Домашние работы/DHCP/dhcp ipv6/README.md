@@ -46,4 +46,16 @@ PC2 | eth0 | dhcp |
 14. На PC1 введём команду **ip auto**
 15. Посмотри настройки интерфейса **show ipv6**
 >![3](https://user-images.githubusercontent.com/112701413/194756191-afb6a6d1-c9a8-476a-bd30-ec022da1d146.jpg)
-16. 
+16. Настроим DHCPv6 на R1 без отслеживания состояния **ipv6 dhcp pool IPV6**
+17. Назначим пулу имя домена **domain-name lab3.ru**
+18. Назначим адрес сервера DNS **dns-server 2a02:6b8::feed:0ff**
+19. Перейдем к интерфейсу e0/1 **int e0/1**
+20. Назначим пул DHCPv6 интерфейсу e0/1 **ipv6 dhcp server IPV6**  
+21. Установим флаг *other* **ipv6 nd other-config-flag**
+>![7](https://user-images.githubusercontent.com/112701413/194761432-b242b69a-38f4-4eee-bb74-29ab34b7b333.jpg)
+22. Проверим настройки DHCPv6 на интерфейсе e0/1 **show ipv6 int e0/1**
+>![6](https://user-images.githubusercontent.com/112701413/194761443-48f8d76c-f0f8-4baa-8aa6-1460fcc2c67f.jpg)
+23. Проверим получил ли PC1 адрес из пула **show ipv6 dhcp binding** и **show ipv6 dhcp pool**
+>![8](https://user-images.githubusercontent.com/112701413/194761984-67c16ca2-ac02-4c81-b2a3-58d4787ffcfe.jpg)
+24. Видим что PC1 не получил адрес из пула
+25. 
