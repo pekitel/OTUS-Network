@@ -33,4 +33,9 @@ PC2 | eth0 | dhcp |
 6. Зададим ipv6 *link-local* адрес **ipv6 address fe80::1 link-local**
 7. Включим интерфейс **no shutdown**
 >![2](https://user-images.githubusercontent.com/112701413/194485974-970f3414-29b9-4f05-83e3-41c9cf835b1a.jpg)
-8. 
+## SLAAC 
+8. Проверим получает ли PC1 ipv6 адрес через SLAAC
+9. На PC1 введём команду **ip auto**
+10. Посмотри настройки интерфейса **show ipv6** 
+>![3](https://user-images.githubusercontent.com/112701413/194756191-afb6a6d1-c9a8-476a-bd30-ec022da1d146.jpg)
+11. 
