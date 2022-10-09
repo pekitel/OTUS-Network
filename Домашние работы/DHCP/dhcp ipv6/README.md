@@ -58,4 +58,21 @@ PC2 | eth0 | dhcp |
 23. Проверим получил ли PC1 адрес из пула **show ipv6 dhcp binding** и **show ipv6 dhcp pool**
 >![8](https://user-images.githubusercontent.com/112701413/194761984-67c16ca2-ac02-4c81-b2a3-58d4787ffcfe.jpg)
 24. Видим что PC1 не получил адрес из пула т.к. нет отслеживания состояния
-25. 
+
+## Настройка R2
+1. Заходим в превилегированый режим **enable**
+2. Переходим в режим конфигурации устройства **configure terminal**
+3. Задаём имя для роутера **hostname R2**
+>![8](https://user-images.githubusercontent.com/112701413/194762356-18ae99b2-4268-481e-8114-2fb80f55fdce.jpg)
+4. Перейдем в интерфейс e0/0 **interface eth 0/0**
+5. Зададем ipv6 адрес **ipv6 address 2001:db8:acad:2::2/64**
+6. Зададим ipv6 *link-local* адрес **ipv6 address fe80::2 link-local**
+7. Включим интерфейс **no shutdown**
+>![10](https://user-images.githubusercontent.com/112701413/194762495-682e3a2c-319e-4912-9b63-16156a9e1035.jpg)
+8. Проверим видит ли R2 R1 **do ping 2001:db8:acad:2::1**
+>![11](https://user-images.githubusercontent.com/112701413/194762584-6034ee62-a2e6-475f-916a-093d3392bb60.jpg)
+9. Перейдем в интерфейс e0/1 **interface eth 0/1**
+10. Зададем ipv6 адрес **ipv6 address 2001:db8:acad:3::1/64**
+11. Зададим ipv6 *link-local* адрес **ipv6 address fe80::1 link-local**
+12. Включим интерфейс **no shutdown**
+13. Включим роутинг ipv6 
