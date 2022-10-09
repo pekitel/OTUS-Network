@@ -56,6 +56,8 @@ PC2 | eth0 | dhcp |
 23. Проверим получил ли PC1 адрес из пула **show ipv6 dhcp binding** и **show ipv6 dhcp pool**
 >![8](https://user-images.githubusercontent.com/112701413/194761984-67c16ca2-ac02-4c81-b2a3-58d4787ffcfe.jpg)
 24. Видим что PC1 не получил адрес из пула т.к. нет отслеживания состояния
+25. Пропишим маршруты до подсетей R2 **ipv6 route 2001:db8:acad:3::1/64 2001:db8:acad:2::2**
+>![16](https://user-images.githubusercontent.com/112701413/194767299-036d9d66-60ee-4a3d-b339-c5841c7cda57.jpg)
 
 ## Настройка R2
 1. Заходим в превилегированый режим **enable**
@@ -72,7 +74,18 @@ PC2 | eth0 | dhcp |
 9. Перейдем в интерфейс e0/1 **interface eth 0/1**
 10. Зададем ipv6 адрес **ipv6 address 2001:db8:acad:3::1/64**
 11. Зададим ipv6 *link-local* адрес **ipv6 address fe80::1 link-local**
-12. Включим интерфейс **no shutdown**
-13. Включим роутинг ipv6 **ipv6 unicast-routing**
->![12](https://user-images.githubusercontent.com/112701413/194762882-c76e4f78-f498-4b88-a334-a6b7ed3b3c84.jpg)
-14. 
+12. Включим роутинг ipv6 **ipv6 unicast-routing**
+>![12](https://user-images.githubusercontent.com/112701413/194764105-c5157bd6-5752-44ea-9f37-fc004b7c73c4.jpg)
+13. Настроим DHCPv6 на R2 c отслеживания состояния **ipv6 dhcp pool IPV6-2**
+14. Назначим пулу имя домена **domain-name lab3-2.ru**
+15. Назначим адрес сервера DNS **dns-server 2a02:6b8::feed:0ff**
+16. Перейдем к интерфейсу e0/1 **int e0/1**
+17. Назначим пул DHCPv6 интерфейсу e0/1 **ipv6 dhcp server IPV6-2**
+18. Установим флаг *mamaged* **ipv6 nd managed-config-flag**
+19. Включим интерфейс **no shutdown**
+>![13](https://user-images.githubusercontent.com/112701413/194764292-60ad018a-1d4e-49e8-b09d-81ae24ebe7b8.jpg)
+20. Пропишим маршруты до подсетей R1 **ipv6 route 2001:db8:acad:1::1/64 2001:db8:acad:2::1**
+>![15](https://user-images.githubusercontent.com/112701413/194767234-4934919c-6924-46cb-83b8-10c2ee31b85d.jpg)
+21. Проверим видит ли PC2 ---- PC1 **ping 2001:db8:acad:1:2050:79ff:fe66:680c**
+>![14](https://user-images.githubusercontent.com/112701413/194767187-387421ab-920b-45e6-982f-c8bc6db77664.jpg)
+
