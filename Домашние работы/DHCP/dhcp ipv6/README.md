@@ -3,7 +3,6 @@
 
 #### Настройка [R1](https://github.com/pekitel/OTUS-Network/blob/main/%D0%94%D0%BE%D0%BC%D0%B0%D1%88%D0%BD%D0%B8%D0%B5%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%8B/DHCP/dhcp%20ipv6/README.md#%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B0-r1-1)
 #### Настройка [R2](https://github.com/pekitel/OTUS-Network/blob/main/%D0%94%D0%BE%D0%BC%D0%B0%D1%88%D0%BD%D0%B8%D0%B5%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%8B/DHCP/dhcp%20ipv6/README.md#%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B0-r2-1)
-#### Проверка [SLAAC PC1](https://github.com/pekitel/OTUS-Network/blob/main/%D0%94%D0%BE%D0%BC%D0%B0%D1%88%D0%BD%D0%B8%D0%B5%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%8B/DHCP/dhcp%20ipv6/README.md#slaac)
 
 ## Схема сети
 
@@ -41,7 +40,6 @@ PC2 | eth0 | dhcp |
 >![4](https://user-images.githubusercontent.com/112701413/194757899-550ca17f-1591-41ac-b870-a64f057aff8a.jpg)
 12. Включим роутинг ipv6 **ipv6 unicast-routing**
 >![5](https://user-images.githubusercontent.com/112701413/194757985-0507561d-3c64-46b7-a9c0-c5544f6eef75.jpg)
-## SLAAC 
 13. Проверим получает ли PC1 ipv6 адрес через SLAAC
 14. На PC1 введём команду **ip auto**
 15. Посмотри настройки интерфейса **show ipv6**
