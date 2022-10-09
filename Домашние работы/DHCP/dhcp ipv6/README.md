@@ -2,7 +2,7 @@
 
 
 #### Настройка [R1](https://github.com/pekitel/OTUS-Network/blob/main/%D0%94%D0%BE%D0%BC%D0%B0%D1%88%D0%BD%D0%B8%D0%B5%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%8B/DHCP/dhcp%20ipv6/README.md#%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B0-r1-1)
-#### Настройка [R2]
+#### Настройка [R2](https://github.com/pekitel/OTUS-Network/blob/main/%D0%94%D0%BE%D0%BC%D0%B0%D1%88%D0%BD%D0%B8%D0%B5%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%8B/DHCP/dhcp%20ipv6/README.md#%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B0-r2-1)
 #### Проверка [SLAAC PC1](https://github.com/pekitel/OTUS-Network/blob/main/%D0%94%D0%BE%D0%BC%D0%B0%D1%88%D0%BD%D0%B8%D0%B5%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%8B/DHCP/dhcp%20ipv6/README.md#slaac)
 
 ## Схема сети
@@ -63,7 +63,7 @@ PC2 | eth0 | dhcp |
 1. Заходим в превилегированый режим **enable**
 2. Переходим в режим конфигурации устройства **configure terminal**
 3. Задаём имя для роутера **hostname R2**
->![8](https://user-images.githubusercontent.com/112701413/194762356-18ae99b2-4268-481e-8114-2fb80f55fdce.jpg)
+>![9](https://user-images.githubusercontent.com/112701413/194762970-a22e0b02-6c87-405b-bbb1-10f850d84779.jpg)
 4. Перейдем в интерфейс e0/0 **interface eth 0/0**
 5. Зададем ipv6 адрес **ipv6 address 2001:db8:acad:2::2/64**
 6. Зададим ipv6 *link-local* адрес **ipv6 address fe80::2 link-local**
