@@ -57,5 +57,5 @@ PC2 | eth0 | dhcp |
 >![6](https://user-images.githubusercontent.com/112701413/194761443-48f8d76c-f0f8-4baa-8aa6-1460fcc2c67f.jpg)
 23. Проверим получил ли PC1 адрес из пула **show ipv6 dhcp binding** и **show ipv6 dhcp pool**
 >![8](https://user-images.githubusercontent.com/112701413/194761984-67c16ca2-ac02-4c81-b2a3-58d4787ffcfe.jpg)
-24. Видим что PC1 не получил адрес из пула
+24. Видим что PC1 не получил адрес из пула т.к. нет отслеживания состояния
 25. 
