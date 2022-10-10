@@ -79,13 +79,14 @@ PC2 | eth0 | dhcp |
 13. Настроим DHCPv6 на R2 c отслеживания состояния **ipv6 dhcp pool IPV6-2**
 14. Назначим пулу имя домена **domain-name lab3-2.ru**
 15. Назначим адрес сервера DNS **dns-server 2a02:6b8::feed:0ff**
-16. Перейдем к интерфейсу e0/1 **int e0/1**
-17. Назначим пул DHCPv6 интерфейсу e0/1 **ipv6 dhcp server IPV6-2**
-18. Установим флаг *managed* **ipv6 nd managed-config-flag**
-19. Включим интерфейс **no shutdown**
->![13](https://user-images.githubusercontent.com/112701413/194764292-60ad018a-1d4e-49e8-b09d-81ae24ebe7b8.jpg)
-20. Пропишим маршруты до подсетей R1 **ipv6 route 2001:db8:acad:1::1/64 2001:db8:acad:2::1**
+16. Назначим адрес ipv6 и префикс **address prefix 2001:DB8:ACAD:3::1/64**
+17. Перейдем к интерфейсу e0/1 **int e0/1**
+18. Назначим пул DHCPv6 интерфейсу e0/1 **ipv6 dhcp server IPV6-2**
+19. Установим флаг *managed* **ipv6 nd managed-config-flag**
+20. Включим интерфейс **no shutdown**
+>![13](https://user-images.githubusercontent.com/112701413/194824567-2281113f-e1cb-4d53-86ad-47796a04f3c6.jpg)
+21. Пропишим маршруты до подсетей R1 **ipv6 route 2001:db8:acad:1::1/64 2001:db8:acad:2::1**
 >![15](https://user-images.githubusercontent.com/112701413/194767234-4934919c-6924-46cb-83b8-10c2ee31b85d.jpg)
-21. Проверим видит ли PC2 ---- PC1 **ping 2001:db8:acad:1:2050:79ff:fe66:680c**
+22. Проверим видит ли PC2 ---- PC1 **ping 2001:db8:acad:1:2050:79ff:fe66:680c**
 >![14](https://user-images.githubusercontent.com/112701413/194767187-387421ab-920b-45e6-982f-c8bc6db77664.jpg)
 
