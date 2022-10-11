@@ -56,7 +56,13 @@ PC2 | eth0 | dhcp |
 23. Проверим получил ли PC1 адрес из пула **show ipv6 dhcp binding** и **show ipv6 dhcp pool**
 >![8](https://user-images.githubusercontent.com/112701413/194761984-67c16ca2-ac02-4c81-b2a3-58d4787ffcfe.jpg)
 24. Видим что PC1 не получил адрес из пула т.к. нет отслеживания состояния
-25. Пропишим маршруты до подсетей R2 **ipv6 route 2001:db8:acad:3::1/64 2001:db8:acad:2::2**
+25. Настроим ещё один DHCPv6 сервер для R2 **ipv6 dhcp pool IPV6-2**
+26. Назначим пулу имя домена **domain-name lab3-2.ru**
+27. Назначим адрес сервера DNS **dns-server 2001:DB8:ACAD:3::1**
+28. Назначим адрес сервера DNS **dns-server 2a02:6b8::feed:0ff**
+29. Назначим адрес ipv6 и префикс **address prefix 2001:DB8:ACAD:3::1/64**
+>![17](https://user-images.githubusercontent.com/112701413/195101093-e7fc06c5-2bbe-44ef-a775-372a3fe6acd3.jpg)
+30. Пропишим маршруты до подсетей R2 **ipv6 route 2001:db8:acad:3::1/64 2001:db8:acad:2::2**
 >![16](https://user-images.githubusercontent.com/112701413/194767299-036d9d66-60ee-4a3d-b339-c5841c7cda57.jpg)
 
 ## Настройка R2
@@ -74,19 +80,14 @@ PC2 | eth0 | dhcp |
 9. Перейдем в интерфейс e0/1 **interface eth 0/1**
 10. Зададем ipv6 адрес **ipv6 address 2001:db8:acad:3::1/64**
 11. Зададим ipv6 *link-local* адрес **ipv6 address fe80::1 link-local**
-12. Включим роутинг ipv6 **ipv6 unicast-routing**
->![12](https://user-images.githubusercontent.com/112701413/194767435-ca0dff13-9828-4b02-a648-93e055c80697.jpg)
-13. Настроим DHCPv6 на R2 c отслеживания состояния **ipv6 dhcp pool IPV6-2**
-14. Назначим пулу имя домена **domain-name lab3-2.ru**
-15. Назначим адрес сервера DNS **dns-server 2a02:6b8::feed:0ff**
-16. Назначим адрес ipv6 и префикс **address prefix 2001:DB8:ACAD:3::1/64**
-17. Перейдем к интерфейсу e0/1 **int e0/1**
-18. Назначим пул DHCPv6 интерфейсу e0/1 **ipv6 dhcp server IPV6-2**
-19. Установим флаг *managed* **ipv6 nd managed-config-flag**
-20. Включим интерфейс **no shutdown**
->![13](https://user-images.githubusercontent.com/112701413/194824567-2281113f-e1cb-4d53-86ad-47796a04f3c6.jpg)
-21. Пропишим маршруты до подсетей R1 **ipv6 route 2001:db8:acad:1::1/64 2001:db8:acad:2::1**
+12. Установим флаг *managed* **ipv6 nd managed-config-flag**
+13. Настроим получение ipv6 адресов с dhcpv6 сервера R1 **ipv6 dhcp relay destination 2001:DB8:ACAD:2::1**
+14. Включим роутинг ipv6 **ipv6 unicast-routing**
+>![18](https://user-images.githubusercontent.com/112701413/195159261-bdceff81-2671-4dd8-b156-80cd85a7b2f7.jpg)
+15. Пропишим маршруты до подсетей R1 **ipv6 route 2001:db8:acad:1::1/64 2001:db8:acad:2::1**
 >![15](https://user-images.githubusercontent.com/112701413/194767234-4934919c-6924-46cb-83b8-10c2ee31b85d.jpg)
-22. Проверим видит ли PC2 ---- PC1 **ping 2001:db8:acad:1:2050:79ff:fe66:680c**
+16. На PC2 запросим ipv6 адрес **ip auto**
+>![19](https://user-images.githubusercontent.com/112701413/195160700-13fd1c2a-6dbc-4c7f-b91a-b3ae47f310a6.jpg)
+17. Проверим видит ли PC2 ---- PC1 **ping 2001:db8:acad:1:2050:79ff:fe66:680c**
 >![14](https://user-images.githubusercontent.com/112701413/194767187-387421ab-920b-45e6-982f-c8bc6db77664.jpg)
 
