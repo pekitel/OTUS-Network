@@ -105,6 +105,7 @@ PC2 | eth0 | 100 | User | dhcp | |
 >![11](https://user-images.githubusercontent.com/112701413/193921034-3f8ae2d0-e998-4d83-a6d8-ba33a321278a.jpg)
 24. Перейдем в интерфейс Gi0/1.100 **int gi0/1.100**
 25. Настроим получение ip адресов с dhcp сервера R1 **ip helper-address 10.0.0.1**
+>![33](https://user-images.githubusercontent.com/112701413/195186810-0b65bc5c-0f4a-4e0a-8b11-533f2cdd8c27.jpg)
 26. Проверим получил ли PC2 ip адрес **ip dhcp**
 >![32](https://user-images.githubusercontent.com/112701413/195090559-12a23363-98d5-49da-9023-7e63d8146b66.jpg)
 
