@@ -77,3 +77,8 @@
 |            | e0/2     |                |                       | to --> VPC7           | 20           |           |
 |VPC1        | eth0     | DHCP           | DHCPv6                |                       |              |           |
 |VPC7        | eth0     | DHCP           | DHCPv6                |                       |              |           |
+
+### Санкт-Петербург
+
+| Hosts      | Ports    | Network IPv4   | Network IPv6          |     Description       | vlan         | Loopback  |
+|:----------:|:--------:|:--------------:|:---------------------:|:--------------------- |:------------:|:---------:|
