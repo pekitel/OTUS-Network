@@ -1,0 +1,26 @@
+en
+conf t
+hostname R13
+no ip domain-lookup
+interface Loopback13
+ ip address 1.1.10.13 255.255.255.255
+exit
+ interface Ethernet0/0
+ no shutdown
+ description to --> SW5
+ exit
+interface Ethernet0/0.99
+ encapsulation dot1Q 99
+ ip address 10.200.99.1 255.255.255.0
+ exit
+interface Ethernet0/2
+ ip address 192.168.10.18 255.255.255.252
+ no shutdown
+ description to --> SW15
+ exit
+interface Ethernet0/3
+ ip address 192.168.10.10 255.255.255.252
+ no shutdown
+ description to --> SW14
+ exit
+do write
