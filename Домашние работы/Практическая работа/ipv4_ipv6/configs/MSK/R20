@@ -1,0 +1,13 @@
+en
+conf t
+hostname R20
+no ip domain-lookup
+interface Loopback 20
+ ip address 1.1.10.20 255.255.255.255
+ exit
+interface Ethernet0/0
+ ip address 192.168.10.22 255.255.255.252
+ description to --> R15
+ no shutdown
+ exit
+do write
