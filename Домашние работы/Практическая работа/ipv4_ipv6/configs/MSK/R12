@@ -1,0 +1,39 @@
+en
+conf t
+hostname R15
+no ip domain-lookup
+ip dhcp pool VPC1
+ network 10.200.10.0 255.255.255.0
+ default-router 10.200.10.1 
+ dns-server 10.200.10.1 
+ip dhcp pool VPC7
+ network 10.200.20.0 255.255.255.0
+ default-router 10.200.20.1 
+ dns-server 10.200.20.1  
+exit
+interface Loopback12
+ ip address 1.1.10.12 255.255.255.255
+exit
+ interface Ethernet0/0
+ no shutdown
+ description to --> SW4
+ exit
+interface Ethernet0/0.10
+ encapsulation dot1Q 10
+ ip address 10.200.10.1 255.255.255.0
+ exit
+interface Ethernet0/0.20
+ encapsulation dot1Q 20
+ ip address 10.200.20.1 255.255.255.0
+ exit
+interface Ethernet0/2
+ ip address 192.168.10.6 255.255.255.252
+ no shutdown
+ description to --> SW14
+ exit
+interface Ethernet0/3
+ ip address 192.168.10.14 255.255.255.252
+ no shutdown
+ description to --> SW15
+ exit
+do write
