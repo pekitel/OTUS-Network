@@ -2,7 +2,7 @@ en
 conf t
 hostname R14
 no ip domain-lookup
-interface Loopback12
+interface Loopback14
  ip address 1.1.10.12 255.255.255.255
  exit
 interface Ethernet0/0
