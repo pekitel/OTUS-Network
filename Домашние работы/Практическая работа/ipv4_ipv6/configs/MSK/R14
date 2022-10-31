@@ -9,12 +9,12 @@ no shutdown
 exit
 interface Ethernet0/1
 ip address 192.168.10.9 255.255.255.252
-description to --> R12
+description to --> R13
 no shutdown
 exit
 interface Ethernet0/2
 ip address 20.20.20.2 255.255.255.252
-description to --> R22
+description to --> R12
 no shutdown
 exit
 interface Ethernet0/3
