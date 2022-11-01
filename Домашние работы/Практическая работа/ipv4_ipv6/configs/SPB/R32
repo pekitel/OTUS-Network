@@ -1,0 +1,13 @@
+en
+conf t
+hostname R18
+no ip domain-lookup
+interface Loopback32
+ ip address 2.2.2.32 255.255.255.255
+ exit
+interface Ethernet0/0
+ ip address 172.16.1.10 255.255.255.252
+ description to --> R16
+ no shutdown
+ exit
+do wr
