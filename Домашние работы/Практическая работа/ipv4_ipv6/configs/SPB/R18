@@ -1,1 +1,42 @@
-
+en
+conf t
+hostname R18
+no ip domain-lookup
+ip dhcp pool VPC8
+ network 20.200.10.0 255.255.255.0
+ default-router 20.200.10.1 
+ dns-server 8.8.8.8 
+ip dhcp pool VPC
+ network 20.200.20.0 255.255.255.0
+ default-router 20.200.20.1 
+ dns-server 8.8.8.8  
+ exit
+ip dhcp excluded-address 20.200.10.1
+ip dhcp excluded-address 20.200.20.1 
+ip route 1.1.20.0 255.255.255.0 172.16.1.6
+ip route 20.200.10.0 255.255.255.0 172.16.1.2
+ip route 20.200.20.0 255.255.255.0 172.16.1.2
+interface Loopback18
+ ip address 2.2.2.18 255.255.255.255
+ exit
+interface Ethernet0/0
+ ip address 172.16.1.5 255.255.255.252
+ description to --> R16
+ no shutdown
+ exit
+interface Ethernet0/1
+ ip address 172.16.1.1 255.255.255.252
+ description to --> R17
+ no shutdown
+ exit
+interface Ethernet0/2
+ ip address 109.72.10.2 255.255.255.252
+ description to --> R24
+ no shutdown
+ exit
+interface Ethernet0/3
+ ip address 109.72.20.2 255.255.255.252
+ description to --> R26
+ no shutdown
+ exit
+do wr
