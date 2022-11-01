@@ -1,2 +1,23 @@
 en
  conf t
+ no ip domain lookup
+ hostname R22
+ interface Loopback22
+  ip address 5.5.5.22 255.255.255.255
+  exit
+ interface Ethernet0/0
+  description to --> R14
+  ip address 20.20.20.1 255.255.255.252
+  no shutdown
+  exit
+interface Ethernet0/1
+ description to --> R21
+ ip address 20.1.1.1 255.255.255.252
+ no shutdown
+ exit
+interface Ethernet0/2
+ description to --> R23
+ ip address 20.20.20.5 255.255.255.252
+ no shutdown
+ exit
+do wr
