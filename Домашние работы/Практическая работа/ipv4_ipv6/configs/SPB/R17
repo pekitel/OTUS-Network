@@ -1,0 +1,25 @@
+en
+conf t
+hostname R17
+no ip domain lookup
+interface Loopback17
+ ip address 2.2.2.17 255.255.255.255
+ exit
+interface Ethernet0/0
+ no shutdown
+interface Ethernet0/0.10
+ encapsulation dot1Q 10
+ ip address 20.200.10.1 255.255.255.0
+ ip helper-address 172.16.1.1
+ exit
+interface Ethernet0/0.20
+ encapsulation dot1Q 20
+ ip address 20.200.20.1 255.255.255.0
+ ip helper-address 172.16.1.1
+ exit
+interface Ethernet0/1
+ description to --> R18
+ ip address 172.16.1.2 255.255.255.0
+ no shutdown
+ exit
+do wr
