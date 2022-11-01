@@ -2,6 +2,9 @@ en
 conf t
 hostname R18
 no ip domain-lookup
+ip route 172.16.1.0 255.255.255.0 172.16.1.9
+ip route 2.2.2.0 255.255.255.0 172.16.1.9
+ip route 1.1.20.0 255.255.255.0 172.16.1.9
 interface Loopback32
  ip address 2.2.2.32 255.255.255.255
  exit
