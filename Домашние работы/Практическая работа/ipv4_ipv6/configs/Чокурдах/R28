@@ -1,0 +1,44 @@
+en
+ conf t
+ no ip domain lookup
+ ip dhcp pool VPC30
+  network 40.200.10.0 255.255.255.0
+  default-router 40.200.10.1 
+  dns-server 8.8.8.8 
+  exit
+ ip dhcp pool VPC31
+  network 40.200.20.0 255.255.255.0
+  default-router 40.200.20.1 
+  dns-server 8.8.8.8
+  exit
+ interface Loopback 28
+  ip address 4.4.4.28 255.255.255.255
+  exit
+ interface Ethernet0/0
+  description to --> R26
+  ip address 77.37.10.6 255.255.255.252
+  no shutdown
+  exit
+ interface Ethernet0/1
+  description to --> R25
+  ip address 77.37.10.2 255.255.255.252
+  no shutdown
+  exit
+ interface Ethernet0/2
+  no ip address
+  no shutdown
+  exit
+interface Ethernet0/2.10
+ encapsulation dot1Q 10
+ ip address 40.200.10.1 255.255.255.0
+ exit
+interface Ethernet0/2.20
+ encapsulation dot1Q 20
+ ip address 40.200.20.1 255.255.255.0
+ exit
+interface Ethernet0/2.99
+ encapsulation dot1Q 99
+ ip address 1.1.40.1 255.255.255.0
+ exit
+do wr
+
