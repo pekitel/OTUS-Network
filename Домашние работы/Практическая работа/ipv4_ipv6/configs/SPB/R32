@@ -1,6 +1,6 @@
 en
 conf t
-hostname R18
+hostname R32
 no ip domain-lookup
 ip route 172.16.1.0 255.255.255.0 172.16.1.9
 ip route 2.2.2.0 255.255.255.0 172.16.1.9
