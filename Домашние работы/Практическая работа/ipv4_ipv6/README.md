@@ -96,6 +96,8 @@
 |VPC1        | eth0     | DHCP           |                       | 10           |           |
 |VPC7        | eth0     | DHCP           |                       | 20           |           |
 
+[конфигурации оборудования] 
+
 ### Санкт-Петербург
 
 | Hosts      | Ports    | Network IPv4   |     Description       | vlan         | Loopback  |
