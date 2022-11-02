@@ -14,7 +14,7 @@ ip dhcp pool VPC7
 ip dhcp excluded-address 10.200.10.1
 ip dhcp excluded-address 10.200.20.1
 interface Loopback12
- ip address 1.1.10.12 255.255.255.255
+ ip address 1.1.1.12 255.255.255.255
 exit
  interface Ethernet0/0
  no shutdown
