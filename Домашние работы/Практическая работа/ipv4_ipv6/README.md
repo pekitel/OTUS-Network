@@ -132,14 +132,27 @@
 
 ### Чокурдах
 
-| Hosts      | Ports    | Network IPv4   | Network IPv6          | vlan         | Loopback  |
+| Hosts      | Ports    | Network IPv4   | Description           | vlan         | Loopback  |
 |:----------:|:--------:|:--------------:|:---------------------:|:------------:|:---------:|
+| R28        | e0/0     | 77.37.10.6/30  | to --> R26            |              | 4.4.4.28  |
+|            | e0/1     | 77.37.10.2/30  | to --> R25            |              |           |
+|            | e0/2.10  | 40.200.10.1/24 | to --> SW29           | 10           |           |
+|            | e0/2.20  | 40.200.20.1/24 | to --> SW29           | 20           |           |
+|            | e0/2.99  | 1.1.40.1/24    | to --> SW29           | 99           |           |
+| SW29       | vlan 99  | 1.1.40.28      |                       | 99 MGMT      |           |
+|            | e0/0     |                | to --> VPC30          | 10           |           |
+|            | e0/1     |                | to --> VPC31          | 20           |           |
+|            | e0/2     |                | to --> R28            | 10,20,99     |           |
+| VPC30      | eth0     | dhcp           |                       | 10           |           |
+| VPC31      | eth0     | dhcp           |                       | 20           |           |
+
 
 [конфигурации оборудования Чокурдах](https://github.com/pekitel/OTUS-Network/tree/main/%D0%94%D0%BE%D0%BC%D0%B0%D1%88%D0%BD%D0%B8%D0%B5%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%8B/%D0%9F%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B0%D1%8F%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0/ipv4_ipv6/configs/%D0%A7%D0%BE%D0%BA%D1%83%D1%80%D0%B4%D0%B0%D1%85)
 
 ### Лабытнанги 
 
-| Hosts      | Ports    | Network IPv4   | Network IPv6          | vlan         | Loopback  |
+| Hosts      | Ports    | Network IPv4   | Description           | vlan         | Loopback  |
 |:----------:|:--------:|:--------------:|:---------------------:|:------------:|:---------:|
+| R27        | e0/0     | 110.10.1.2/30  | to --> R25            |              | 3.3.3.27  |
 
 [конфигурации оборудования Лабытнанги](https://github.com/pekitel/OTUS-Network/tree/main/%D0%94%D0%BE%D0%BC%D0%B0%D1%88%D0%BD%D0%B8%D0%B5%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%8B/%D0%9F%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B0%D1%8F%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0/ipv4_ipv6/configs/%D0%9B%D0%B0%D0%B1%D1%8B%D1%82%D0%BD%D0%B0%D0%BD%D0%B3%D0%B8)
