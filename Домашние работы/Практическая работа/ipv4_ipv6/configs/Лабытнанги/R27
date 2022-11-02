@@ -1,3 +1,13 @@
 en
  conf t
- 
+ hostname R27
+ no ip domain lookup
+ interface Loopback 27
+  ip address 3.3.3.27 255.255.255.0
+  exit
+ interface Ethernet0/0
+  description to --> R25
+  ip address 110.10.1.2 255.255.255.252
+  no shutdown
+  exit
+ do wr
