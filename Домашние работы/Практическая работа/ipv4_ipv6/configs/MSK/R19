@@ -3,7 +3,7 @@ conf t
 hostname R19
 no ip domain-lookup
 interface Loopback 19
- ip address 1.1.10.19 255.255.255.255
+ ip address 1.1.1.19 255.255.255.255
  exit
 interface Ethernet0/0
  ip address 192.168.10.2 255.255.255.252
