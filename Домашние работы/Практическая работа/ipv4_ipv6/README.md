@@ -159,4 +159,5 @@
 
 Схема сети ipv6 local
 
-![ipv4 local](https://user-images.githubusercontent.com/112701413/199830554-3af43ef2-7c5d-405e-b80e-59befa5efe9f.jpg)
+![ipv6 local](https://user-images.githubusercontent.com/112701413/199831268-862bc566-b299-485a-b6d4-721b17230dd2.jpg)
+
