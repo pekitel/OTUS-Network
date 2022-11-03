@@ -163,7 +163,7 @@
 
 ![ipv6 local](https://user-images.githubusercontent.com/112701413/199834405-8182dce2-5184-4636-b2d8-86377164ae57.jpg)
 
-**Адресное пространство ipv6**
+## Адресное пространство ipv6
 
 ### Провайдеры ipv6
 
