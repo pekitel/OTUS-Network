@@ -2,9 +2,11 @@
 
 1. Разработаете и задокументируете адресное пространство для лабораторного стенда
   
-1.1 [Провайдеры](https://github.com/pekitel/OTUS-Network/blob/main/%D0%94%D0%BE%D0%BC%D0%B0%D1%88%D0%BD%D0%B8%D0%B5%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%8B/%D0%9F%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B0%D1%8F%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0/ipv4_ipv6/README.md#%D1%82%D0%B0%D0%BA-%D0%BA%D0%B0%D0%BA-%D1%83-%D0%BD%D0%B0%D1%81-3-%D0%BF%D1%80%D0%BE%D0%B2%D0%B0%D0%B9%D0%B4%D0%B5%D1%80%D0%B0-%D0%BD%D0%B0%D0%B7%D0%BD%D0%B0%D1%87%D0%B8%D0%BC-ip-%D0%B0%D0%B4%D1%80%D0%B5%D1%81%D0%B0-%D0%BC%D0%B5%D0%B6%D0%B4%D1%83-%D0%B8%D1%85-%D0%BE%D0%B1%D0%BE%D1%80%D1%83%D0%B4%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5)
+1.1.1 [Провайдеры ipv4](https://github.com/pekitel/OTUS-Network/blob/main/%D0%94%D0%BE%D0%BC%D0%B0%D1%88%D0%BD%D0%B8%D0%B5%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%8B/%D0%9F%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B0%D1%8F%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0/ipv4_ipv6/README.md#%D1%82%D0%B0%D0%BA-%D0%BA%D0%B0%D0%BA-%D1%83-%D0%BD%D0%B0%D1%81-3-%D0%BF%D1%80%D0%BE%D0%B2%D0%B0%D0%B9%D0%B4%D0%B5%D1%80%D0%B0-%D0%BD%D0%B0%D0%B7%D0%BD%D0%B0%D1%87%D0%B8%D0%BC-ip-%D0%B0%D0%B4%D1%80%D0%B5%D1%81%D0%B0-%D0%BC%D0%B5%D0%B6%D0%B4%D1%83-%D0%B8%D1%85-%D0%BE%D0%B1%D0%BE%D1%80%D1%83%D0%B4%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5)
 
-1.2 [Москва](https://github.com/pekitel/OTUS-Network/blob/main/%D0%94%D0%BE%D0%BC%D0%B0%D1%88%D0%BD%D0%B8%D0%B5%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%8B/%D0%9F%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B0%D1%8F%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0/ipv4_ipv6/README.md#%D0%BC%D0%BE%D1%81%D0%BA%D0%B2%D0%B0)
+1.1.2 [Провайдеры ipv6]()
+
+1.2.1 [Москва](https://github.com/pekitel/OTUS-Network/blob/main/%D0%94%D0%BE%D0%BC%D0%B0%D1%88%D0%BD%D0%B8%D0%B5%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%8B/%D0%9F%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B0%D1%8F%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0/ipv4_ipv6/README.md#%D0%BC%D0%BE%D1%81%D0%BA%D0%B2%D0%B0)
 
 1.3 [Санкт-Петербург](https://github.com/pekitel/OTUS-Network/blob/main/%D0%94%D0%BE%D0%BC%D0%B0%D1%88%D0%BD%D0%B8%D0%B5%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%8B/%D0%9F%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B0%D1%8F%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0/ipv4_ipv6/README.md#%D1%81%D0%B0%D0%BD%D0%BA%D1%82-%D0%BF%D0%B5%D1%82%D0%B5%D1%80%D0%B1%D1%83%D1%80%D0%B3)
 
@@ -23,10 +25,10 @@
 >![ipv4](https://user-images.githubusercontent.com/112701413/199317744-b088cf5e-1580-450c-bb28-ef6cb6c0218e.jpg)
 
 
-#### Адресное пространство ipv4
+## Адресное пространство ipv4
 
 
-### *Так как у нас 3 провайдера назначим ip адреса между их оборудование*
+### *Провайдеры ipv6*
 
 | Hosts      | Ports    | Network IPv4   |     Description       | Provider     | Loopback  |    
 |:----------:|:--------:|:--------------:|:--------------------- |:------------:|:---------:|    
@@ -54,7 +56,7 @@
 
 [конфигурации оборудования Провайдеры]()
 
-### Москва
+### Москва ipv4
 
 | Hosts      | Ports    | Network IPv4   |     Description       | vlan         | Loopback  |
 |:----------:|:--------:|:--------------:|:--------------------- |:------------:|:---------:|
@@ -100,7 +102,7 @@
 
 [конфигурации оборудования MSK](https://github.com/pekitel/OTUS-Network/tree/main/%D0%94%D0%BE%D0%BC%D0%B0%D1%88%D0%BD%D0%B8%D0%B5%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%8B/%D0%9F%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B0%D1%8F%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0/ipv4_ipv6/configs/MSK)
 
-### Санкт-Петербург
+### Санкт-Петербург ipv4
 
 | Hosts      | Ports    | Network IPv4   |     Description       | vlan         | Loopback  |
 |:----------:|:--------:|:--------------:|:--------------------- |:------------:|:---------:|
@@ -130,7 +132,7 @@
 
 [конфигурации оборудования SPB](https://github.com/pekitel/OTUS-Network/tree/main/%D0%94%D0%BE%D0%BC%D0%B0%D1%88%D0%BD%D0%B8%D0%B5%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%8B/%D0%9F%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B0%D1%8F%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0/ipv4_ipv6/configs/SPB)
 
-### Чокурдах
+### Чокурдах ipv4
 
 | Hosts      | Ports    | Network IPv4   | Description           | vlan         | Loopback  |
 |:----------:|:--------:|:--------------:|:---------------------:|:------------:|:---------:|
@@ -149,7 +151,7 @@
 
 [конфигурации оборудования Чокурдах](https://github.com/pekitel/OTUS-Network/tree/main/%D0%94%D0%BE%D0%BC%D0%B0%D1%88%D0%BD%D0%B8%D0%B5%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%8B/%D0%9F%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B0%D1%8F%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0/ipv4_ipv6/configs/%D0%A7%D0%BE%D0%BA%D1%83%D1%80%D0%B4%D0%B0%D1%85)
 
-### Лабытнанги 
+### Лабытнанги ipv4
 
 | Hosts      | Ports    | Network IPv4   | Description           | vlan         | Loopback  |
 |:----------:|:--------:|:--------------:|:---------------------:|:------------:|:---------:|
@@ -161,7 +163,9 @@
 
 ![ipv6 local](https://user-images.githubusercontent.com/112701413/199834405-8182dce2-5184-4636-b2d8-86377164ae57.jpg)
 
-#### Адресное пространство ipv6
+**Адресное пространство ipv6**
+
+### Провайдеры ipv6
 
 | Hosts      | Ports    | Network IPv6   |     Description       | Provider     | Loopback ipv6  |    
 |:----------:|:--------:|:--------------:|:--------------------- |:------------:|:--------------:|    
@@ -189,7 +193,7 @@
 
 
 
-
+### Москва ipv6
 
 
 | Hosts      | Ports    | Network IPv4   |     Description       | vlan         | Loopback  |
