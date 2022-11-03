@@ -1,6 +1,6 @@
 # Задание
 
-### 1. Разработаете и задокументируете адресное пространство для лабораторного стенда
+1. Разработаете и задокументируете адресное пространство для лабораторного стенда
   
 1.1 [Провайдеры](https://github.com/pekitel/OTUS-Network/blob/main/%D0%94%D0%BE%D0%BC%D0%B0%D1%88%D0%BD%D0%B8%D0%B5%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%8B/%D0%9F%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B0%D1%8F%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0/ipv4_ipv6/README.md#%D1%82%D0%B0%D0%BA-%D0%BA%D0%B0%D0%BA-%D1%83-%D0%BD%D0%B0%D1%81-3-%D0%BF%D1%80%D0%BE%D0%B2%D0%B0%D0%B9%D0%B4%D0%B5%D1%80%D0%B0-%D0%BD%D0%B0%D0%B7%D0%BD%D0%B0%D1%87%D0%B8%D0%BC-ip-%D0%B0%D0%B4%D1%80%D0%B5%D1%81%D0%B0-%D0%BC%D0%B5%D0%B6%D0%B4%D1%83-%D0%B8%D1%85-%D0%BE%D0%B1%D0%BE%D1%80%D1%83%D0%B4%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5)
 
@@ -156,3 +156,7 @@
 | R27        | e0/0     | 110.10.1.2/30  | to --> R25            |              | 3.3.3.27  |
 
 [конфигурации оборудования Лабытнанги](https://github.com/pekitel/OTUS-Network/tree/main/%D0%94%D0%BE%D0%BC%D0%B0%D1%88%D0%BD%D0%B8%D0%B5%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%8B/%D0%9F%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B0%D1%8F%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0/ipv4_ipv6/configs/%D0%9B%D0%B0%D0%B1%D1%8B%D1%82%D0%BD%D0%B0%D0%BD%D0%B3%D0%B8)
+
+Схема сети ipv6 local
+
+![ipv4 local](https://user-images.githubusercontent.com/112701413/199830554-3af43ef2-7c5d-405e-b80e-59befa5efe9f.jpg)
