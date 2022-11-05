@@ -170,7 +170,7 @@
 
 | Hosts      | Ports    | Network IPv6        | link-local  |     Description       | Provider | Loopback    | 
 |:----------:|:--------:|:-------------------:|:-----------:|:---------------------:|:--------:|:-----------:|   
-| R22        | e0/0     | 2022:ABCD:0DB8:0::0 |             | to --> R14 MSK        | Киторн   | fe80:1f::22 |
+| R22        | e0/0     | 2022:ABCD:0DB8:0::0 | FE80:A::22  | to --> R14 MSK        | Киторн   | fe80:1f::22 |
 |            | e0/1     | 2ABC:ABCD:0DB8:0::0 | to --> R21 Lamas      |              |                ||
 |            | e0/2     | 2ABC:ABCD:0DB8:0::1 | to --> R23 Triada     |              |                ||
 | R21        | e0/0     | 2022:ABCD:0DB8:6::0 | to --> R15 MSK        | Ламас        | fe80:2f::21    ||
