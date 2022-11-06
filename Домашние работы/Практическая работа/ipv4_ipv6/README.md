@@ -15,7 +15,9 @@
 
 2.2 [Москва ipv6](https://github.com/pekitel/OTUS-Network/blob/main/%D0%94%D0%BE%D0%BC%D0%B0%D1%88%D0%BD%D0%B8%D0%B5%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%8B/%D0%9F%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B0%D1%8F%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0/ipv4_ipv6/README.md#%D0%BC%D0%BE%D1%81%D0%BA%D0%B2%D0%B0-ipv6)
 
-3.1 [Санкт-Петербург](https://github.com/pekitel/OTUS-Network/blob/main/%D0%94%D0%BE%D0%BC%D0%B0%D1%88%D0%BD%D0%B8%D0%B5%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%8B/%D0%9F%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B0%D1%8F%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0/ipv4_ipv6/README.md#%D1%81%D0%B0%D0%BD%D0%BA%D1%82-%D0%BF%D0%B5%D1%82%D0%B5%D1%80%D0%B1%D1%83%D1%80%D0%B3)
+3.1 [Санкт-Петербург ipv4](https://github.com/pekitel/OTUS-Network/blob/main/%D0%94%D0%BE%D0%BC%D0%B0%D1%88%D0%BD%D0%B8%D0%B5%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%8B/%D0%9F%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B0%D1%8F%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0/ipv4_ipv6/README.md#%D1%81%D0%B0%D0%BD%D0%BA%D1%82-%D0%BF%D0%B5%D1%82%D0%B5%D1%80%D0%B1%D1%83%D1%80%D0%B3)
+
+3.2 [Санкт-Петербург ipv6]()
 
 4.1 [Чокурдах](https://github.com/pekitel/OTUS-Network/blob/main/%D0%94%D0%BE%D0%BC%D0%B0%D1%88%D0%BD%D0%B8%D0%B5%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%8B/%D0%9F%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B0%D1%8F%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0/ipv4_ipv6/README.md#%D1%87%D0%BE%D0%BA%D1%83%D1%80%D0%B4%D0%B0%D1%85)
 
@@ -238,4 +240,10 @@
 |            | e0/2     |                      |             | to --> VPC7           | 20           |             |
 | VPC1       | eth0     | DHCP                 | FE80:7::100 |                       | 10           |             |
 | VPC7       | eth0     | DHCP                 | FE80:8::200 |                       | 20           |             |
+
+
+### Санкт-Петербург ipv6
+
+| Hosts      | Ports    | Network IPv6         | link-local  |     Description       | vlan         | Loopback    |
+|:----------:|:--------:|:--------------------:|:-----------:|:---------------------:|:------------:|:-----------:|
 
