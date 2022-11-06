@@ -170,16 +170,16 @@
 
 | Hosts      | Ports    | Network IPv6        | link-local  |     Description       | Provider | Loopback    | 
 |:----------:|:--------:|:-------------------:|:-----------:|:---------------------:|:--------:|:-----------:|   
-| R22        | e0/0     | 2022:ABCD:0DB8:0::0 | FE80:A::22  | to --> R14 MSK        | Киторн   | fe80:1f::22 |
-|            | e0/1     | 2ABC:ABCD:0DB8:0::0 || to --> R21 Lamas      |              |                |
-|            | e0/2     | 2ABC:ABCD:0DB8:0::1 | | to --> R23 Triada     |              |               |
-| R21        | e0/0     | 2022:ABCD:0DB8:6::0 | | to --> R15 MSK        | Ламас        | fe80:2f::21   |
-|            | e0/1     | 2ABC:ABCD:0DB8:0::2 || to --> R22 Kitorn     |              |                |
-|            | e0/2     | 2ABC:ABCD:0DB8:0::3 || to --> R24 Triada     |              |                |
-| R23        | e0/0     | 2ABC:ABCD:0DB8:0::4 || to --> R22 Kitorn     | Триада       | fe80:3f::23    |     
-|            | e0/1     | 2ABC:ABCD:0DB8:0::5 || to --> R25            |              |                |
-|            | e0/2     | 2ABC:ABCD:0DB8:0::6 || to --> R24            |              |                |
-| R25        | e0/0     | 2ABC:ABCD:0DB8:0::7 || to --> R23            |              | fe80:3f::25    |
+| R22        | e0/0     | 2022:ABCD:0DB8:0::0 | FE80:A::22  | to --> R14 MSK        | *Киторн* | fe80:1f::22 |
+|            | e0/1     | 2ABC:ABCD:0DB8:0::0 | FE80:B::22  | to --> R21 Lamas      |          |             |
+|            | e0/2     | 2ABC:ABCD:0DB8:0::1 | FE80:1B::22 | to --> R23 Triada     |          |             |
+| R21        | e0/0     | 2022:ABCD:0DB8:6::0 | FE80:A::21  | to --> R15 MSK        | *Ламас*  | fe80:2f::21 |
+|            | e0/1     | 2ABC:ABCD:0DB8:0::2 | FE80:B::21  | to --> R22 Kitorn     |          |             |
+|            | e0/2     | 2ABC:ABCD:0DB8:0::3 | FE80:6B::22 | to --> R24 Triada     |          |             |
+| R23        | e0/0     | 2ABC:ABCD:0DB8:0::4 | FE80:1B::23 | to --> R22 Kitorn     | ***Триада*** | fe80:3f::23 |     
+|            | e0/1     | 2ABC:ABCD:0DB8:0::5 | FE80:2B::23 | to --> R25            |          |             |
+|            | e0/2     | 2ABC:ABCD:0DB8:0::6 | FE80:5B::23 | to --> R24            |          |             |
+| R25        | e0/0     | 2ABC:ABCD:0DB8:0::7 | FE80:2B::25 | to --> R23            |          | fe80:3f::25 |
 |            | e0/1     | 110.10.1.1/30  || to --> R27 Labytnangi |              |                |
 |            | e0/2     | 10.10.10.13/30 || to --> R26            |              |                |
 |            | e0/3     | 77.37.10.1/30  || to --> R28 Chukordah  |              |                |
