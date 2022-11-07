@@ -170,6 +170,12 @@
 
 ![ipv6 local](https://user-images.githubusercontent.com/112701413/199834405-8182dce2-5184-4636-b2d8-86377164ae57.jpg)
 
+
+## **Схема сети ipv6**
+
+![ipv6](https://user-images.githubusercontent.com/112701413/200355344-4e119e55-b35a-4519-82ad-3e60143b63b2.jpg)
+
+
 ## Адресное пространство ipv6
 
 ### Провайдеры ipv6
