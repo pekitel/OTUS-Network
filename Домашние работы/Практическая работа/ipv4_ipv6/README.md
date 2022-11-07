@@ -170,7 +170,7 @@
 
 ### Провайдеры ipv6
 
-| Hosts      | Ports    | Network IPv6        | link-local  |     Description       | Provider     | Loopback    | 
+|     Hosts  | Ports    | Network IPv6        | link-local  |     Description       | Provider     | Loopback    | 
 |:----------:|:--------:|:-------------------:|:-----------:|:---------------------:|:------------:|:-----------:|   
 | **R22**    | e0/0     | 2022:ABCD:0DB8:0::0 | FE80:A::22  | to --> R14 MSK        | ***Киторн*** | fe80:1f::22 |
 |            | e0/1     | 2ABC:ABCD:0DB8:0::0 | FE80:B::22  | to --> R21 Lamas      |              |             |
