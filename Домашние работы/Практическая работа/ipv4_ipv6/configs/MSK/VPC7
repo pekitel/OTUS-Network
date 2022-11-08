@@ -1,0 +1,23 @@
+ip dhcp
+show ip
+ NAME        : VPCS[1]
+ IP/MASK     : 10.200.20.2/24
+ GATEWAY     : 10.200.20.1
+ DNS         : 10.200.20.1  
+ DHCP SERVER : 10.200.20.1
+ DHCP LEASE  : 62457, 86400/43200/75600
+ MAC         : 00:50:79:66:68:07
+ LPORT       : 20000
+ RHOST:PORT  : 127.0.0.1:30000
+ MTU         : 1500
+ip auto
+show ipv6
+ NAME              : VPCS[1]
+ LINK-LOCAL SCOPE  : fe80::250:79ff:fe66:6807/64
+ GLOBAL SCOPE      : 2022:abcd:db8:9:2050:79ff:fe66:6807/64
+ DNS               : 
+ ROUTER LINK-LAYER : aa:bb:cc:00:c0:00
+ MAC               : 00:50:79:66:68:07
+ LPORT             : 20000
+ RHOST:PORT        : 127.0.0.1:30000
+ MTU:              : 1500
