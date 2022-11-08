@@ -25,6 +25,9 @@ interface Ethernet0/2
  exit
 interface Vlan99
  ip address 1.1.10.2 255.255.255.0
+ ipv6 address FE80:AB::2 link-local
+ ipv6 address 2022:ABCD:DB8:A::2/64
+ ipv6 enable
  no shutdown
  exit
 ip default-gateway 1.1.10.1
