@@ -2,11 +2,17 @@ en
 conf t
 hostname R19
 no ip domain-lookup
+ipv6 unicast-routing
 interface Loopback 19
  ip address 1.1.1.19 255.255.255.255
+ ipv6 address FE80:AA::19 link-local
+ ipv6 enable
  exit
 interface Ethernet0/0
  ip address 192.168.10.2 255.255.255.252
+ ipv6 address FE80:1::19 link-local
+ ipv6 address 2022:ABCD:DB8:3::1/64
+ ipv6 enable
  description to --> R14
  no shutdown
  exit
