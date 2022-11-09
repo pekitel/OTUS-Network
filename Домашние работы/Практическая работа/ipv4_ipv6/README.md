@@ -195,26 +195,26 @@
 |     Hosts  | Ports    | Network IPv6        | link-local  |     Description       | Provider     | Loopback    | 
 |:----------:|:--------:|:-------------------:|:-----------:|:---------------------:|:------------:|:-----------:|   
 | **R22**    | e0/0     | 2022:ABCD:0DB8:0::1 | FE80:A::22  | to --> R14 MSK        | ***Киторн*** | fe80:1f::22 |
-|            | e0/1     | 2ABC:ABCD:0DB8:0::C | FE80:B::22  | to --> R21 Lamas      |              |             |
+|            | e0/1     | 2ABC:ABCD:0DB8:6::2 | FE80:B::22  | to --> R21 Lamas      |              |             |
 |            | e0/2     | 2ABC:ABCD:0DB8:0::1 | FE80:1B::22 | to --> R23 Triada     |              |             |
-| **R21**    | e0/0     | 2022:ABCD:0DB8:0::3 | FE80:A::21  | to --> R15 MSK        | ***Ламас***  | fe80:2f::21 |
-|            | e0/1     | 2ABC:ABCD:0DB8:0::B | FE80:B::21  | to --> R22 Kitorn     |              |             |
-|            | e0/2     | 2ABC:ABCD:0DB8:0::A | FE80:6B::22 | to --> R24 Triada     |              |             |
+| **R21**    | e0/0     | 2022:ABCD:0DB8:1::1 | FE80:A::21  | to --> R15 MSK        | ***Ламас***  | fe80:2f::21 |
+|            | e0/1     | 2ABC:ABCD:0DB8:6::1 | FE80:B::21  | to --> R22 Kitorn     |              |             |
+|            | e0/2     | 2ABC:ABCD:0DB8:5::2 | FE80:6B::22 | to --> R24 Triada     |              |             |
 | **R23**    | e0/0     | 2ABC:ABCD:0DB8:0::2 | FE80:1B::23 | to --> R22 Kitorn     | ***Триада*** | fe80:3f::23 |     
-|            | e0/1     | 2ABC:ABCD:0DB8:0::3 | FE80:2B::23 | to --> R25            |              |             |
-|            | e0/2     | 2ABC:ABCD:0DB8:0::E | FE80:5B::23 | to --> R24            |              |             |
-| **R25**    | e0/0     | 2ABC:ABCD:0DB8:0::4 | FE80:2B::25 | to --> R23            |              | fe80:3f::25 |
-|            | e0/1     | 2002:ABCD:0DB8:0::1 | FE80:5A::25 | to --> R27 Labytnangi |              |             |
-|            | e0/2     | 2ABC:ABCD:0DB8:0::6 | FE80:3B::25 | to --> R26            |              |             |
-|            | e0/3     | 2002:ABCD:0DB8:1::1 | FE80:4A::25 | to --> R28 Chukordah  |              |             |
-| **R26**    | e0/0     | 2ABC:ABCD:0DB8:0::7 | FE80:4B::26 | to --> R24            |              | fe80:3f::26 |
-|            | e0/1     | 2002:ABCD:0DB8:1::3 | FE80:3A::26 | to --> R28 Chukordah  |              |             |
-|            | e0/2     | 2ABC:ABCD:0DB8:0::5 | FE80:3B::26 | to --> R25            |              |             |
-|            | e0/3     | 2002:ABCD:0DB8:2::1 | FE80:2A::26 | to --> R18 SPB        |              |             |
-| **R24**    | e0/0     | 2ABC:ABCD:0DB8:0::9 | FE80:6B::24 | to --> R21 Lamas      |              | fe80:3f::24 |
-|            | e0/1     | 2ABC:ABCD:0DB8:0::8 | FE80:4B::26 | to --> R26            |              |             |
-|            | e0/2     | 2ABC:ABCD:0DB8:0::D | FE80:5B::24 | to --> R23            |              |             |
-|            | e0/3     | 2002:ABCD:0DB8:2::3 | FE80:1A::24 | to --> R18 SPB        |              |             |
+|            | e0/1     | 2ABC:ABCD:0DB8:1::1 | FE80:2B::23 | to --> R25            |              |             |
+|            | e0/2     | 2ABC:ABCD:0DB8:4::2 | FE80:5B::23 | to --> R24            |              |             |
+| **R25**    | e0/0     | 2ABC:ABCD:0DB8:1::2 | FE80:2B::25 | to --> R23            |              | fe80:3f::25 |
+|            | e0/1     | 2002:ABCD:0DB8:7::1 | FE80:5A::25 | to --> R27 Labytnangi |              |             |
+|            | e0/2     | 2ABC:ABCD:0DB8:2::1 | FE80:3B::25 | to --> R26            |              |             |
+|            | e0/3     | 2002:ABCD:0DB8:6::1 | FE80:4A::25 | to --> R28 Chukordah  |              |             |
+| **R26**    | e0/0     | 2ABC:ABCD:0DB8:3::1 | FE80:4B::26 | to --> R24            |              | fe80:3f::26 |
+|            | e0/1     | 2002:ABCD:0DB8:5::1 | FE80:3A::26 | to --> R28 Chukordah  |              |             |
+|            | e0/2     | 2ABC:ABCD:0DB8:2::2 | FE80:3B::26 | to --> R25            |              |             |
+|            | e0/3     | 2002:ABCD:0DB8:3::1 | FE80:2A::26 | to --> R18 SPB        |              |             |
+| **R24**    | e0/0     | 2ABC:ABCD:0DB8:5::1 | FE80:6B::24 | to --> R21 Lamas      |              | fe80:3f::24 |
+|            | e0/1     | 2ABC:ABCD:0DB8:3::2 | FE80:4B::26 | to --> R26            |              |             |
+|            | e0/2     | 2ABC:ABCD:0DB8:5::1 | FE80:5B::24 | to --> R23            |              |             |
+|            | e0/3     | 2002:ABCD:0DB8:0::1 | FE80:1A::24 | to --> R18 SPB        |              |             |
 
 
 
