@@ -1,0 +1,26 @@
+ip dhcp
+ DORA IP 20.200.20.2/24 GW 20.200.20.1
+show ip
+ NAME        : VPCS[1]
+ IP/MASK     : 20.200.20.2/24
+ GATEWAY     : 20.200.20.1
+ DNS         : 8.8.8.8  
+ DHCP SERVER : 172.16.1.1
+ DHCP LEASE  : 86370, 86400/43200/75600
+ MAC         : 00:50:79:66:68:0b
+ LPORT       : 20000
+ RHOST:PORT  : 127.0.0.1:30000
+ MTU         : 1500
+ip auto
+ GLOBAL SCOPE      : 2002:abcd:db8:20:2050:79ff:fe66:680b/64
+ ROUTER LINK-LAYER : aa:bb:cc:01:10:00
+show ipv6
+ NAME              : VPCS[1]
+ LINK-LOCAL SCOPE  : fe80::250:79ff:fe66:680b/64
+ GLOBAL SCOPE      : 2002:abcd:db8:20:2050:79ff:fe66:680b/64
+ DNS               : 
+ ROUTER LINK-LAYER : aa:bb:cc:01:10:00
+ MAC               : 00:50:79:66:68:0b
+ LPORT             : 20000
+ RHOST:PORT        : 127.0.0.1:30000
+ MTU:              : 1500
