@@ -4,6 +4,8 @@ en
  hostname SW10
  interface Loopback10
   ip address 2.2.2.10 255.255.255.255
+  ipv6 address FE80:BB::10 link-local
+  ipv6 enable
   exit
  vlan 10
   vlan 20
@@ -26,6 +28,9 @@ en
   exit
  interface Vlan 99
   ip address 1.1.20.10 255.255.255.0
+  ipv6 address FE80:BA::10 link-local
+  ipv6 address 2002:ABCD:DB8:99::10/64
+  ipv6 enable
   exit
  ip default-gateway 1.1.20.1
  do wr
