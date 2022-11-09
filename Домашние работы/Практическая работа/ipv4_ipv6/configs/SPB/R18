@@ -2,6 +2,7 @@ en
 conf t
 hostname R18
 no ip domain-lookup
+ipv6 unicast-routing
 ip dhcp pool VPC8
  network 20.200.10.0 255.255.255.0
  default-router 20.200.10.1 
@@ -11,29 +12,58 @@ ip dhcp pool VPC
  default-router 20.200.20.1 
  dns-server 8.8.8.8  
  exit
+ipv6 dhcp pool VPC8
+ address prefix 2002:ABCD:DB8:10::1/64
+ dns-server 2A02:6B8::FEED:FF
+ domain-name SPB.ru
+ exit
+ipv6 dhcp pool VPC
+ address prefix 2002:ABCD:DB8:20::1/64
+ dns-server 2A02:6B8::FEED:FF
+ domain-name SPB.ru
+ exit
 ip dhcp excluded-address 20.200.10.1
 ip dhcp excluded-address 20.200.20.1 
 interface Loopback18
  ip address 2.2.2.18 255.255.255.255
+ ipv6 address FE80:BB::18 link-local
+ ipv6 enable
  exit
 interface Ethernet0/0
  ip address 172.16.1.5 255.255.255.252
+ ipv6 address FE80:10::18 link-local
+ ipv6 address 2002:ABCD:DB8:3::1/64
+ ipv6 enable
  description to --> R16
  no shutdown
  exit
 interface Ethernet0/1
  ip address 172.16.1.1 255.255.255.252
+ ipv6 address FE80:9::18 link-local
+ ipv6 address 2002:ABCD:DB8:2::1/64
+ ipv6 enable
  description to --> R17
  no shutdown
  exit
 interface Ethernet0/2
  ip address 109.72.10.2 255.255.255.252
+ ipv6 address FE80:1A::18 link-local
+ ipv6 address 2002:ABCD:DB8::2/64
+ ipv6 enable
  description to --> R24
  no shutdown
  exit
 interface Ethernet0/3
  ip address 109.72.20.2 255.255.255.252
+ ipv6 address FE80:2A::18 link-local
+ ipv6 address 2002:ABCD:DB8:1::2/64
+ ipv6 enable
  description to --> R26
  no shutdown
  exit
+ip route 20.200.10.0 255.255.255.0 172.16.1.2
+ip route 20.200.20.0 255.255.255.0 172.16.1.2
+ipv6 route 2002:ABCD:DB8:10::/64 2002:ABCD:DB8:2::2
+ipv6 route 2002:ABCD:DB8:20::/64 2002:ABCD:DB8:2::2
+ipv6 route 2002:ABCD:DB8:99::/64 2002:ABCD:DB8:3::2
 do wr
