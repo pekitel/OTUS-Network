@@ -5,6 +5,8 @@ en
  ipv6 unicast-routing
  interface Loopback 27
   ip address 3.3.3.27 255.255.255.0
+  ipv6 address FE80:CC::27 link-local
+  ipv6 enable
   exit
  interface Ethernet0/0
   description to --> R25
