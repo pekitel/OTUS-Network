@@ -7,8 +7,7 @@
 
 ## Схема сети
 
-![PBR](https://user-images.githubusercontent.com/112701413/201123485-43a6c360-2651-4d65-9bb5-2e26011456d9.jpg)
-
+![PBR](https://user-images.githubusercontent.com/112701413/201127261-b5fd230b-9eeb-41e2-98ed-2fc23094a6d5.jpg)
 
 | Hosts     | Port    | IPv4             | IPv6                   | Примечание      | Регион     |
 |:---------:|:-------:|:----------------:|:-------------------:|:---------------:|:----------:|
