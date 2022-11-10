@@ -185,7 +185,7 @@
 
 ## **Схема сети ipv6**
 
-![ipv6](https://user-images.githubusercontent.com/112701413/200883336-adf9e06b-3fc5-4de5-b585-63e85dc91ecc.jpg)
+![ipv6](https://user-images.githubusercontent.com/112701413/201021921-5516c16f-2f0a-4b64-bea5-36d6fc4a5cb9.jpg)
 
 
 ## Адресное пространство ipv6
