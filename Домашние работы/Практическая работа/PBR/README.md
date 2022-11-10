@@ -28,6 +28,11 @@
 
 **R25**
 >![R25ipv6](https://user-images.githubusercontent.com/112701413/201132867-9499c3cb-04f2-4221-8a4f-ef790853703f.jpg)
-![R25ipv4](https://user-images.githubusercontent.com/112701413/201132874-90cde7e0-2b0e-4044-bca4-803e54334350.jpg)
+>![R25ipv4](https://user-images.githubusercontent.com/112701413/201132874-90cde7e0-2b0e-4044-bca4-803e54334350.jpg)
+
+**R26**
+>![R25ipv6](https://user-images.githubusercontent.com/112701413/201133777-e4b3a9b8-008d-4ac2-83ed-b33c7b4e201d.jpg)
+>![R25ipv4](https://user-images.githubusercontent.com/112701413/201133812-8b874438-a3b4-4e53-b8f5-2db5f82a3b2c.jpg)
+
 
 
