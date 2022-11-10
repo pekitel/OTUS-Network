@@ -22,6 +22,12 @@
 
 #### Настройка политики маршрутизации для сетей офиса
 
-Посмотрим какие сети есть на **R28**
+**R28**
 >![R28ipv6](https://user-images.githubusercontent.com/112701413/201130014-713112ca-e64e-4830-8c3b-03d1ace19fbf.jpg)
 >![R28ipv4](https://user-images.githubusercontent.com/112701413/201131337-5f3848eb-9e67-4162-9a88-ff4fd51ad6a8.jpg)
+
+**R25**
+>![R25ipv6](https://user-images.githubusercontent.com/112701413/201132867-9499c3cb-04f2-4221-8a4f-ef790853703f.jpg)
+![R25ipv4](https://user-images.githubusercontent.com/112701413/201132874-90cde7e0-2b0e-4044-bca4-803e54334350.jpg)
+
+
