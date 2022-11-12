@@ -18,7 +18,7 @@ en
   switchport access vlan 10
   switchport mode access
   exit
- interface Ethernet1/0
+ interface Ethernet0/3
   switchport trunk allowed vlan 10,20
   switchport trunk native vlan 777
   switchport trunk encapsulation dot1q
