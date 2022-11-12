@@ -26,6 +26,7 @@ en
   exit
  interface Vlan 99
   ip address 172.16.10.2 255.255.255.248
+  no shutdown
   exit
  ip default-gateway 172.16.10.1
  do wr
