@@ -178,14 +178,11 @@
 | R27        | e0/0     | 110.10.1.2/30  | to --> R25            |              | 3.3.3.27  |
 
 
-## **Схема сети ipv6 local**
-
-![ipv6 local](https://user-images.githubusercontent.com/112701413/199834405-8182dce2-5184-4636-b2d8-86377164ae57.jpg)
-
 
 ## **Схема сети ipv6**
 
->![ip-v6](https://user-images.githubusercontent.com/112701413/201536053-6dd848bc-4ce3-40ed-b945-994079547bdc.jpg)
+>![ip-v6](https://user-images.githubusercontent.com/112701413/201545329-fb9be02d-9a6c-4dbb-bf7f-917f684946c3.jpg)
+
 
 
 ## Адресное пространство ipv6
