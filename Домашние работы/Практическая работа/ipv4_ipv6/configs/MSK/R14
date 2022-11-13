@@ -2,42 +2,39 @@ en
 conf t
 hostname R14
 no ip domain-lookup
-ipv6 unicast-routing
+ip dhcp pool VPC1
+ network 77.37.145.0 255.255.255.128
+ dns-server 8.8.8.8 
+ default-router 77.37.145.1 
+ exit
+ip dhcp pool VPC7
+ network 77.37.145.128 255.255.255.128
+ dns-server 8.8.8.8 
+ default-router 77.37.145.129 
+ exit
 interface Loopback14
- ip address 1.1.10.14 255.255.255.255
- ipv6 enable
- ipv6 address fe80:aa::14 link-local
+ ip address 77.37.144.14 255.255.255.255
  exit
 interface Ethernet0/0
- ip address 192.168.10.5 255.255.255.252
- ipv6 enable
- ipv6 address FE80:2::14 link-local
- ipv6 address 2022:ABCD:DB8:2::1/64
+ ip address 77.37.144.37 255.255.255.252
  description to --> R12
  no shutdown
  exit
 interface Ethernet0/1
- ip address 192.168.10.9 255.255.255.252
- ipv6 enable
- ipv6 address FE80:3::14 link-local
- ipv6 address 2022:ABCD:DB8:1::1/64
+ ip address 77.37.144.41 255.255.255.252
  description to --> R13
  no shutdown
  exit
 interface Ethernet0/2
- ip address 20.20.20.2 255.255.255.252
- ipv6 enable
- ipv6 address FE80:A::14 link-local
- ipv6 address 2022:ABCD:DB8::2/64
+ ip address 82.138.2.2 255.255.255.252
  description to --> R12
  no shutdown
  exit
 interface Ethernet0/3
- ip address 192.168.10.1 255.255.255.252
- ipv6 enable
- ipv6 address FE80:1::14 link-local
- ipv6 address 2022:ABCD:DB8:3::1/64
+ ip address 77.37.144.33 255.255.255.252
  description to --> R19
  no shutdown
  exit
+ip route 0.0.0.0 0.0.0.0 82.138.2.1
+ip route 77.37.145.0 255.255.255.0 77.37.144.38
 do wr
