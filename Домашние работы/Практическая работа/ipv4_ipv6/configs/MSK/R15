@@ -2,41 +2,27 @@ en
 conf t
 hostname R15
 no ip domain-lookup
-ipv6 unicast-routing
 interface Loopback15
- ip address 1.1.10.15 255.255.255.255
- ipv6 address FE80:AA::15 link-local
- ipv6 enable
+ ip address 77.37.144.15 255.255.255.255
  exit
 interface Ethernet0/0
- ip address 192.168.10.17 255.255.255.252
- ipv6 address FE80:5::15 link-local
- ipv6 address 2022:ABCD:DB8:4::1/64
- ipv6 enable
+ ip address 77.37.144.49 255.255.255.252
  description to --> R13
  no shutdown
  exit
 interface Ethernet0/1
- ip address 192.168.10.13 255.255.255.252
- ipv6 address FE80:4::14 link-local
- ipv6 address 2022:ABCD:DB8:5::1/64
- ipv6 enable
+ ip address 77.37.144.45 255.255.255.252
  description to --> R12
  no shutdown
  exit
 interface Ethernet0/2
- ip address 20.20.1.2 255.255.255.252
- ipv6 address FE80:A::15 link-local
- ipv6 address 2022:ABCD:DB8:1::2/64
- ipv6 enable
+ ip address 77.94.165.2 255.255.255.252
  description to --> R21
  no shutdown
  exit
 interface Ethernet0/3
- ip address 192.168.10.21 255.255.255.252
- ipv6 address FE80:6::15 link-local
- ipv6 address 2022:ABCD:DB8:7::1/64
- ipv6 enabledescription to --> R20
+ ip address 77.37.144.53 255.255.255.252
+ description to --> R20
  no shutdown
  exit
 do wr
