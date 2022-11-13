@@ -43,7 +43,7 @@
 
 ## **Схема сети ipv4**
 
->![ipv4](https://user-images.githubusercontent.com/112701413/201493382-3a13ad91-a0e0-46c5-abaf-46b89f760c90.jpg)
+>![ipv4](https://user-images.githubusercontent.com/112701413/201529215-3270728b-7754-47fd-86a6-da3c13b2c39e.jpg)
 
 
 ## Адресное пространство ipv4
