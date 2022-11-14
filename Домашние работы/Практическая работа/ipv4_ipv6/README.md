@@ -248,24 +248,25 @@
 | R13        | e0/2     | 2001:ABCD:EEBB:AAAA:5::2/80    | FE80::13   | to --> R15            |              | FE80:1::13 |
 |            | e0/3     | 2001:ABCD:EEBB:AAAA:3::2/80    | FE80::13   | to --> R14            |              |            |
 |            | e0/0.99  | 2001:ABCD:EEBB:AAAA:1111::1/80 | FE80::13   | to --> SW5 MGMT       |              |            |
+|            | E0/0.777 |                                |            | NATIVE                | 777          |            |
 | R20        | e0/0     | 2001:ABCD:EEBB:AAAA:6::2/80    | FE80::20   | to --> R15            |              | FE80:1::20 |
-| SW4        | vlan 99  | 2001:ABCD:EEBB:AAAA:1111::4/80 | FE80::4    |                       | 99 MGMT      | FE80:1::4  |
+| SW4        | vlan 99  | 2001:ABCD:EEBB:AAAA:1111::4/80 | FE80::4    | MGMT                  | 99           | FE80:1::4  |
 |            | e0/0     |                                |            | to --> SW5            | 10,20,99,777 |            |
 |            | e0/1     |                                |            | to --> SW2            | 10,20,99,777 |            |
 |            | e0/2     |                                |            | Port channel 1        | 10,20,99,777 |            |
 |            | e0/3     |                                |            | Port channel 1        | 10,20,99,777 |            |
 |            | e1/0     |                                |            | to --> R12            | 10,20,777    |            |
-| SW5        | vlan 99  | 2001:ABCD:EEBB:AAAA:1111::5/80 | FE80::5    |                       | 99 MGMT      | FE80:1::5  |
+| SW5        | vlan 99  | 2001:ABCD:EEBB:AAAA:1111::5/80 | FE80::5    | MGMT                  | 99           | FE80:1::5  |
 |            | e0/0     |                                |            | to --> SW2            | 10,20,99,777 |            |
 |            | e0/1     |                                |            | to --> SW3            | 10,20,99,777 |            |
 |            | e0/2     |                                |            | Port channel 1        | 10,20,99,777 |            |
 |            | e0/3     |                                |            | Port channel 1        | 10,20,99,777 |            |
 |            | e1/0     |                                |            | to --> R13            | 99,777       |            |
-| SW3        | vlan 99  | 2001:ABCD:EEBB:AAAA:1111::3/80 | FE80::5    |                       | 99 MGMT      | FE80:1::3  |
+| SW3        | vlan 99  | 2001:ABCD:EEBB:AAAA:1111::3/80 | FE80::5    | MGMT                  | 99           | FE80:1::3  |
 |            | e0/0     |                                |            | to --> SW4            | 10,20,99,777 |            |
 |            | e0/1     |                                |            | to --> SW5            | 10,20,99,777 |            |
 |            | e0/2     |                                |            | to --> VPC1           | 10           |            |
-| SW2        | vlan 99  | 2001:ABCD:EEBB:AAAA:1111::2/80 | FE80::2    |                       | 99 MGMT      | FE80:1::2  |
+| SW2        | vlan 99  | 2001:ABCD:EEBB:AAAA:1111::2/80 | FE80::2    | MGMT                  | 99           | FE80:1::2  |
 |            | e0/0     |                                |            | to --> SW5            | 10,20,99,777 |            |
 |            | e0/1     |                                |            | to --> SW4            | 10,20,99,777 |            |
 |            | e0/2     |                                |            | to --> VPC7           | 20           |            |
@@ -277,53 +278,61 @@
 
 #### ***Pool ipv6 адресов 2003:ABCD:EEBB:BBBB::0/64***
 
-| Hosts      | Ports    | Network IPv6                   |link-local|     Description       | vlan         | Loopback    |
-|:----------:|:--------:|:------------------------------:|:--------:|:---------------------:|:------------:|:-----------:|
-| R18        | e0/0     | 2003:ABCD:EEBB:BBBB:2::1/80    | FE80::18 | to --> R16            |              | FE80:1::18  |
-|            | e0/1     | 2003:ABCD:EEBB:BBBB:1::1/80    | FE80::18 | to --> R17            |              |             |
-|            | e0/2     | 2002:ABCD:EEBB:FFFF:A::2/80    | FE80::18 | to --> R24 Triada     |              |             |
-|            | e0/3     | 2002:ABCD:EEBB:FFFF:B::2/80    | FE80::18 | to --> R26 Triada     |              |             |
-| R17        | e0/1     | 2003:ABCD:EEBB:BBBB:1::2/80    | FE80::17 | to --> R18            |              | FE80:1::17  |
-|            | e0/0.10  | 2003:ABCD:EEBB:BBBB:1111::1/80 | FE80::17 | to --> SW9            |              |             |
-|            | e0/0.20  | 2003:ABCD:EEBB:BBBB:2222::1/80 | FE80::17 | to --> SW9            |              |             |
-| R16        | e0/1     | 2003:ABCD:EEBB:BBBB:2::2/80    | FE80::16 | to --> R18            |              | FE80:1::16  |
-|            | e0/3     | 2003:ABCD:EEBB:BBBB:3::1/80    | FE80::16 | to --> R32            |              |             |
-|            | e0/0.99  | 2003:ABCD:EEBB:BBBB:3333::1/80 | FE80::16 | to --> SW10 MGMT      |              |             |
-| R32        | e0/0     | 2003:ABCD:EEBB:BBBB:3::2/80    | FE80::32 | to --> R16            |              | FE80:1::32  |
-| SW9        | vlan 99  | 2003:ABCD:EEBB:BBBB:3333::9/80 | FE80::9  |                       | 99 MGMT      | FE80:1::9   |
-|            | e0/0     |                                |          | Port channel 1        | 10,20,99,777 |             |
-|            | e0/1     |                                |          | Port channel 1        | 10,20,99,777 |             |
-|            | e0/2     |                                |          | to --> VPC8           | 10           |             |
-|            | e1/0     |                                |          | to --> R17            | 10,20,777    |             |
-| SW10       | vlan 99  | 2003:ABCD:EEBB:BBBB:3333::10/80| FE80::10 |                       | 99 MGMT      | FE80:1::10  |
-|            | e0/0     |                                |          | Port channel 1        | 10,20,99,777 |             |
-|            | e0/1     |                                |          | Port channel 1        | 10,20,99,777 |             |
-|            | e0/2     |                      |             | to --> VPC            | 20           |             |
-|            | e0/3     |                      |             | to --> R16            | 99           |             |
-| VPC8       | eth0     | DHCP                 |             |                       | 10           |             |
-| VPC        | eth0     | DHCP                 |             |                       | 20           |             |
+| Hosts      | Ports    | Network IPv6                    |link-local|     Description       | vlan         | Loopback    |
+|:----------:|:--------:|:-------------------------------:|:--------:|:---------------------:|:------------:|:-----------:|
+| R18        | e0/0     | 2003:ABCD:EEBB:BBBB:2::1/80     | FE80::18 | to --> R16            |              | FE80:1::18  |
+|            | e0/1     | 2003:ABCD:EEBB:BBBB:1::1/80     | FE80::18 | to --> R17            |              |             |
+|            | e0/2     | 2002:ABCD:EEBB:FFFF:A::2/80     | FE80::18 | to --> R24 Triada     |              |             |
+|            | e0/3     | 2002:ABCD:EEBB:FFFF:B::2/80     | FE80::18 | to --> R26 Triada     |              |             |
+| R17        | e0/1     | 2003:ABCD:EEBB:BBBB:1::2/80     | FE80::17 | to --> R18            |              | FE80:1::17  |
+|            | e0/0.10  | 2003:ABCD:EEBB:BBBB:1111::1/80  | FE80::17 | to --> SW9            |              |             |
+|            | e0/0.20  | 2003:ABCD:EEBB:BBBB:2222::1/80  | FE80::17 | to --> SW9            |              |             |
+| R16        | e0/1     | 2003:ABCD:EEBB:BBBB:2::2/80     | FE80::16 | to --> R18            |              | FE80:1::16  |
+|            | e0/3     | 2003:ABCD:EEBB:BBBB:3::1/80     | FE80::16 | to --> R32            |              |             |
+|            | e0/0.99  | 2003:ABCD:EEBB:BBBB:3333::1/80  | FE80::16 | to --> SW10 MGMT      |              |             |
+|            | e0/0.777 |                                 |          | NATIVE                | 777          |             |
+| R32        | e0/0     | 2003:ABCD:EEBB:BBBB:3::2/80     | FE80::32 | to --> R16            |              | FE80:1::32  |
+| SW9        | vlan 99  | 2003:ABCD:EEBB:BBBB:3333::9/80  | FE80::9  | MGMT                  | 99           | FE80:1::9   |
+|            | e0/0     |                                 |          | Port channel 1        | 10,20,99,777 |             |
+|            | e0/1     |                                 |          | Port channel 1        | 10,20,99,777 |             |
+|            | e0/2     |                                 |          | to --> VPC8           | 10           |             |
+|            | e1/0     |                                 |          | to --> R17            | 10,20,777    |             |
+| SW10       | vlan 99  | 2003:ABCD:EEBB:BBBB:3333::10/80 | FE80::10 | MGMT                  | 99           | FE80:1::10  |
+|            | e0/0     |                                 |          | Port channel 1        | 10,20,99,777 |             |
+|            | e0/1     |                                 |          | Port channel 1        | 10,20,99,777 |             |
+|            | e0/2     |                                 |          | to --> VPC            | 20           |             |
+|            | e0/3     |                                 |          | to --> R16            | 99,777       |             |
+| VPC8       | eth0     | DHCP                            |          |                       | 10           |             |
+| VPC        | eth0     | DHCP                            |          |                       | 20           |             |
 
 
 ### Лабытнанги ipv6
 
-| Hosts      | Ports    | Network IPv6         | link-local  |     Description       | vlan         | Loopback    |
-|:----------:|:--------:|:--------------------:|:-----------:|:---------------------:|:------------:|:-----------:|
-| R27        | e0/0     | 2002:ABCD:0DB8:0::1  | FE80:5A::27 | to --> R25 Triada     |              | FE80:CC:27  |
+#### ***Pool ipv6 адресов 2002:ABCD:EEBB:AAAA::0/64***
+
+| Hosts      | Ports    | Network IPv6                | link-local |     Description       | vlan         | Loopback   |
+|:----------:|:--------:|:---------------------------:|:----------:|:---------------------:|:------------:|:----------:|
+| R27        | e0/0     | 2002:ABCD:EEBB:FFFF:3::2/80 | FE80::27   | to --> R25 Triada     |              | FE80:1:27  |
 
 
 ### Чокурдах ipv6
 
-| Hosts      | Ports    | Network IPv6           | link-local  |     Description       | vlan         | Loopback    |
-|:----------:|:--------:|:----------------------:|:-----------:|:---------------------:|:------------:|:-----------:|
-| R28        | e0/0     | 2002:ABCD:0DB8:1::3    | FE80:3A::28 | to --> 28 Triada      |              | FE80:DD::28 |
-|            | e0/1     | 2002:ABCD:0DB8:1::1    | FE80:4A::28 | to --> 28 Triada      |              |             |
-|            | e0/2.10  | 2002:ABCD:0DB8: 100::1 | FE80:13::28 | to --> SW29           |              |             |
-|            | e0/2.20  | 2002:ABCD:0DB8:200::1  | FE80:14::28 | to --> SW29           |              |             |
-|            | e0/2.99  | 2002:ABCD:0DB8:199::1  | FE80:DA::28 | to --> SW29 MGMT      |              |             |
-| SW29       | vlan 99  | 2002:ABCD:0DB8:199::29 | FE80:DA::29 |                       | 99 MGMT      | FE80:DD::29 |
-|            | e0/0     |                        |             | to --> VPC30          | 10           |             |
-|            | e0/1     |                        |             | to --> VPC31          | 20           |             |
-|            | e0/2     |                        |             | to --> R28            | 10,20,99     |             |
+#### ***Pool ipv6 адресов 2002:ABCD:EEBB:1234::0/64***
+
+| Hosts      | Ports    | Network IPv6                    |link-local|     Description       | vlan         | Loopback   |
+|:----------:|:--------:|:-------------------------------:|:--------:|:---------------------:|:------------:|:----------:|
+| R28        | e0/0     | 2002:ABCD:EEBB:FFFF:4::2/80     | FE80::28 | to --> 28 Triada      |              | FE80:1::28 |
+|            | e0/1     | 2002:ABCD:EEBB:FFFF:2::2/80     | FE80::28 | to --> 28 Triada      |              |            |
+|            | e0/2.10  | 2002:ABCD:EEBB:1234:2222::1/80  | FE80::28 | to --> SW29           |              |            |
+|            | e0/2.20  | 2002:ABCD:EEBB:1234:3333::1/80  | FE80::28 | to --> SW29           |              |            |
+|            | e0/2.99  | 2002:ABCD:EEBB:1234:1111::1/80  | FE80::28 | to --> SW29 MGMT      |              |            |
+|            | e0/2.777 |                                 |          | NATIVE                |              |            |
+| SW29       | vlan 99  | 2002:ABCD:EEBB:1234:1111::29/80 | FE80::29 | MGMT                  | 99           | FE80:1::29 |
+|            | e0/0     |                                 |          | to --> VPC30          | 10           |            |
+|            | e0/1     |                                 |          | to --> VPC31          | 20           |            |
+|            | e0/2     |                                 |          | to --> R28            | 10,20,99,777 |            |
+| VPC30      | eth0     | DHCP                            |          |                       | 10           |            |
+| VPC31      |          |                                 |          |                       | 20           |            |
 
 
 
