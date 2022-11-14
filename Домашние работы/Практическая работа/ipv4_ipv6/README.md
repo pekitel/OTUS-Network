@@ -230,15 +230,15 @@
 #### ***Pool ipv6 адресов 2001:ABCD:EEBB:AAAA::0/64***
 
 
-| Hosts      | Ports    | Network IPv6         | link-local  |     Description       | vlan         | Loopback    |
-|:----------:|:--------:|:--------------------:|:-----------:|:---------------------:|:------------:|:-----------:|
-| R14        | e0/0     | 2022:ABCD:0DB8:2::1  | FE80:2::14  | to --> R12            |              | FE80:AA::14 |
-|            | e0/1     | 2022:ABCD:0DB8:1::1  | FE80:3::14  | to --> R13            |              |             |
-|            | e0/2     | 2022:ABCD:0DB8:0::2  | FE80:A::14  | to --> R22 Kitorn     |              |             |
-|            | e0/3     | 2022:ABCD:0DB8:3::1  | FE80:1::14  | to --> R19            |              |             |
-| R15        | e0/0     | 2022:ABCD:0DB8:4::1  | FE80:5::15  | to --> R13            |              | FE80:AA::15 |
-|            | e0/1     | 2022:ABCD:0DB8:5::1  | FE80:3::15  | to --> R12            |              |             |
-|            | e0/2     | 2022:ABCD:0DB8:1::2  | FE80:A::15  | to --> R21 Lamas      |              |             |
+| Hosts      | Ports    | Network IPv6             | link-local |     Description       | vlan         | Loopback   |
+|:----------:|:--------:|:------------------------:|:----------:|:---------------------:|:------------:|:----------:|
+| R14        | e0/0     | 2001:ABCD:EEBB:AAAA:2::1 | FE80::14   | to --> R12            |              | FE80:1::14 |
+|            | e0/1     | 2001:ABCD:EEBB:AAAA:3::1 | FE80::14   | to --> R13            |              |            |
+|            | e0/2     | 2000:ABCD:FFBB:FFFF:1::2 | FE80::14   | to --> R22 Kitorn     |              |            |
+|            | e0/3     | 2001:ABCD:EEBB:AAAA:1::1 | FE80::14   | to --> R19            |              |            |
+| R15        | e0/0     | 2001:ABCD:EEBB:AAAA:5::1 | FE80::15   | to --> R13            |              | FE80:1::15 |
+|            | e0/1     | 2001:ABCD:EEBB:AAAA:4::1 | FE80::15   | to --> R12            |              |            |
+|            | e0/2     | 1999:ABCD:EEBB:FFFF  o --> R21 Lamas      |              |             |
 |            | e0/3     | 2022:ABCD:0DB8:7::1  | FE80:6::15  | to --> R20            |              |             |
 | R19        | e0/0     | 2022:ABCD:0DB8:3::2  | FE80:1::19  | to --> R14            |              | FE80:AA::19 |
 | R12        | e0/2     | 2022:ABCD:0DB8:2::2  | FE80:2::12  | to --> R14            |              | FE80:AA::12 |
