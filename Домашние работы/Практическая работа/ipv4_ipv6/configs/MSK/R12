@@ -2,8 +2,11 @@ en
 conf t
 hostname R12
 no ip domain-lookup
+ipv6 unicast-routing
 interface Loopback12
  ip address 77.37.144.12 255.255.255.255
+ ipv6 address fe80:1::12 link local
+ ipv6 enable
 exit
  interface Ethernet0/0
  no shutdown
@@ -13,21 +16,36 @@ interface Ethernet0/0.10
  encapsulation dot1Q 10
  ip address 77.37.145.1 255.255.255.128
  ip helper-address 77.37.144.37
+ ipv6 address FE80::12 link-local
+ ipv6 address 2001:ABCD:EEBB:AAAA:2222::1/80
+ ipv6 enable
+ ipv6 nd managed-config-flag
+ ipv6 dhcp relay destination  2001:ABCD:EEBB:AAAA:2::1
  exit
 interface Ethernet0/0.20
  description to --> VPC7
  encapsulation dot1Q 20
  ip address 77.37.145.129 255.255.255.128
  ip helper-address 77.37.144.37
+ ipv6 address FE80::12 link-local
+ ipv6 address 2001:ABCD:EEBB:AAAA:3333::1/80
+ ipv6 nd managed-config-flag
+ ipv6 dhcp relay destination  2001:ABCD:EEBB:AAAA:2::1
  exit
 interface Ethernet0/2
- ip address 77.37.144.38 255.255.255.252
- no shutdown
  description to --> R14
+ ip address 77.37.144.38 255.255.255.252
+ ipv6 address FE80::12 link-local
+ ipv6 address 2001:ABCD:EEBB:AAAA:2::2/80
+ ipv6 enable
+ no shutdown
  exit
 interface Ethernet0/3
- ip address 77.37.144.46 255.255.255.252
- no shutdown
  description to --> R15
+ ip address 77.37.144.46 255.255.255.252
+ ipv6 address FE80::12 link-local
+ ipv6 address 2001:ABCD:EEBB:AAAA:4::2/80
+ ipv6 enable
+ no shutdown
  exit
 do write
