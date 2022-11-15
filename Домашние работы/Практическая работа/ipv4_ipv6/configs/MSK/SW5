@@ -61,6 +61,9 @@ interface Ethernet1/0
  exit
 interface Vlan99
  ip address 77.37.144.131 255.255.255.128
+ ipv6 address FE80:1::5 link-local
+ ipv6 address 2001:ABCD:EEBB:AAAA:1111::5/80
+ ipv6 enable
  no shutdown
  exit
 ip default-gateway 77.37.144.129
