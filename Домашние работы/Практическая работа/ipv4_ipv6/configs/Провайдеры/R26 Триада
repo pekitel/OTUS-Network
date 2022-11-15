@@ -4,39 +4,39 @@ en
  ipv6 unicast-routing
  hostname R26
  interface Loopback 26
-  ip address 7.7.7.26 255.255.255.255
-  ipv6 address FE80:3F::26 link-local
+  ip address 109.72.255.26 255.255.255.255
+  ipv6 address FE80:1::26 link-local
   ipv6 enable
   exit
  interface Ethernet0/0
   description to --> R24
-  ip address 10.10.10.6 255.255.255.252
-  ipv6 address FE80:4B::26 link-local
-  ipv6 address 2ABC:ABCD:DB8:3::1/64
+  ip address 109.72.1.9 255.255.255.252 
+  ipv6 address FE80::26 link-local
+  ipv6 address 2002:ABCD:EEBB:FFFF:6::1/80
   ipv6 enable
   no shutdown
   exit
  interface Ethernet0/1
   description to --> R28
-  ip address 77.37.10.5 255.255.255.252
-  ipv6 address FE80:3A::26 link-local
-  ipv6 address 2002:ABCD:DB8:5::1/64
+  ip address 109.72.1.33 255.255.255.252
+  ipv6 address FE80::26 link-local
+  ipv6 address 2002:ABCD:EEBB:FFFF:4::1/80
   ipv6 enable
   no shutdown
   exit
  interface Ethernet0/2
   description to --> R25
-  ip address 10.10.10.14 255.255.255.252
-  ipv6 address FE80:3B::26 link-local
-  ipv6 address 2ABC:ABCD:DB8:2::2/64
+  ip address 109.72.1.6 255.255.255.252 
+  ipv6 address FE80::26 link-local
+  ipv6 address 2002:ABCD:EEBB:FFFF:5::1/80
   ipv6 enable
   no shutdown
   exit
  interface Ethernet0/3
   description to --> R18
-  ip address 109.72.20.1 255.255.255.252
-  ipv6 address FE80:4B::26 link-local
-  ipv6 address 2002:ABCD:DB8:1::1/64
+  ip address 109.72.1.41 255.255.255.252
+  ipv6 address FE80::26 link-local
+  ipv6 address 2002:ABCD:EEBB:FFFF:B::1/80
   ipv6 enable
   no shutdown
   exit
