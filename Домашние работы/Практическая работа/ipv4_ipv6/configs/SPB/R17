@@ -4,37 +4,39 @@ hostname R17
 no ip domain lookup
 ipv6 unicast-routing
 interface Loopback17
- ip address 2.2.2.17 255.255.255.255
- ipv6 address FE80:BB::17 link-local
+ ip address 33.72.66.18 255.255.255.255
+ ipv6 address FE80:1::17 link-local
  ipv6 enable
  exit
 interface Ethernet0/0
  no shutdown
 interface Ethernet0/0.10
+ description to --> VPC8
  encapsulation dot1Q 10
- ip address 20.200.10.1 255.255.255.0
- ip helper-address 172.16.1.1
- ipv6 address FE80:11::17 link-local
- ipv6 address 2002:ABCD:DB8:10::1/64
+ ip address 172.16.1.1 255.255.255.240
+ ip helper-address 33.72.66.1
+ ipv6 address FE80::17 link-local
+ ipv6 address 2003:ABCD:EEBB:BBBB:2222::1/80
  ipv6 enable
  ipv6 nd managed-config-flag
- ipv6 dhcp relay destination  2002:ABCD:DB8:2::1
+ ipv6 dhcp relay destination  2003:ABCD:EEBB:BBBB:1::1
  exit
 interface Ethernet0/0.20
+ description to --> VPC
  encapsulation dot1Q 20
- ip address 20.200.20.1 255.255.255.0
- ip helper-address 172.16.1.1
- ipv6 address FE80:12::17 link-local
- ipv6 address 2002:ABCD:DB8:20::1/64
+ ip address 172.16.1.17 255.255.255.240
+ ip helper-address 33.72.66.1
+ ipv6 address FE80::17 link-local
+ ipv6 address 2003:ABCD:EEBB:BBBB:3333::1/80
  ipv6 enable
  ipv6 nd managed-config-flag
- ipv6 dhcp relay destination  2002:ABCD:DB8:2::1
+ ipv6 dhcp relay destination  2003:ABCD:EEBB:BBBB:1::1
  exit
 interface Ethernet0/1
  description to --> R18
- ip address 172.16.1.2 255.255.255.0
- ipv6 address FE80:9::17 link-local
- ipv6 address 2002:ABCD:DB8:2::2/64
+ ip address 33.72.66.2 255.255.255.252
+ ipv6 address FE80::17 link-local
+ ipv6 address 2003:ABCD:EEBB:BBBB:1::2/80
  ipv6 enable
  no shutdown
  exit
