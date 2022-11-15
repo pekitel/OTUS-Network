@@ -3,32 +3,36 @@ conf t
 hostname R16
 no ip domain lookup
 interface Loopback16
- ip address 2.2.2.16 255.255.255.255
- ipv6 address FE80:BB::16 link-local
+ ip address 33.72.66.19 255.255.255.255
+ ipv6 address FE80:1::16 link-local
  ipv6 enable
  exit
 interface Ethernet0/0
  no shutdown
 interface Ethernet0/0.99
+ description MGMT
  encapsulation dot1Q 99
- ip address 1.1.20.1 255.255.255.0
- ipv6 address FE80:BA::16 link-local
- ipv6 address 2002:ABCD:DB8:99::1/64
- ipv6 enable
+ ip address 172.16.10.1 255.255.255.248
+ ipv6 address FE80::16 link-local
+ ipv6 address 2003:ABCD:EEBB:BBBB:1111::1/80
+ ipv6 enablee
+ exit
+interface Ethernet0/0.777
+ encapsulation dot1Q 777 native
  exit
 interface Ethernet0/1
  description to --> R18
- ip address 172.16.1.6 255.255.255.0
- ipv6 address FE80:10::16 link-local
- ipv6 address 2002:ABCD:DB8:3::2/64
+ ip address 33.72.66.6 255.255.255.252
+ ipv6 address FE80::16 link-local
+ ipv6 address 2003:ABCD:EEBB:BBBB:2::2/80
  ipv6 enable
  no shutdown
  exit
 interface Ethernet0/3
  description to --> R32
- ip address 172.16.1.9 255.255.255.0
- ipv6 address FE80:11::16 link-local
- ipv6 address 2002:ABCD:DB8:4::1/64
+ ip address 33.72.66.9 255.255.255.252
+ ipv6 address FE80::16 link-local
+ ipv6 address 2003:ABCD:EEBB:BBBB:3::1/80
  ipv6 enable
  no shutdown
  exit
