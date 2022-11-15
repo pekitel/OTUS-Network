@@ -2,8 +2,11 @@ en
 conf t
 hostname R13
 no ip domain-lookup
+ipv6 unicast-routing
 interface Loopback13
  ip address 77.37.144.13 255.255.255.255
+ ipv6 address FE80:1::13 link-local
+ ipv6 enable
 exit
  interface Ethernet0/0
  no shutdown
@@ -12,17 +15,27 @@ exit
 interface Ethernet0/0.99
  encapsulation dot1Q 99
  ip address 77.37.144.129 255.255.255.128
+ ipv6 address FE80::13 link-local
+ ipv6 address 2001:ABCD:EEBB:AAAA:1111::1/80
+ ipv6 enable
  exit
 interface Ethernet0/0.777
  encapsulation dot1Q 777 native
  exit
 interface Ethernet0/2
  ip address 77.37.144.50 255.255.255.252
+ ipv6 address FE80::13 link-local
+ ipv6 address 2001:ABCD:EEBB:AAAA:5::2/80
+ ipv6 enable
  no shutdown
  description to --> SW15
  exit
 interface Ethernet0/3
+ description to --> R14
  ip address 77.37.144.42 255.255.255.252
+ ipv6 address FE80::13 link-local
+ ipv6 address 2001:ABCD:EEBB:AAAA:3::2/80
+ ipv6 enable
  no shutdown
  description to --> SW14
  exit
