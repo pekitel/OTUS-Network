@@ -2,11 +2,16 @@ en
 conf t
 hostname R20
 no ip domain-lookup
+ipv6 unicast-routing
 interface Loopback 20
  ip address 77.37.144.20 255.255.255.255
+ ipv6 address FE80:1::20 link-local
+ ipv6 enable
  exit
 interface Ethernet0/0
  ip address 77.37.144.54 255.255.255.252
+ ipv6 address FE80::20 link-local
+ ipv6 address 2001:ABCD:EEBB:AAAA:6::2/80
  description to --> R15
  no shutdown
  exit
