@@ -1,23 +1,35 @@
 en
  conf t
  no ip domain lookup
+ ipv6 unicast-routing
  hostname R21
  interface Loopback21
   ip address 77.94.164.21 255.255.255.255
+  ipv6 address FE80:1::21 link-local
+  ipv6 enable
   exit
  interface Ethernet0/0
   description to --> R15
   ip address 77.94.165.1 255.255.255.252
+  ipv6 address FE80::21 link-local
+  ipv6 address 1999:ABCD:EEBB:FFFF:1::1/80
+  ipv6 enable
   no shutdown
   exit
 interface Ethernet0/1
  description to --> R22
  ip address 82.138.2.6 255.255.255.252
+ ipv6 address FE80::21 link-local
+ ipv6 address 2000:ABCD:EEBB:FFFF:2::2/80
+ ipv6 enable
  no shutdown
  exit
 interface Ethernet0/2
  description to --> R24
  ip address 109.72.1.22 255.255.255.252
+ ipv6 address FE80::21 link-local
+ ipv6 address 2000:ABCD:EEBB:FFFF:9::2/80
+ ipv6 enable
  no shutdown
  exit
 do wr
