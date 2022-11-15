@@ -4,7 +4,8 @@ en
  hostname SW29
  vlan 10
   vlan 20
-  vlan 30
+  vlan 99
+  vlan 777
   exit
  interface Ethernet0/0
   switchport access vlan 10
@@ -15,14 +16,17 @@ en
   switchport mode access
   exit
  interface Ethernet0/2
-  switchport trunk allowed vlan 10,20,99
+  switchport trunk allowed vlan 10,20,99,777
   switchport trunk encapsulation dot1q
   switchport mode trunk
   exit
  interface Vlan99
-  ip address 1.1.40.29 255.255.255.0
+  ip address 109.72.67.2 255.255.255.248
+  ipv6 address FE80::29 link-local
+  ipv6 address 2002:ABCD:EEBB:AAAA:1111::2/80
+  ipv6 enable
   no shutdown
   exit
- ip default-gateway 1.1.40.1
+ ip default-gateway 109.72.67.1
  exit
  do wr
