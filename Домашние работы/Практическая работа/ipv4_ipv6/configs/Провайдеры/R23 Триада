@@ -4,31 +4,32 @@ en
  ipv6 unicast-routing
  hostname R23
  interface Loopback 23
-  ip address 7.7.7.23 255.255.255.255
-  ipv6 address FE80:3F::23 link-local
+  ip address 109.72.255.23 255.255.255.255
+  ipv6 address FE80:1::23 link-local
   ipv6 enable
   exit
  interface Ethernet0/0
   description to --> R22
-  ip address 20.20.20.6 255.255.255.252
-  ipv6 address FE80:1B::23 link-local
-  ipv6 address 2ABC:ABCD:DB8::2/64
+  ip address 109.72.1.17 255.255.255.252
+  ipv6 address FE80::23 link-local
+  ipv6 address 2002:ABCD:EEBB:FFFF:8::1/80
   ipv6 enable
   no shutdown
   exit
  interface Ethernet0/1
   description to --> R25
-  ip address 10.10.10.9 255.255.255.252
-  ipv6 address FE80:2B::23 link-local
-  ipv6 address 2ABC:ABCD:DB8:1::1/64
+  description to --> R25
+  ip address 109.72.1.1 255.255.255.252 
+  ipv6 address FE80::23 link-local
+  ipv6 address 2002:ABCD:EEBB:FFFF:1::1/80
   ipv6 enable
   no shutdown
   exit
  interface Ethernet0/2
   description to --> R24
-  ip address 10.10.10.1 255.255.255.252
-  ipv6 address FE80:5B::23 link-local
-  ipv6 address 2ABC:ABCD:DB8:4::2/64
+  ip address 109.72.1.14 255.255.255.252 
+  ipv6 address FE80::23 link-local
+  ipv6 address 2002:ABCD:EEBB:FFFF:7::2/80
   ipv6 enable
   no shutdown
   exit
