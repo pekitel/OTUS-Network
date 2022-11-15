@@ -4,9 +4,15 @@ hostname R19
 no ip domain-lookup
 interface Loopback 19
  ip address 77.37.144.19 255.255.255.255
+ ipv6 address FE80:1::19 link-local
+ ipv6 address 2001:ABCD:EEBB:AAAA:19::19/80
+ ipv6 enable
  exit
 interface Ethernet0/0
  ip address 77.37.144.34 255.255.255.252
+ ipv6 address FE80::19 link-local
+ ipv6 address 2001:ABCD:EEBB:AAAA:1::2/80
+ ipv6 enable
  description to --> R14
  no shutdown
  exit
