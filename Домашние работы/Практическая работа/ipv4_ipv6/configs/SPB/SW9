@@ -26,6 +26,9 @@ en
   exit
  interface Vlan 99
   ip address 172.16.10.2 255.255.255.248
+  ipv6 address FE80::9 link-local
+  ipv6 address 2003:ABCD:EEBB:BBBB:1111::9/80
+  ipv6 enable
   no shutdown
   exit
  ip default-gateway 172.16.10.1
