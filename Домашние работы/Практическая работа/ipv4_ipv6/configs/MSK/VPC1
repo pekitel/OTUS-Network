@@ -1,13 +1,5 @@
 ip dhcp
  DORA IP 77.37.145.2/25 GW 77.37.145.1
-show ip
- NAME        : VPCS[1]
- IP/MASK     : 77.37.145.2/25
- GATEWAY     : 77.37.145.1
- DNS         : 8.8.8.8  
- DHCP SERVER : 77.37.144.37
- DHCP LEASE  : 86375, 86400/43200/75600
- MAC         : 00:50:79:66:68:01
- LPORT       : 20000
- RHOST:PORT  : 127.0.0.1:30000
-MTU         : 1500
+ip auto
+ GLOBAL SCOPE      : 2001:abcd:eebb:aaaa:2050:79ff:fe66:6801/80
+ ROUTER LINK-LAYER : 00:00:00:00:00:00
