@@ -4,43 +4,42 @@ en
  no ip domain lookup
  ipv6 unicast-routing
  ip dhcp pool VPC30
-  network 40.200.10.0 255.255.255.0
-  default-router 40.200.10.1 
+  network 109.72.67.16 255.255.255.248
   dns-server 8.8.8.8 
+  default-router 109.72.67.17  
   exit
  ip dhcp pool VPC31
-  network 40.200.20.0 255.255.255.0
-  default-router 40.200.20.1 
-  dns-server 8.8.8.8
+  network 109.72.67.24 255.255.255.248
+  dns-server 8.8.8.8 
+  default-router 109.72.67.25
   exit
  ipv6 dhcp pool VPC30
-  address prefix 2002:ABCD:DB8:100::1/64
-  dns-server 2002:ABCD:DB8:100::1
-  domain-name Chokurdah.ru
+  address prefix 2002:ABCD:EEBB:AAAA:2222::1/80
+  dns-server 2A02:6B8::FEED:FF
+  domain-name Chokurdah1.ru
   exit
  ipv6 dhcp pool VPC31
-  address prefix 2002:ABCD:DB8:200::1/64
-  dns-server 2002:ABCD:DB8:200::1
-  domain-name Chokurdah.ru
+  address prefix 2002:ABCD:EEBB:AAAA:3333::1/80
+  dns-server 2A02:6B8::FEED:FF
+  domain-name Chokurdah2.ru
   exit
  interface Loopback 28
-  ip address 4.4.4.28 255.255.255.255
-  ipv6 address FE80:DD::28 link-local
+  ipv6 address FE80:1::28 link-local
   ipv6 enable
   exit
  interface Ethernet0/0
   description to --> R26
-  ip address 77.37.10.6 255.255.255.252
-  ipv6 address FE80:3A::28 link-local
-  ipv6 address 2002:ABCD:DB8:5::2/64
+  ip address 109.72.1.34 255.255.255.252
+  ipv6 address FE80::28 link-local
+  ipv6 address 2002:ABCD:EEBB:FFFF:4::2/80
   ipv6 enable
   no shutdown
   exit
  interface Ethernet0/1
   description to --> R25
-  ip address 77.37.10.2 255.255.255.252
-  ipv6 address FE80:4A::28 link-local
-  ipv6 address 2002:ABCD:DB8:6::2/64
+  ip address 109.72.1.30 255.255.255.252
+  ipv6 address FE80::28 link-local
+  ipv6 address 2002:ABCD:EEBB:FFFF:2::2/80
   ipv6 enable
   no shutdown
   exit
@@ -49,21 +48,35 @@ en
   no shutdown
   exit
 interface Ethernet0/2.10
+ description VPC30
  encapsulation dot1Q 10
- ip address 40.200.10.1 255.255.255.0
- ipv6 address FE80:13::28 link-local
- ipv6 address 2002:ABCD:DB8:100::1/64
+ ip address 109.72.67.17 255.255.255.248
+ ipv6 address FE80::28 link-local
+ ipv6 address 2002:ABCD:EEBB:AAAA:2222::1/80
  ipv6 enable
+ ipv6 nd managed-config-flag
  exit
 interface Ethernet0/2.20
+ description VPC31
  encapsulation dot1Q 20
- ip address 40.200.20.1 255.255.255.0
+ ip address 109.72.67.25 255.255.255.248
+ ipv6 address FE80::28 link-local
+ ipv6 address 2002:ABCD:EEBB:AAAA:3333::1/80
+ ipv6 enable
+ ipv6 nd managed-config-flag
  exit
 interface Ethernet0/2.99
+ description MGMT
  encapsulation dot1Q 99
- ip address 1.1.40.1 255.255.255.0
- ipv6 address FE80:14::28 link-local
- ipv6 address 2002:ABCD:DB8:200::1/64
- ipv6 enable
+ ip address 109.72.67.1 255.255.255.240
+ ipv6 address FE80::28 link-local
+ ipv6 address 2002:ABCD:EEBB:AAAA:1111::1/80
  exit
+interface Ethernet0/2.777
+ description NATIVE
+ encapsulation dot1Q 777 native
+ip route 0.0.0.0 0.0.0.0 109.72.1.29
+ip route 0.0.0.0 0.0.0.0 109.72.1.33
+ipv6 route ::/0 2002:ABCD:EEBB:FFFF:4::1
+ipv6 route ::/0 2002:ABCD:EEBB:FFFF:2::1
 do wr
