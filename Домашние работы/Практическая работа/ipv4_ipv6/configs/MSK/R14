@@ -2,6 +2,7 @@ en
 conf t
 hostname R14
 no ip domain-lookup
+ipv6 unicast-routing
 ip dhcp pool VPC1
  network 77.37.145.0 255.255.255.128
  dns-server 8.8.8.8 
@@ -12,29 +13,54 @@ ip dhcp pool VPC7
  dns-server 8.8.8.8 
  default-router 77.37.145.129 
  exit
+ipv6 dhcp pool VPC1
+ address prefix 2001:ABCD:EEBB:AAAA:2222::1/80
+ dns-server 2A02:6B8::FEED:FF
+ domain-name msk1.ru
+ exit
+ipv6 dhcp pool VPC7
+ address prefix 2001:ABCD:EEBB:AAAA:3333::1/80
+ dns-server 2A02:6B8::FEED:FF
+ domain-name msk2.ru
+ exit
 interface Loopback14
  ip address 77.37.144.14 255.255.255.255
+ ipv6 address FE80:1::14 link-local
+ ipv6 enable
  exit
 interface Ethernet0/0
  ip address 77.37.144.37 255.255.255.252
+ ipv6 address FE80::14 link-local
+ ipv6 address 2001:ABCD:EEBB:AAAA:2::1/80
+ ipv6 enable
  description to --> R12
  no shutdown
  exit
 interface Ethernet0/1
  ip address 77.37.144.41 255.255.255.252
+ ipv6 address FE80::14 link-local
+ ipv6 address 2001:ABCD:EEBB:AAAA:3::1/80
+ ipv6 enable
  description to --> R13
  no shutdown
  exit
 interface Ethernet0/2
  ip address 82.138.2.2 255.255.255.252
+ ipv6 address FE80::14 link-local
+ ipv6 address 2000:ABCD:EEBB:FFFF:1::2/80
+ ipv6 enable
  description to --> R12
  no shutdown
  exit
 interface Ethernet0/3
  ip address 77.37.144.33 255.255.255.252
+ ipv6 address FE80::14 link-local
+ ipv6 address 2001:ABCD:EEBB:AAAA:1::1/80
+ ipv6 enable
  description to --> R19
  no shutdown
  exit
 ip route 0.0.0.0 0.0.0.0 82.138.2.1
 ip route 77.37.145.0 255.255.255.0 77.37.144.38
+ipv6 route ::/0 2000:ABCD:EEBB:FFFF:1::1
 do wr
