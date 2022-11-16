@@ -9,7 +9,7 @@ interface Loopback 19
  ipv6 enable
  exit
 interface Ethernet0/0
- ip address 77.37.144.34 255.255.255.252
+ ip address 10.10.1.2 255.255.255.252
  ipv6 address FE80::19 link-local
  ipv6 address 2001:ABCD:EEBB:AAAA:1::2/80
  ipv6 enable
