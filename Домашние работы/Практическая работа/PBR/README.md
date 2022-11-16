@@ -193,3 +193,6 @@ route-map VPC30, permit, sequence 10
     ip next-hop verify-availability 109.72.1.33 15 track 2  [up]
      ipv6 next-hop 2002:ABCD:EEBB:FFFF:2::1
   Policy routing matches: 0 packets, 0 bytes
+  ```
+  
+  #### Настройте для офиса Лабытнанги маршрут по-умолчанию
