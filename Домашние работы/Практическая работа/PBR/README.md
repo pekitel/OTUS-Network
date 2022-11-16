@@ -1,7 +1,7 @@
 # Задание
 
 1. [Настроите политику маршрутизации для сетей офиса](https://github.com/pekitel/OTUS-Network/blob/main/%D0%94%D0%BE%D0%BC%D0%B0%D1%88%D0%BD%D0%B8%D0%B5%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%8B/%D0%9F%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B0%D1%8F%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0/PBR/README.md#%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B0-%D0%BF%D0%BE%D0%BB%D0%B8%D1%82%D0%B8%D0%BA%D0%B8-%D0%BC%D0%B0%D1%80%D1%88%D1%80%D1%83%D1%82%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D0%B8-%D0%B4%D0%BB%D1%8F-%D1%81%D0%B5%D1%82%D0%B5%D0%B9-%D0%BE%D1%84%D0%B8%D1%81%D0%B0) 
-2. [Распределите трафик между двумя линками с провайдером]()
+2. [Распределите трафик между двумя линками с провайдером](https://github.com/pekitel/OTUS-Network/blob/main/%D0%94%D0%BE%D0%BC%D0%B0%D1%88%D0%BD%D0%B8%D0%B5%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%8B/%D0%9F%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B0%D1%8F%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0/PBR/README.md#%D1%80%D0%B0%D1%81%D0%BF%D1%80%D0%B5%D0%B4%D0%B5%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5-%D1%82%D1%80%D0%B0%D1%84%D0%B8%D0%BA%D0%B0-%D0%BC%D0%B5%D0%B6%D0%B4%D1%83-%D0%B4%D0%B2%D1%83%D0%BC%D1%8F-%D0%BB%D0%B8%D0%BD%D0%BA%D0%B0%D0%BC%D0%B8-%D1%81-%D0%BF%D1%80%D0%BE%D0%B2%D0%B0%D0%B9%D0%B4%D0%B5%D1%80%D0%BE%D0%BC)
 3. Настроите отслеживание линка через технологию IP SLA.(только для IPv4)
 4. Настройте для офиса Лабытнанги маршрут по-умолчанию.
 
@@ -121,3 +121,75 @@ Loopback26                 109.72.255.26   YES NVRAM  up                    up
 ```
 
 #### Распределение трафика между двумя линками с провайдером
+
+**R28**
+```
+ip route 0.0.0.0 0.0.0.0 109.72.1.29
+ip route 0.0.0.0 0.0.0.0 109.72.1.33
+ipv6 route ::/0 2002:ABCD:EEBB:FFFF:2::1
+ipv6 route ::/0 2002:ABCD:EEBB:FFFF:4::1
+
+ip access-list extended ACL1
+ permit ip host 172.16.2.2 any
+
+route-map VPC30 permit 10
+ match ip address ACL1
+ set ip next-hop 109.72.1.33
+ set ipv6 next-hop 2002:ABCD:EEBB:FFFF:4::1
+ 
+interface Ethernet0/2
+ ip policy route-map VPC30
+ ```
+ 
+ #### Настроите отслеживание линка через технологию IP SLA.(только для IPv4)
+ ```
+ip sla 1
+ icmp-echo 109.72.1.30 source-interface Ethernet0/1
+ frequency 5
+ip sla schedule 1 life forever start-time now
+ip sla 2
+ icmp-echo 109.72.1.34 source-interface Ethernet0/0
+ frequency 5
+ip sla schedule 2 life forever start-time now
+ip route 0.0.0.0 0.0.0.0 109.72.1.29 track 1
+ip route 0.0.0.0 0.0.0.0 109.72.1.33 track 2
+
+Поправим route-map чтобы была прорверка линка
+
+route-map VPC30 permit 10
+ match ip address ACL1
+ set ip next-hop verify-availability 109.72.1.29 10 track 1
+ set ip next-hop verify-availability 109.72.1.33 15 track 2
+ ```
+ Проверка Track и Route-map
+ ```
+R28#show track 1
+Track 1
+  IP SLA 1 reachability
+  Reachability is Up
+    2 changes, last change 1d23h
+  Latest operation return code: OK
+  Latest RTT (millisecs) 1
+  Tracked by:
+    Route Map 0
+    Static IP Routing 0
+R28#show track 2
+Track 2
+  IP SLA 2 reachability
+  Reachability is Up
+    2 changes, last change 1d23h
+  Latest operation return code: OK
+  Latest RTT (millisecs) 1
+  Tracked by:
+    Route Map 0
+    Static IP Routing 0
+    
+R28#show route-map 
+route-map VPC30, permit, sequence 10
+  Match clauses:
+    ip address (access-lists): ACL1 
+  Set clauses:
+    ip next-hop verify-availability 109.72.1.29 10 track 1  [up]
+    ip next-hop verify-availability 109.72.1.33 15 track 2  [up]
+     ipv6 next-hop 2002:ABCD:EEBB:FFFF:2::1
+  Policy routing matches: 0 packets, 0 bytes
