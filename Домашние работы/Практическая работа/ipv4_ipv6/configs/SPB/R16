@@ -3,7 +3,7 @@ conf t
 hostname R16
 no ip domain lookup
 interface Loopback16
- ip address 33.72.66.19 255.255.255.255
+ ip address 33.72.66.16 255.255.255.255
  ipv6 address FE80:1::16 link-local
  ipv6 enable
  exit
@@ -22,7 +22,7 @@ interface Ethernet0/0.777
  exit
 interface Ethernet0/1
  description to --> R18
- ip address 33.72.66.6 255.255.255.252
+ ip address 10.10.2.6 255.255.255.252
  ipv6 address FE80::16 link-local
  ipv6 address 2003:ABCD:EEBB:BBBB:2::2/80
  ipv6 enable
@@ -30,7 +30,7 @@ interface Ethernet0/1
  exit
 interface Ethernet0/3
  description to --> R32
- ip address 33.72.66.9 255.255.255.252
+ ip address 10.10.2.9 255.255.255.252
  ipv6 address FE80::16 link-local
  ipv6 address 2003:ABCD:EEBB:BBBB:3::1/80
  ipv6 enable
