@@ -48,8 +48,6 @@
 >![ipv4](https://user-images.githubusercontent.com/112701413/202220288-0cece127-f162-406a-9223-00cf811257a8.jpg)
 
 
-
-
 ## Адресное пространство ipv4
 
 
