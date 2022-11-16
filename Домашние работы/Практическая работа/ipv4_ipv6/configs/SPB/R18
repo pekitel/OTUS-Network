@@ -25,13 +25,13 @@ ipv6 dhcp pool VPC
 ip dhcp excluded-address 20.200.10.1
 ip dhcp excluded-address 20.200.20.1 
 interface Loopback18
- ip address 33.72.66.17 255.255.255.255
+ ip address 33.72.66.18 255.255.255.255
  ipv6 address FE80:1::18 link-local
  ipv6 enable
  exit
 interface Ethernet0/0
  description to --> R16
- ip address 33.72.66.5 255.255.255.252
+ ip address 10.10.2.5 255.255.255.252
  ipv6 address FE80::18 link-local
  ipv6 address 2003:ABCD:EEBB:BBBB:2::1/80
  ipv6 enable
@@ -39,7 +39,7 @@ interface Ethernet0/0
  exit
 interface Ethernet0/1
  description to --> R17
- ip address 33.72.66.1 255.255.255.252
+ ip address 10.10.2.1 255.255.255.252
  ipv6 address FE80::18 link-local
  ipv6 address 2003:ABCD:EEBB:BBBB:1::1/80
  ipv6 enable
@@ -47,7 +47,7 @@ interface Ethernet0/1
  exit
 interface Ethernet0/2
  description to --> R24
- ip address 33.72.66.38 255.255.255.252
+ ip address 109.72.1.38 255.255.255.252
  ipv6 address FE80::18 link-local
  ipv6 address 2002:ABCD:EEBB:FFFF:A::2/80
  ipv6 enable
@@ -55,7 +55,7 @@ interface Ethernet0/2
  exit
 interface Ethernet0/3
  description to --> R24
- ip address 33.72.66.38 255.255.255.252
+ ip address 109.72.1.42 255.255.255.252
  ipv6 address FE80::18 link-local
  ipv6 address 2002:ABCD:EEBB:FFFF:A::2/80
  ipv6 enable
