@@ -14,7 +14,7 @@ exit
  exit
 interface Ethernet0/0.99
  encapsulation dot1Q 99
- ip address 77.37.144.129 255.255.255.128
+ ip address 172.16.30.1 255.255.255.248
  ipv6 address FE80::13 link-local
  ipv6 address 2001:ABCD:EEBB:AAAA:1111::1/80
  ipv6 enable
@@ -23,7 +23,7 @@ interface Ethernet0/0.777
  encapsulation dot1Q 777 native
  exit
 interface Ethernet0/2
- ip address 77.37.144.50 255.255.255.252
+ ip address 10.10.1.18 255.255.255.252
  ipv6 address FE80::13 link-local
  ipv6 address 2001:ABCD:EEBB:AAAA:5::2/80
  ipv6 enable
@@ -32,7 +32,7 @@ interface Ethernet0/2
  exit
 interface Ethernet0/3
  description to --> R14
- ip address 77.37.144.42 255.255.255.252
+ ip address 10.10.1.10 255.255.255.252
  ipv6 address FE80::13 link-local
  ipv6 address 2001:ABCD:EEBB:AAAA:3::2/80
  ipv6 enable
