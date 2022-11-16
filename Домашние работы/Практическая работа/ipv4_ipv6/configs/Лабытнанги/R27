@@ -4,7 +4,7 @@ en
  no ip domain lookup
  ipv6 unicast-routing
  interface Loopback 27
-  ip address 109.72.68.1 255.255.255.252
+  ip address 109.72.68.27 255.255.255.0
   ipv6 address 2002:ABCD:EEBB:BBBB::1/64
   ipv6 address FE80:1::27 link-local
   ipv6 address 
