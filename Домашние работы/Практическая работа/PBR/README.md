@@ -7,7 +7,8 @@
 
 ## Схема сети
 
->![PBR](https://user-images.githubusercontent.com/112701413/202007855-9d8966fb-5fa7-4222-b336-f212bfac81a1.jpg)
+>![PBR_ipv4](https://user-images.githubusercontent.com/112701413/202274467-1f0527a8-042b-4b28-81fa-67309ef7fd17.jpg)
+
 
 
 
