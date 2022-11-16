@@ -4,14 +4,14 @@ en
  no ip domain lookup
  ipv6 unicast-routing
  ip dhcp pool VPC30
-  network 109.72.67.16 255.255.255.248
+  network 172.16.2.0 255.255.255.240
   dns-server 8.8.8.8 
-  default-router 109.72.67.17  
+  default-router 172.16.2.1  
   exit
  ip dhcp pool VPC31
-  network 109.72.67.24 255.255.255.248
+  network 172.16.2.16 255.255.255.240
   dns-server 8.8.8.8 
-  default-router 109.72.67.25
+  default-router 172.16.2.17
   exit
  ipv6 dhcp pool VPC30
   address prefix 2002:ABCD:EEBB:AAAA:2222::1/80
@@ -24,6 +24,7 @@ en
   domain-name Chokurdah2.ru
   exit
  interface Loopback 28
+  ip address 109.72.67.28 255.255.255.255
   ipv6 address FE80:1::28 link-local
   ipv6 enable
   exit
@@ -50,7 +51,7 @@ en
 interface Ethernet0/2.10
  description VPC30
  encapsulation dot1Q 10
- ip address 109.72.67.17 255.255.255.248
+ ip address 172.16.2.1 255.255.255.240
  ipv6 address FE80::28 link-local
  ipv6 address 2002:ABCD:EEBB:AAAA:2222::1/80
  ipv6 enable
@@ -59,7 +60,7 @@ interface Ethernet0/2.10
 interface Ethernet0/2.20
  description VPC31
  encapsulation dot1Q 20
- ip address 109.72.67.25 255.255.255.248
+ ip address 172.16.2.17 255.255.255.240
  ipv6 address FE80::28 link-local
  ipv6 address 2002:ABCD:EEBB:AAAA:3333::1/80
  ipv6 enable
@@ -68,7 +69,7 @@ interface Ethernet0/2.20
 interface Ethernet0/2.99
  description MGMT
  encapsulation dot1Q 99
- ip address 109.72.67.1 255.255.255.240
+ ip address 172.16.20.1 255.255.255.252
  ipv6 address FE80::28 link-local
  ipv6 address 2002:ABCD:EEBB:AAAA:1111::1/80
  exit
