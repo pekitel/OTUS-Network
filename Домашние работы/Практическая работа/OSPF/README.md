@@ -10,3 +10,4 @@
 
 ## Схема сети
 
+>![ospf](https://user-images.githubusercontent.com/112701413/202281749-3484c9fa-b71e-4a7a-a9ff-d4020f274b7a.jpg)
