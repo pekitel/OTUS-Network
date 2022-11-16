@@ -198,8 +198,8 @@ route-map VPC30, permit, sequence 10
   #### Настройте для офиса Лабытнанги маршрут по-умолчанию
   
 ```
-  R27#sh run | s rout
-ipv6 unicast-routing
-ip route 0.0.0.0 0.0.0.0 109.72.1.25
-ipv6 route ::/0 2002:ABCD:EEBB:FFFF:3::1
+R27#sh run | s rout
+ ipv6 unicast-routing
+ ip route 0.0.0.0 0.0.0.0 109.72.1.25
+ ipv6 route ::/0 2002:ABCD:EEBB:FFFF:3::1
 ```
