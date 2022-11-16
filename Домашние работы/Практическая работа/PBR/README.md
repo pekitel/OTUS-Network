@@ -16,27 +16,108 @@
 | R27       | e0/0    | 109.72.1.26/30   | 2002:ABCD:EEBB:FFFF:3::2/80    | R25(Triada)     | Лабытнанги |
 | R28       | e0/0    | 109.72.1.34/30   | 2002:ABCD:EEBB:FFFF:4::2/80    | R26(Triada)     | Чокурдах   |
 |           | e0/1    | 109.72.1.30/30   | 2002:ABCD:EEBB:FFFF:2::2/80    | R25(Triada)     |            |
-|           | e0/2.10 | 109.72.67.17/29  | 2002:ABCD:EEBB:AAAA:2222::1/80 | SW29(Chukordah) |            |
-|           | e0/2.20 | 109.72.67.25/29  | 2002:ABCD:EEBB:AAAA:3333::1/80 | SW29(Chukordah) |            |
-| VPC30     |         | 109.72.67.18/29  | 2002:ABCD:EEBB:AAAA:2222::2/80 |                 |            |
-| VPC31     |         | 109.72.67.26/29  | 2002:ABCD:EEBB:AAAA:3333::2/80 |                 |            |
+|           | e0/2.10 | 172.16.2.1/28    | 2002:ABCD:EEBB:AAAA:2222::1/80 | SW29(Chukordah) |            |
+|           | e0/2.20 | 172.16.2.17/28   | 2002:ABCD:EEBB:AAAA:3333::1/80 | SW29(Chukordah) |            |
+| VPC30     |         | 172.16.2.2/28    | 2002:ABCD:EEBB:AAAA:2222::2/80 |                 |            |
+| VPC31     |         | 1072.16.2.18/28  | 2002:ABCD:EEBB:AAAA:3333::2/80 |                 |            |
 
 
 #### Настройка политики маршрутизации для сетей офиса
 
-**R27**
-
->![27](https://user-images.githubusercontent.com/112701413/202009983-6c8974a0-c1de-4469-ac67-00a8d8442db9.jpg)
-
-
 **R28**
 
+```
+R28#show ipv6 int brief
+Ethernet0/0            [up/up]
+    FE80::28
+    2002:ABCD:EEBB:FFFF:4::2
+Ethernet0/1            [up/up]
+    FE80::28
+    2002:ABCD:EEBB:FFFF:2::2
+Ethernet0/2            [up/up]
+    unassigned
+Ethernet0/2.10         [up/up]
+    FE80::28
+    2002:ABCD:EEBB:AAAA:2222::1
+Ethernet0/2.20         [up/up]
+    FE80::28
+    2002:ABCD:EEBB:AAAA:3333::1
+Ethernet0/2.99         [up/up]
+    FE80::28
+    2002:ABCD:EEBB:AAAA:1111::1
+Ethernet0/2.777        [up/up]
+    unassigned
+```
+
+```
+R28#show ip int brief
+Interface                  IP-Address      OK? Method Status                Protocol
+Ethernet0/0                109.72.1.34     YES NVRAM  up                    up      
+Ethernet0/1                109.72.1.30     YES NVRAM  up                    up      
+Ethernet0/2.10             172.16.2.1      YES manual up                    up      
+Ethernet0/2.20             172.16.2.17     YES manual up                    up      
+Ethernet0/2.99             172.16.20.1     YES manual up                    up      
+Ethernet0/2.777            unassigned      YES unset  up                    up      
+Loopback28                 109.72.67.28    YES manual up                    up 
+```
 
 **R25**
+
+```
+R25#show ipv6 int brief 
+Ethernet0/0            [up/up]
+    FE80::25
+    2002:ABCD:EEBB:FFFF:1::2
+Ethernet0/1            [up/up]
+    FE80::25
+    2002:ABCD:EEBB:FFFF:3::1
+Ethernet0/2            [up/up]
+    FE80::25
+    2002:ABCD:EEBB:FFFF:5::2
+Ethernet0/3            [up/up]
+    FE80::25
+    2002:ABCD:EEBB:FFFF:2::1
+Loopback25             [up/up]
+    FE80:1::25
+```
+```
+R25#show ip int brief   
+Interface                  IP-Address      OK? Method Status                Protocol
+Ethernet0/0                109.72.1.2      YES NVRAM  up                    up      
+Ethernet0/1                109.72.1.25     YES NVRAM  up                    up      
+Ethernet0/2                109.72.1.5      YES NVRAM  up                    up      
+Ethernet0/3                109.72.1.29     YES NVRAM  up                    up      
+Loopback25                 109.72.255.25   YES NVRAM  up                    up      
+```
 
 
 **R26**
 
-
+```
+R26#show ipv6 int brief 
+Ethernet0/0            [up/up]
+    FE80::26
+    2002:ABCD:EEBB:FFFF:6::1
+Ethernet0/1            [up/up]
+    FE80::26
+    2002:ABCD:EEBB:FFFF:4::1
+Ethernet0/2            [up/up]
+    FE80::26
+    2002:ABCD:EEBB:FFFF:5::1
+Ethernet0/3            [up/up]
+    FE80::26
+    2002:ABCD:EEBB:FFFF:B::1
+Loopback26             [up/up]
+    FE80:1::26
+```
+```
+R26#show ip int brief   
+Interface                  IP-Address      OK? Method Status                Protocol
+Ethernet0/0                109.72.1.9      YES NVRAM  up                    up      
+Ethernet0/1                109.72.1.33     YES NVRAM  up                    up      
+Ethernet0/2                109.72.1.6      YES NVRAM  up                    up      
+Ethernet0/3                109.72.1.41     YES NVRAM  up                    up      
+Loopback26                 109.72.255.26   YES NVRAM  up                    up  
+```
 
 #### Распределение трафика между двумя линками с провайдером
