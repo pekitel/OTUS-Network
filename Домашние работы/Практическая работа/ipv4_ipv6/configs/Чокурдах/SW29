@@ -21,12 +21,12 @@ en
   switchport mode trunk
   exit
  interface Vlan99
-  ip address 109.72.67.2 255.255.255.248
+  ip address 172.16.20.2 255.255.255.252
   ipv6 address FE80::29 link-local
   ipv6 address 2002:ABCD:EEBB:AAAA:1111::2/80
   ipv6 enable
   no shutdown
   exit
- ip default-gateway 109.72.67.1
+ ip default-gateway 172.16.20.1
  exit
  do wr
