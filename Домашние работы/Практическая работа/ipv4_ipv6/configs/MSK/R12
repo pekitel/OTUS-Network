@@ -14,8 +14,8 @@ exit
 interface Ethernet0/0.10
  description to --> VPC1
  encapsulation dot1Q 10
- ip address 77.37.145.1 255.255.255.128
- ip helper-address 77.37.144.37
+ ip address 172.16.3.1 255.255.255.240
+ ip helper-address 10.10.1.5
  ipv6 address FE80::12 link-local
  ipv6 address 2001:ABCD:EEBB:AAAA:2222::1/80
  ipv6 enable
@@ -25,8 +25,8 @@ interface Ethernet0/0.10
 interface Ethernet0/0.20
  description to --> VPC7
  encapsulation dot1Q 20
- ip address 77.37.145.129 255.255.255.128
- ip helper-address 77.37.144.37
+ ip address 172.16.3.17 255.255.255.240
+ ip helper-address 10.10.1.5
  ipv6 address FE80::12 link-local
  ipv6 address 2001:ABCD:EEBB:AAAA:3333::1/80
  ipv6 nd managed-config-flag
@@ -34,7 +34,7 @@ interface Ethernet0/0.20
  exit
 interface Ethernet0/2
  description to --> R14
- ip address 77.37.144.38 255.255.255.252
+ ip address 10.10.1.6 255.255.255.252
  ipv6 address FE80::12 link-local
  ipv6 address 2001:ABCD:EEBB:AAAA:2::2/80
  ipv6 enable
@@ -42,7 +42,7 @@ interface Ethernet0/2
  exit
 interface Ethernet0/3
  description to --> R15
- ip address 77.37.144.46 255.255.255.252
+ ip address 10.10.1.14 255.255.255.252
  ipv6 address FE80::12 link-local
  ipv6 address 2001:ABCD:EEBB:AAAA:4::2/80
  ipv6 enable
