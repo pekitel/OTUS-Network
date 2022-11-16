@@ -9,7 +9,7 @@ interface Loopback15
  ipv6 enable
  exit
 interface Ethernet0/0
- ip address 77.37.144.49 255.255.255.252
+ ip address 10.10.1.17 255.255.255.252
  ipv6 address FE80::15 link-local
  ipv6 address 2001:ABCD:EEBB:AAAA:5::1/80
  ipv6 enable
@@ -17,7 +17,7 @@ interface Ethernet0/0
  no shutdown
  exit
 interface Ethernet0/1
- ip address 77.37.144.45 255.255.255.252
+ ip address 10.10.1.13 255.255.255.252
  ipv6 address FE80::15 link-local
  ipv6 address 2001:ABCD:EEBB:AAAA:4::1/80
  ipv6 enable
@@ -33,7 +33,7 @@ interface Ethernet0/2
  no shutdown
  exit
 interface Ethernet0/3
- ip address 77.37.144.53 255.255.255.252
+ ip address 10.10.1.21 255.255.255.252
  ipv6 address FE80::15 link-local
  ipv6 address 2001:ABCD:EEBB:AAAA:6::1/80
  ipv6 enable
