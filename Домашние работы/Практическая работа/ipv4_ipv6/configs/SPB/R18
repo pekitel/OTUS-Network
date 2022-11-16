@@ -63,7 +63,7 @@ interface Ethernet0/3
  exit
 ip route 0.0.0.0 0.0.0.0 109.72.1.37
 ip route 0.0.0.0 0.0.0.0 109.72.1.41
-ip route 172.16.1.0 255.255.255.128 33.72.66.2
+ip route 172.16.1.0 255.255.255.224 10.10.2.2
 ipv6 route ::/0 2002:ABCD:EEBB:FFFF:B::1
 ipv6 route ::/0 2002:ABCD:EEBB:FFFF:A::1
 ipv6 route 2003:ABCD:EEBB:BBBB:2222::1/80 2003:ABCD:EEBB:BBBB:1::2
