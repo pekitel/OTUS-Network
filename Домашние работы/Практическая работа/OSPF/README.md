@@ -79,3 +79,7 @@ ipv6 route ::/0 2000:ABCD:EEBB:FFFF:1::1
 ipv6 router ospf 1
  router-id 14.14.14.14
  default-information originate
+ ```
+ **R15**
+ ```
+ 
