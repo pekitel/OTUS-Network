@@ -17,7 +17,7 @@
 >![ospf](https://user-images.githubusercontent.com/112701413/202281749-3484c9fa-b71e-4a7a-a9ff-d4020f274b7a.jpg)
 
 
-Маршрутизаторы R14-R15 находятся в зоне 0 - backbone
+**1. Маршрутизаторы R14-R15 находятся в зоне 0 - backbone**
 
 **R14**
 
@@ -150,6 +150,9 @@ ipv6 prefix-list PL2 seq 5 deny 2001:ABCD:EEBB:AAAA:1::/80
 ipv6 prefix-list PL2 seq 10 permit ::/0 le 128
 ```
 
+**2. Маршрутизаторы R12-R13 находятся в зоне 10. Дополнительно к маршрутам должны получать маршрут по-умолчанию**
+
+**R12**
 
 ```
 interface Loopback12
@@ -235,3 +238,78 @@ no ip http secure-server
 !
 ipv6 router ospf 1
  router-id 12.12.12.12
+```
+
+**R13**
+
+```
+interface Loopback13
+ ip address 77.37.144.13 255.255.255.255
+ ipv6 address FE80:1::13 link-local
+ ipv6 ospf 1 area 10
+!
+interface Ethernet0/0
+ no ip address
+!
+interface Ethernet0/0.99
+ encapsulation dot1Q 99
+ ip address 172.16.30.1 255.255.255.248
+ ipv6 address FE80::13 link-local
+ ipv6 address 2001:ABCD:EEBB:AAAA:1111::1/80
+ ipv6 enable
+ ipv6 ospf 1 area 10
+!
+interface Ethernet0/0.777
+ encapsulation dot1Q 777 native
+!
+interface Ethernet0/1
+ no ip address
+ shutdown
+!
+interface Ethernet0/2
+ description to --> R15
+ ip address 10.10.1.18 255.255.255.252
+ ipv6 address FE80::13 link-local
+ ipv6 address 2001:ABCD:EEBB:AAAA:5::2/80
+ ipv6 enable
+ ipv6 ospf 1 area 0
+!
+interface Ethernet0/3
+ description to --> R14
+ ip address 10.10.1.10 255.255.255.252
+ ipv6 address FE80::13 link-local
+ ipv6 address 2001:ABCD:EEBB:AAAA:3::2/80
+ ipv6 enable
+ ipv6 ospf 1 area 0
+!
+interface Ethernet1/0
+ no ip address
+ shutdown
+!
+interface Ethernet1/1
+ no ip address
+ shutdown
+!
+interface Ethernet1/2
+ no ip address
+ shutdown
+!
+interface Ethernet1/3
+ no ip address
+ shutdown
+!
+router ospf 1
+ router-id 13.13.13.13
+ network 10.10.1.8 0.0.0.3 area 0
+ network 10.10.1.16 0.0.0.3 area 0
+ network 172.16.30.0 0.0.0.7 area 0
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+!
+ipv6 router ospf 1
+ router-id 13.13.13.13
+```
