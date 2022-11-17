@@ -10,7 +10,6 @@
 
 **4. Маршрутизатор R20 находится в зоне 102 и получает все маршруты, кроме маршрутов до сетей зоны 101**
 
-**5. План работы и изменения зафиксированы в документации**
 
 ### Схема сети
 
@@ -454,3 +453,121 @@ ipv6 router ospf 1
  router-id 19.19.19.19
  area 101 stub
 ```
+#### Проверим таблицу маршрутизации на R19
+
+```
+R19#show ip route ospf
+Codes: L - local, C - connected, S - static, R - RIP, M - mobile, B - BGP
+       D - EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF inter area
+       N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external type 2
+       E1 - OSPF external type 1, E2 - OSPF external type 2
+       i - IS-IS, su - IS-IS summary, L1 - IS-IS level-1, L2 - IS-IS level-2
+       ia - IS-IS inter area, * - candidate default, U - per-user static route
+       o - ODR, P - periodic downloaded static route, H - NHRP, l - LISP
+       a - application route
+       + - replicated route, % - next hop override
+
+Gateway of last resort is 10.10.1.1 to network 0.0.0.0
+
+O*IA  0.0.0.0/0 [110/11] via 10.10.1.1, 12:20:23, Ethernet0/0
+R19#show ipv6 route ospf
+IPv6 Routing Table - default - 6 entries
+Codes: C - Connected, L - Local, S - Static, U - Per-user Static route
+       B - BGP, HA - Home Agent, MR - Mobile Router, R - RIP
+       H - NHRP, I1 - ISIS L1, I2 - ISIS L2, IA - ISIS interarea
+       IS - ISIS summary, D - EIGRP, EX - EIGRP external, NM - NEMO
+       ND - ND Default, NDp - ND Prefix, DCE - Destination, NDr - Redirect
+       O - OSPF Intra, OI - OSPF Inter, OE1 - OSPF ext 1, OE2 - OSPF ext 2
+       ON1 - OSPF NSSA ext 1, ON2 - OSPF NSSA ext 2, la - LISP alt
+       lr - LISP site-registrations, ld - LISP dyn-eid, a - Application
+OI  ::/0 [110/11]
+     via FE80::14, Ethernet0/0
+```
+### Видем что маршрутизатор получает только маршрут по умолчанию
+
+**4. Маршрутизатор R20 находится в зоне 102 и получает все маршруты, кроме маршрутов до сетей зоны 101**
+
+```
+interface Loopback20
+ ip address 77.37.144.20 255.255.255.255
+ ipv6 address FE80:1::20 link-local
+ ipv6 enable
+ ipv6 ospf 1 area 102
+!
+interface Ethernet0/0
+ description to --> R15
+ ip address 10.10.1.22 255.255.255.252
+ ipv6 address FE80::20 link-local
+ ipv6 address 2001:ABCD:EEBB:AAAA:6::2/80
+ ipv6 ospf 1 area 102
+!
+router ospf 1
+ router-id 20.20.20.20
+ network 10.10.1.20 0.0.0.3 area 102
+ network 77.37.144.20 0.0.0.0 area 102
+!
+ipv6 router ospf 1
+ router-id 20.20.20.20
+```
+#### Проверим таблицу маршрутизации на R20
+
+```
+R20#show ip route ospf
+Codes: L - local, C - connected, S - static, R - RIP, M - mobile, B - BGP
+       D - EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF inter area
+       N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external type 2
+       E1 - OSPF external type 1, E2 - OSPF external type 2
+       i - IS-IS, su - IS-IS summary, L1 - IS-IS level-1, L2 - IS-IS level-2
+       ia - IS-IS inter area, * - candidate default, U - per-user static route
+       o - ODR, P - periodic downloaded static route, H - NHRP, l - LISP
+       a - application route
+       + - replicated route, % - next hop override
+
+Gateway of last resort is 10.10.1.21 to network 0.0.0.0
+
+O*E2  0.0.0.0/0 [110/1] via 10.10.1.21, 12:25:19, Ethernet0/0
+      10.0.0.0/8 is variably subnetted, 6 subnets, 2 masks
+O IA     10.10.1.4/30 [110/30] via 10.10.1.21, 12:25:19, Ethernet0/0
+O IA     10.10.1.8/30 [110/30] via 10.10.1.21, 12:25:19, Ethernet0/0
+O IA     10.10.1.12/30 [110/20] via 10.10.1.21, 12:25:19, Ethernet0/0
+O IA     10.10.1.16/30 [110/20] via 10.10.1.21, 12:25:19, Ethernet0/0
+      77.0.0.0/32 is subnetted, 5 subnets
+O IA     77.37.144.12 [110/21] via 10.10.1.21, 12:25:19, Ethernet0/0
+O IA     77.37.144.14 [110/31] via 10.10.1.21, 12:25:09, Ethernet0/0
+O IA     77.37.144.15 [110/11] via 10.10.1.21, 12:25:19, Ethernet0/0
+O IA     77.37.144.19 [110/41] via 10.10.1.21, 11:17:31, Ethernet0/0
+      172.16.0.0/16 is variably subnetted, 3 subnets, 2 masks
+O IA     172.16.3.0/28 [110/30] via 10.10.1.21, 12:25:19, Ethernet0/0
+O IA     172.16.3.16/28 [110/30] via 10.10.1.21, 12:25:19, Ethernet0/0
+O IA     172.16.30.0/29 [110/30] via 10.10.1.21, 12:25:19, Ethernet0/0
+R20#show ipv6 route ospf
+IPv6 Routing Table - default - 12 entries
+Codes: C - Connected, L - Local, S - Static, U - Per-user Static route
+       B - BGP, HA - Home Agent, MR - Mobile Router, R - RIP
+       H - NHRP, I1 - ISIS L1, I2 - ISIS L2, IA - ISIS interarea
+       IS - ISIS summary, D - EIGRP, EX - EIGRP external, NM - NEMO
+       ND - ND Default, NDp - ND Prefix, DCE - Destination, NDr - Redirect
+       O - OSPF Intra, OI - OSPF Inter, OE1 - OSPF ext 1, OE2 - OSPF ext 2
+       ON1 - OSPF NSSA ext 1, ON2 - OSPF NSSA ext 2, la - LISP alt
+       lr - LISP site-registrations, ld - LISP dyn-eid, a - Application
+OE2 ::/0 [110/1], tag 1
+     via FE80::15, Ethernet0/0
+OI  2001:ABCD:EEBB:AAAA:2::/80 [110/30]
+     via FE80::15, Ethernet0/0
+OI  2001:ABCD:EEBB:AAAA:3::/80 [110/30]
+     via FE80::15, Ethernet0/0
+OI  2001:ABCD:EEBB:AAAA:4::/80 [110/20]
+     via FE80::15, Ethernet0/0
+OI  2001:ABCD:EEBB:AAAA:5::/80 [110/20]
+     via FE80::15, Ethernet0/0
+OI  2001:ABCD:EEBB:AAAA:19::19/128 [110/40]
+     via FE80::15, Ethernet0/0
+OI  2001:ABCD:EEBB:AAAA:1111::/80 [110/30]
+     via FE80::15, Ethernet0/0
+OI  2001:ABCD:EEBB:AAAA:2222::/80 [110/30]
+     via FE80::15, Ethernet0/0
+OI  2001:ABCD:EEBB:AAAA:3333::/80 [110/30]
+     via FE80::15, Ethernet0/0
+```
+
+### Видем что маршрутизатор получает все маршруты кроме маршрута до AREA 101
