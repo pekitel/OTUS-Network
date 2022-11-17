@@ -82,4 +82,156 @@ ipv6 router ospf 1
  ```
  **R15**
  ```
- 
+ interface Loopback15
+ ip address 77.37.144.15 255.255.255.255
+ ipv6 address FE80:1::15 link-local
+ ipv6 enable
+ ipv6 ospf 1 area 0
+!
+interface Ethernet0/0
+ description to --> R13
+ ip address 10.10.1.17 255.255.255.252
+ ipv6 address FE80::15 link-local
+ ipv6 address 2001:ABCD:EEBB:AAAA:5::1/80
+ ipv6 enable
+ ipv6 ospf 1 area 0
+!
+interface Ethernet0/1
+ description to --> R12
+ ip address 10.10.1.13 255.255.255.252
+ ipv6 address FE80::15 link-local
+ ipv6 address 2001:ABCD:EEBB:AAAA:4::1/80
+ ipv6 enable
+ ipv6 ospf 1 area 0
+!
+interface Ethernet0/2
+ description to --> R21
+ ip address 77.94.165.2 255.255.255.252
+ ipv6 address FE80::15 link-local
+ ipv6 address 1999:ABCD:EEBB:FFFF:1::2/80
+ ipv6 enable
+!
+interface Ethernet0/3
+ description to --> R20
+ ip address 10.10.1.21 255.255.255.252
+ ipv6 address FE80::15 link-local
+ ipv6 address 2001:ABCD:EEBB:AAAA:6::1/80
+ ipv6 enable
+ ipv6 ospf 1 area 102
+!
+router ospf 1
+ router-id 15.15.15.15
+ network 10.10.1.12 0.0.0.3 area 0
+ network 10.10.1.16 0.0.0.3 area 0
+ network 10.10.1.20 0.0.0.3 area 102
+ network 77.37.144.12 0.0.0.3 area 0
+ default-information originate
+ distribute-list prefix PL1 in
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+ip route 0.0.0.0 0.0.0.0 77.94.165.1
+!
+!
+ip prefix-list PL1 seq 5 deny 10.10.1.0/30
+ip prefix-list PL1 seq 10 permit 0.0.0.0/0 le 32
+ipv6 route ::/0 1999:ABCD:EEBB:FFFF:1::1
+ipv6 router ospf 1
+ router-id 15.15.15.15
+ distribute-list prefix-list PL2 in
+ default-information originate
+!
+!
+!
+ipv6 prefix-list PL2 seq 5 deny 2001:ABCD:EEBB:AAAA:1::/80
+ipv6 prefix-list PL2 seq 10 permit ::/0 le 128
+```
+
+
+```
+interface Loopback12
+ ip address 77.37.144.12 255.255.255.255
+ ipv6 address FE80:1::12 link-local
+ ipv6 enable
+ ipv6 ospf 1 area 10
+!
+interface Ethernet0/0
+ no ip address
+!
+interface Ethernet0/0.10
+ description to --> VPC1
+ encapsulation dot1Q 10
+ ip address 172.16.3.1 255.255.255.240
+ ip helper-address 10.10.1.5
+ ipv6 address FE80::12 link-local
+ ipv6 address 2001:ABCD:EEBB:AAAA:2222::1/80
+ ipv6 enable
+ ipv6 nd managed-config-flag
+ ipv6 dhcp relay destination  2001:ABCD:EEBB:AAAA:2::1
+ ipv6 ospf 1 area 10
+!
+interface Ethernet0/0.20
+ description to --> VPC7
+ encapsulation dot1Q 20
+ ip address 172.16.3.17 255.255.255.240
+ ip helper-address 10.10.1.5
+ ipv6 address FE80::12 link-local
+ ipv6 address 2001:ABCD:EEBB:AAAA:3333::1/80
+ ipv6 nd managed-config-flag
+ ipv6 dhcp relay destination  2001:ABCD:EEBB:AAAA:2::1
+ ipv6 ospf 1 area 10
+!
+interface Ethernet0/1
+ no ip address
+ shutdown
+!
+interface Ethernet0/2
+ description to --> R14
+ ip address 10.10.1.6 255.255.255.252
+ ipv6 address FE80::12 link-local
+ ipv6 address 2001:ABCD:EEBB:AAAA:2::2/80
+ ipv6 enable
+ ipv6 ospf 1 area 0
+!
+interface Ethernet0/3
+ description to --> R15
+ ip address 10.10.1.14 255.255.255.252
+ ipv6 address FE80::12 link-local
+ ipv6 address 2001:ABCD:EEBB:AAAA:4::2/80
+ ipv6 enable
+ ipv6 ospf 1 area 0
+!
+interface Ethernet1/0
+ no ip address
+ shutdown
+!
+interface Ethernet1/1
+ no ip address
+ shutdown
+!
+interface Ethernet1/2
+ no ip address
+ shutdown
+!
+interface Ethernet1/3
+ no ip address
+ shutdown
+!
+router ospf 1
+ router-id 12.12.12.12
+ network 10.10.1.4 0.0.0.3 area 0
+ network 10.10.1.12 0.0.0.3 area 0
+ network 77.37.144.12 0.0.0.0 area 10
+ network 172.16.3.0 0.0.0.31 area 10
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+!
+ipv6 router ospf 1
+ router-id 12.12.12.12
