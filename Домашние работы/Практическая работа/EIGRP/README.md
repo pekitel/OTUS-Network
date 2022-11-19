@@ -94,4 +94,46 @@ ipv6 route ::/0 2002:ABCD:EEBB:FFFF:A::1
 ipv6 route ::/0 2002:ABCD:EEBB:FFFF:B::1
 ```
 
+**Посмотрим список маршрутов**
+
+```
+R18#show ip route eigrp 
+Codes: L - local, C - connected, S - static, R - RIP, M - mobile, B - BGP
+       D - EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF inter area 
+       N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external type 2
+       E1 - OSPF external type 1, E2 - OSPF external type 2
+       i - IS-IS, su - IS-IS summary, L1 - IS-IS level-1, L2 - IS-IS level-2
+       ia - IS-IS inter area, * - candidate default, U - per-user static route
+       o - ODR, P - periodic downloaded static route, H - NHRP, l - LISP
+       a - application route
+       + - replicated route, % - next hop override
+
+Gateway of last resort is 109.72.1.41 to network 0.0.0.0
+
+      10.0.0.0/8 is variably subnetted, 5 subnets, 2 masks
+D        10.10.2.8/30 [90/1536000] via 10.10.2.6, 01:47:53, Ethernet0/0
+      33.0.0.0/32 is subnetted, 3 subnets
+D        33.72.66.16 [90/1024640] via 10.10.2.6, 00:33:17, Ethernet0/0
+D        33.72.66.17 [90/1024640] via 10.10.2.2, 00:36:19, Ethernet0/1
+      172.16.0.0/16 is variably subnetted, 2 subnets, 2 masks
+D        172.16.1.0/27 [90/1536000] via 10.10.2.2, 01:35:14, Ethernet0/1
+D        172.16.10.0/29 [90/1536000] via 10.10.2.6, 01:47:53, Ethernet0/0
+R18#show ipv6 route eigrp 
+IPv6 Routing Table - default - 13 entries
+Codes: C - Connected, L - Local, S - Static, U - Per-user Static route
+       B - BGP, HA - Home Agent, MR - Mobile Router, R - RIP
+       H - NHRP, I1 - ISIS L1, I2 - ISIS L2, IA - ISIS interarea
+       IS - ISIS summary, D - EIGRP, EX - EIGRP external, NM - NEMO
+       ND - ND Default, NDp - ND Prefix, DCE - Destination, NDr - Redirect
+       O - OSPF Intra, OI - OSPF Inter, OE1 - OSPF ext 1, OE2 - OSPF ext 2
+       ON1 - OSPF NSSA ext 1, ON2 - OSPF NSSA ext 2, la - LISP alt
+       lr - LISP site-registrations, ld - LISP dyn-eid, a - Application
+D   2003:ABCD:EEBB:BBBB::/64 [90/1536000]
+     via FE80::17, Ethernet0/1
+D   2003:ABCD:EEBB:BBBB:3::/80 [90/1536000]
+     via FE80::16, Ethernet0/0
+D   2003:ABCD:EEBB:BBBB:1111::/80 [90/1536000]
+     via FE80::16, Ethernet0/0
+```
+
 ## R17
