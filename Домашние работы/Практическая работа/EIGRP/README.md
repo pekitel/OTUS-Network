@@ -4,7 +4,8 @@
 
 ## Схема сети
 
->
+>![EIGRP](https://user-images.githubusercontent.com/112701413/202894391-791a2c53-f0b0-4cfb-9026-35af0d7c36bf.jpg)
+
 
 ## R18
 
