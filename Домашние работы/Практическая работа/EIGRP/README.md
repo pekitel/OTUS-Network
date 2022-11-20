@@ -1,7 +1,10 @@
 # Задание
 ### Настроить EIGRP в С.-Петербург; Использовать named *EIGRP* для *IPv4* и *IPv6*
 
-
+[R18](https://github.com/pekitel/OTUS-Network/blob/main/%D0%94%D0%BE%D0%BC%D0%B0%D1%88%D0%BD%D0%B8%D0%B5%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%8B/%D0%9F%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B0%D1%8F%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0/EIGRP/README.md#r18)
+[R17](https://github.com/pekitel/OTUS-Network/blob/main/%D0%94%D0%BE%D0%BC%D0%B0%D1%88%D0%BD%D0%B8%D0%B5%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%8B/%D0%9F%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B0%D1%8F%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0/EIGRP/README.md#r17)
+[R16]()
+[R32]()
 ## Схема сети
 
 >![EIGRP](https://user-images.githubusercontent.com/112701413/202894391-791a2c53-f0b0-4cfb-9026-35af0d7c36bf.jpg)
