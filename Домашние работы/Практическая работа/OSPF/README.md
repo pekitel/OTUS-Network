@@ -13,7 +13,8 @@
 
 ### Схема сети
 
->![ospf](https://user-images.githubusercontent.com/112701413/202281749-3484c9fa-b71e-4a7a-a9ff-d4020f274b7a.jpg)
+>![OSPF](https://user-images.githubusercontent.com/112701413/204143557-0a544dfd-3f3e-481e-8fc8-53ec58c0f11d.jpg)
+
 
 **Таблица ip адресов**
 | Hosts      | Ports    | Network IPv4    | Network IPv6                   | link-local |    Description    | Loopback ipv4 | Loopback ipv6 |
