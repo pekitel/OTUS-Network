@@ -82,3 +82,26 @@ Neighbor        V           AS MsgRcvd MsgSent   TblVer  InQ OutQ Up/Down  State
 
 **R22**
 
+```
+R22>en
+R22#conf t
+R22(config)#router bgp 101
+R22(config-router)#bgp router-id 22.22.22.22
+R22(config-router)#network 82.138.2.0 mask 255.255.255.252
+R22(config-router)#network 82.138.2.4 mask 255.255.255.252
+R22(config-router)#network 109.72.1.16 mask 255.255.255.252
+R22(config-router)#neighbor 82.138.2.2 remote-as 1001
+R22(config-router)#neighbor 82.138.2.6 remote-as 301
+R22(config-router)#neighbor 109.72.1.17 remote-as 520
+
+R22#sh ip bgp summary
+
+Neighbor        V           AS MsgRcvd MsgSent   TblVer  InQ OutQ Up/Down  State/PfxRcd
+82.138.2.2      4         1001       8      13       20    0    0 00:01:15        6
+82.138.2.6      4          301      16      13       20    0    0 00:01:15       15
+109.72.1.17     4          520      12      13       20    0    0 00:01:15        9
+```
+
+
+
+
