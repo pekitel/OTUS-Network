@@ -10,8 +10,8 @@
 
 ![eBGP](https://user-images.githubusercontent.com/112701413/205439534-ae532414-9a12-4c0b-8c62-d4ee2009c3b8.jpg)
 
-### ***1) Настроите eBGP между офисом Москва и двумя провайдерами - Киторн и Ламас*** 
-### ***2) Настроите eBGP между провайдерами Киторн и Ламас*** 
+### ***Настроите eBGP между офисом Москва и двумя провайдерами - Киторн и Ламас*** 
+### ***Настроите eBGP между провайдерами Киторн и Ламас*** 
 
 **R14**
 
@@ -101,7 +101,7 @@ Neighbor        V           AS MsgRcvd MsgSent   TblVer  InQ OutQ Up/Down  State
 109.72.1.17     4          520      11      12       15    0    0 00:02:30        4
 ```
 
-### ***3) Настроите eBGP между Ламас и Триада (Ну и в Триаде настроим iBGP)*** 
+### ***Настроите eBGP между Ламас и Триада (Ну и в Триаде настроим iBGP)*** 
 
 **R23**
 
@@ -227,3 +227,31 @@ Neighbor        V           AS MsgRcvd MsgSent   TblVer  InQ OutQ Up/Down  State
 109.72.255.24   4          520     178     171       29    0    0 02:28:54       12
 109.72.255.25   4          520      93      98       29    0    0 01:21:48        2
 ```
+
+### ***Настроите eBGP между офисом С.-Петербург и провайдером Триада***
+
+**R18**
+
+```
+```
+R18>en
+R18#conf t
+R18(config)#router bgp 2042
+R18(config-router)#bgp router-id 18.18.18.18
+R18(config-router)#network 33.72.66.16 mask 255.255.255.255
+R18(config-router)#network 33.72.66.17 mask 255.255.255.255
+R18(config-router)#network 33.72.66.18 mask 255.255.255.255
+R18(config-router)#network 33.72.66.32 mask 255.255.255.255
+R18(config-router)#network 109.72.1.36 mask 255.255.255.252
+R18(config-router)#network 109.72.1.40 mask 255.255.255.252
+R18(config-router)#neighbor 109.72.1.37 remote-as 520
+R18(config-router)#neighbor 109.72.1.41 remote-as 520
+
+R18#sh ip bgp summary
+
+Neighbor        V           AS MsgRcvd MsgSent   TblVer  InQ OutQ Up/Down  State/PfxRcd
+109.72.1.37     4          520     113     113       28    0    0 01:28:21       14
+109.72.1.41     4          520     111     112       28    0    0 01:28:08       14
+```
+
+### ***Организуете IP доступность между пограничным роутерами офисами Москва и С.-Петербург***
