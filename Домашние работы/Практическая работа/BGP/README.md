@@ -233,7 +233,6 @@ Neighbor        V           AS MsgRcvd MsgSent   TblVer  InQ OutQ Up/Down  State
 **R18**
 
 ```
-```
 R18>en
 R18#conf t
 R18(config)#router bgp 2042
@@ -255,3 +254,82 @@ Neighbor        V           AS MsgRcvd MsgSent   TblVer  InQ OutQ Up/Down  State
 ```
 
 ### ***Организуете IP доступность между пограничным роутерами офисами Москва и С.-Петербург***
+
+**R14**
+
+```
+R14#ping 33.72.66.18
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 33.72.66.18, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 1/1/1 ms
+```
+```
+R14#ping 109.72.1.38
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 109.72.1.38, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 1/1/1 ms
+```
+```
+R14#ping 109.72.1.42
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 109.72.1.42, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 1/1/2 ms
+```
+
+**R15**
+
+```
+R15#ping 33.72.66.18
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 33.72.66.18, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 1/1/2 ms
+```
+```
+R15#ping 109.72.1.38
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 109.72.1.38, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 1/1/1 ms
+```
+```
+R15#ping 109.72.1.42
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 109.72.1.42, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 1/1/2 ms
+```
+
+**R18**
+
+```
+R18#ping 77.37.144.14
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 77.37.144.14, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 1/1/2 ms
+```
+```
+R18#ping 82.138.2.2
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 82.138.2.2, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 1/1/2 ms
+```
+```
+R18#ping 77.37.144.15
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 77.37.144.15, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 1/1/1 ms
+```
+```
+R18#ping 77.94.165.2
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 77.94.165.2, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 1/1/2 ms
+```
