@@ -54,6 +54,7 @@ R15#show ip bgp summary
 
 Neighbor        V           AS MsgRcvd MsgSent   TblVer  InQ OutQ Up/Down  State/PfxRcd
 77.94.165.1     4          301     230     218       39    0    0 03:12:17        1
+```
 
 **R21**
 
