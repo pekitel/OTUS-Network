@@ -26,14 +26,13 @@ R14(config-router)#network 77.37.144.15 mask 255.255.255.255
 R14(config-router)#network 77.37.144.19 mask 255.255.255.255
 R14(config-router)#network 77.37.144.20 mask 255.255.255.255
 R14(config-router)#network 82.138.2.0 mask 255.255.255.252
-R14(config-router)#neighbor 10.10.1.26 remote-as 1001
 R14(config-router)#neighbor 82.138.2.1 remote-as 101
+
 
 R14#show ip bgp summary
 
 Neighbor        V           AS MsgRcvd MsgSent   TblVer  InQ OutQ Up/Down  State/PfxRcd
-10.10.1.26      4         1001    1397    1407       74    0    0 20:53:26       18
-82.138.2.1      4          101    1434    1434       74    0    0 21:22:39       15
+82.138.2.1      4          101     162     159       17    0    0 02:20:10       11
 
 ```
 
@@ -51,15 +50,12 @@ R15(config-router)#network 77.37.144.15 mask 255.255.255.255
 R15(config-router)#network 77.37.144.19 mask 255.255.255.255
 R15(config-router)#network 77.37.144.20 mask 255.255.255.255
 R15(config-router)#network 77.94.165.0 mask 255.255.255.252
-R15(config-router)#neighbor 10.10.1.25 remote-as 1001
 R15(config-router)#neighbor 77.94.165.1 remote-as 301
 
-R15#sh ip bgp summary
+R15#show ip bgp summary
 
 Neighbor        V           AS MsgRcvd MsgSent   TblVer  InQ OutQ Up/Down  State/PfxRcd
-10.10.1.25      4         1001    1416    1406       53    0    0 21:01:32       18
-77.94.165.1     4          301    1409    1400       53    0    0 21:04:17       15
-
+77.94.165.1     4          301     168     163       17    0    0 02:22:13       11
 ```
 
 **R21**
@@ -79,7 +75,10 @@ R21(config-router)#neighbor 109.72.1.21 remote-as 520
 R21#show ip bgp summary
 
 Neighbor        V           AS MsgRcvd MsgSent   TblVer  InQ OutQ Up/Down  State/PfxRcd
-77.94.165.2     4         1001    1408    1417      120    0    0 21:10:52        9
-82.138.2.5      4          101    1452    1449      120    0    0 21:43:46       19
-109.72.1.21     4          520    1452    1455      120    0    0 21:42:22       12
+77.94.165.2     4         1001     165     169       17    0    0 02:23:48        6
+82.138.2.5      4          101     168     169       17    0    0 02:23:48       15
+109.72.1.21     4          520     167     170       17    0    0 02:23:45        9
 ```
+
+**R22**
+
