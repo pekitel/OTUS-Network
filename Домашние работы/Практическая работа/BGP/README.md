@@ -88,6 +88,6 @@ Neighbor        V           AS MsgRcvd MsgSent   TblVer  InQ OutQ Up/Down  State
 82.138.2.2      4         1001      27      43       30    0    0 00:18:36        6
 ```
 
-
+### ***2) Настроите eBGP между провайдерами Киторн и Ламас*** 
 
 
