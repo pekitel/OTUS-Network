@@ -90,4 +90,36 @@ Neighbor        V           AS MsgRcvd MsgSent   TblVer  InQ OutQ Up/Down  State
 
 ### ***2) Настроите eBGP между провайдерами Киторн и Ламас*** 
 
+**R22**
 
+```
+R22>en
+R22#conf t
+R22(config)#router bgp 101
+R22(config-router)#neighbor 82.138.2.6 remote-as 301
+R22(config-router)#network 82.138.2.4 mask 255.255.255.252
+
+R22#sh ip bgp summary
+
+Neighbor        V           AS MsgRcvd MsgSent   TblVer  InQ OutQ Up/Down  State/PfxRcd
+82.138.2.2      4         1001      72      89       34    0    0 00:59:43        6
+82.138.2.6      4          301      15      15       34    0    0 00:03:38        7
+```
+
+**R21**
+
+```
+R21>en
+R21#conf t
+R21(config)#router bgp 301
+R21(config-router)#neighbor 82.138.2.5 remote-as 101
+R21(config-router)#network 82.138.2.4 mask 255.255.255.252
+
+R21#sh ip bgp summary
+
+Neighbor        V           AS MsgRcvd MsgSent   TblVer  InQ OutQ Up/Down  State/PfxRcd
+77.94.165.2     4         1001     235     248       45    0    0 03:27:41        6
+82.138.2.5      4          101      17      18       45    0    0 00:05:28        7
+```
+
+### ***3) Настроите eBGP между Ламас и Триада*** 
