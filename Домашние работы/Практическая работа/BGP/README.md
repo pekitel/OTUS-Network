@@ -11,6 +11,7 @@
 ![eBGP](https://user-images.githubusercontent.com/112701413/205439534-ae532414-9a12-4c0b-8c62-d4ee2009c3b8.jpg)
 
 ### ***1) Настроите eBGP между офисом Москва и двумя провайдерами - Киторн и Ламас*** 
+### ***2) Настроите eBGP между провайдерами Киторн и Ламас*** 
 
 **R14**
 
@@ -27,7 +28,7 @@ R14(config-router)#network 77.37.144.19 mask 255.255.255.255
 R14(config-router)#network 77.37.144.20 mask 255.255.255.255
 R14(config-router)#network 82.138.2.0 mask 255.255.255.252
 R14(config-router)#neighbor 82.138.2.1 remote-as 101
-R14(config-router)#end
+
 R14#show ip bgp summary
 
 Neighbor        V           AS MsgRcvd MsgSent   TblVer  InQ OutQ Up/Down  State/PfxRcd
@@ -100,7 +101,129 @@ Neighbor        V           AS MsgRcvd MsgSent   TblVer  InQ OutQ Up/Down  State
 109.72.1.17     4          520      11      12       15    0    0 00:02:30        4
 ```
 
-### ***2) Настроите eBGP между провайдерами Киторн и Ламас*** 
-### ***3) Настроите eBGP между Ламас и Триада*** 
+### ***3) Настроите eBGP между Ламас и Триада (Ну и в Триаде настроим iBGP)*** 
 
+**R23**
 
+```
+R23>en
+R23#conf t
+R23(config)#router bgp 520
+R23(config-router)#bgp router-id 23.23.23.23
+R23(config-router)#network 109.72.1.16 mask 255.255.255.252
+R23(config-router)#neighbor 109.72.1.18 remote-as 101
+R23(config-router)#neighbor 109.72.255.24 remote-as 520
+R23(config-router)#neighbor 109.72.255.24 update-source Loopback23
+R23(config-router)#neighbor 109.72.255.24 next-hop-self
+R23(config-router)#neighbor 109.72.255.24 soft-reconfiguration inbound
+R23(config-router)#neighbor 109.72.255.25 remote-as 520
+R23(config-router)#neighbor 109.72.255.25 update-source Loopback23
+R23(config-router)#neighbor 109.72.255.25 next-hop-self
+R23(config-router)#neighbor 109.72.255.25 soft-reconfiguration inbound
+R23(config-router)#neighbor 109.72.255.26 remote-as 520
+R23(config-router)#neighbor 109.72.255.26 update-source Loopback23
+R23(config-router)#neighbor 109.72.255.26 next-hop-self
+R23(config-router)#neighbor 109.72.255.26 soft-reconfiguration inbound
+
+R23#show ip bgp summary
+
+Neighbor        V           AS MsgRcvd MsgSent   TblVer  InQ OutQ Up/Down  State/PfxRcd
+109.72.1.18     4          101      30      22       15    0    0 00:13:49       10
+109.72.255.24   4          520      26      21       15    0    0 00:13:49        9
+109.72.255.25   4          520      21      21       15    0    0 00:13:49        2
+109.72.255.26   4          520      22      21       15    0    0 00:13:49        2
+```
+
+**R24**
+
+```
+R24>en
+R24#conf t
+R24(config)#router bgp 520
+R24(config-router)#bgp router-id 24.24.24.24
+R24(config-router)#network 109.72.1.20 mask 255.255.255.252
+R24(config-router)#neighbor 109.72.1.22 remote-as 301
+R24(config-router)#neighbor 109.72.255.23 remote-as 520
+R24(config-router)#neighbor 109.72.255.23 update-source Loopback24
+R24(config-router)#neighbor 109.72.255.23 next-hop-self
+R24(config-router)#neighbor 109.72.255.23 soft-reconfiguration inbound
+R24(config-router)#neighbor 109.72.255.25 remote-as 520
+R24(config-router)#neighbor 109.72.255.25 update-source Loopback24
+R24(config-router)#neighbor 109.72.255.25 next-hop-self
+R24(config-router)#neighbor 109.72.255.25 soft-reconfiguration inbound
+R24(config-router)#neighbor 109.72.255.26 remote-as 520
+R24(config-router)#neighbor 109.72.255.26 update-source Loopback24
+R24(config-router)#neighbor 109.72.255.26 next-hop-self
+R24(config-router)#neighbor 109.72.255.26 soft-reconfiguration inbound
+R24(config-router)#neighbor 109.72.1.38 remote-as 2042
+R24(config-router)#network 109.72.1.36 mask 255.255.255.252
+
+R24#show ip bgp summary
+
+Neighbor        V           AS MsgRcvd MsgSent   TblVer  InQ OutQ Up/Down  State/PfxRcd
+109.72.1.22     4          301     166     170       27    0    0 02:19:35       10
+109.72.1.38     4         2042      67      67       27    0    0 00:47:36        5
+109.72.255.23   4          520      42      48       27    0    0 00:32:21        8
+109.72.255.25   4          520      83      91       27    0    0 01:12:38        2
+109.72.255.26   4          520     160     168       27    0    0 02:19:38        5
+```
+
+**R25**
+
+```
+R25>en
+R25#conf t
+R25(config)#router bgp 520
+R25(config-router)#bgp router-id 25.25.25.25
+R25(config-router)#redistribute static
+R25(config-router)#neighbor 109.72.255.23 remote-as 520
+R25(config-router)#neighbor 109.72.255.23 update-source Loopback25
+R25(config-router)#neighbor 109.72.255.23 next-hop-self
+R25(config-router)#neighbor 109.72.255.23 soft-reconfiguration inbound
+R25(config-router)#neighbor 109.72.255.24 remote-as 520
+R25(config-router)#neighbor 109.72.255.24 update-source Loopback25
+R25(config-router)#neighbor 109.72.255.24 next-hop-self
+R25(config-router)#neighbor 109.72.255.24 soft-reconfiguration inbound
+R25(config-router)#neighbor 109.72.255.26 remote-as 520
+R25(config-router)#neighbor 109.72.255.26 update-source Loopback25
+R25(config-router)#neighbor 109.72.255.26 next-hop-self
+R25(config-router)#neighbor 109.72.255.26 soft-reconfiguration inbound
+
+R25#show ip bgp summary
+
+Neighbor        V           AS MsgRcvd MsgSent   TblVer  InQ OutQ Up/Down  State/PfxRcd
+109.72.255.23   4          520      44      42       38    0    0 00:33:59        8
+109.72.255.24   4          520      93      85       38    0    0 01:14:17       12
+109.72.255.26   4          520      89      85       38    0    0 01:14:11        5
+```
+
+**26**
+
+```
+R26>en
+R26#conf t
+R26(config)#router bgp 520
+R26(config-router)#bgp router-id 26.26.26.26
+R26(config-router)#network 109.72.1.40 mask 255.255.255.252
+R26(config-router)#neighbor 109.72.1.42 remote-as 2042
+R26(config-router)#neighbor 109.72.255.23 remote-as 520
+R26(config-router)#neighbor 109.72.255.23 update-source Loopback26
+R26(config-router)#neighbor 109.72.255.23 next-hop-self
+R26(config-router)#neighbor 109.72.255.23 soft-reconfiguration inbound
+R26(config-router)#neighbor 109.72.255.24 remote-as 520
+R26(config-router)#neighbor 109.72.255.24 update-source Loopback26
+R26(config-router)#neighbor 109.72.255.24 next-hop-self
+R26(config-router)#neighbor 109.72.255.24 soft-reconfiguration inbound
+R26(config-router)#neighbor 109.72.255.25 remote-as 520
+R26(config-router)#neighbor 109.72.255.25 update-source Loopback26
+R26(config-router)#neighbor 109.72.255.25 next-hop-self
+R26(config-router)#neighbor 109.72.255.25 soft-reconfiguration inbound
+
+R26#show ip bgp summary
+
+Neighbor        V           AS MsgRcvd MsgSent   TblVer  InQ OutQ Up/Down  State/PfxRcd
+109.72.1.42     4         2042      76      76       29    0    0 00:56:38        5
+109.72.255.23   4          520      51      54       29    0    0 00:41:36        8
+109.72.255.24   4          520     178     171       29    0    0 02:28:54       12
+109.72.255.25   4          520      93      98       29    0    0 01:21:48        2
+```
