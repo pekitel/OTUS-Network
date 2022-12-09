@@ -93,7 +93,6 @@ R23>en
 R23#conf t
 R23(config)#router bgp 520
 R23(config-router)#bgp router-id 23.23.23.23
-R23(config-router)#network 109.72.1.16 mask 255.255.255.252
 R23(config-router)#neighbor 109.72.1.18 remote-as 101
 R23(config-router)#neighbor 109.72.255.24 remote-as 520
 R23(config-router)#neighbor 109.72.255.24 update-source Loopback23
@@ -124,7 +123,6 @@ R24>en
 R24#conf t
 R24(config)#router bgp 520
 R24(config-router)#bgp router-id 24.24.24.24
-R24(config-router)#network 109.72.1.20 mask 255.255.255.252
 R24(config-router)#neighbor 109.72.1.22 remote-as 301
 R24(config-router)#neighbor 109.72.255.23 remote-as 520
 R24(config-router)#neighbor 109.72.255.23 update-source Loopback24
@@ -139,7 +137,6 @@ R24(config-router)#neighbor 109.72.255.26 update-source Loopback24
 R24(config-router)#neighbor 109.72.255.26 next-hop-self
 R24(config-router)#neighbor 109.72.255.26 soft-reconfiguration inbound
 R24(config-router)#neighbor 109.72.1.38 remote-as 2042
-R24(config-router)#network 109.72.1.36 mask 255.255.255.252
 
 R24#show ip bgp summary
 
@@ -187,7 +184,7 @@ R26>en
 R26#conf t
 R26(config)#router bgp 520
 R26(config-router)#bgp router-id 26.26.26.26
-R26(config-router)#network 109.72.1.40 mask 255.255.255.252
+R26(config-router)#redistribute static
 R26(config-router)#neighbor 109.72.1.42 remote-as 2042
 R26(config-router)#neighbor 109.72.255.23 remote-as 520
 R26(config-router)#neighbor 109.72.255.23 update-source Loopback26
