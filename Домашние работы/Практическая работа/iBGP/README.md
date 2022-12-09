@@ -7,58 +7,76 @@
 #### Все сети в лабораторной работе должны иметь IP связность.
 
 ## Схема сети
-![iBGP](https://user-images.githubusercontent.com/112701413/206242319-ddac228f-cd39-4130-838b-684ac47aff77.jpg)
+
+![eBGP](https://user-images.githubusercontent.com/112701413/206730008-42eb3ac3-a97a-4c56-908a-99039386a45f.jpg)
 
 
 ### Настроите iBGP в офисом Москва между маршрутизаторами R14 и R15
-### Настройте офиса Москва так, чтобы приоритетным провайдером стал Ламас
 
 **R14**
 ```
 R14>en
 R14#conf t
 R14(config)#router bgp 1001
-R14(config-router)#neighbor 77.37.144.15 remote-as 1001
-R14(config-router)#neighbor 77.37.144.15 update-source loopback 14
-R14(config-router)#neighbor 77.37.144.15 next-hop-self
-R14(config-router)#network 10.10.1.24 mask 255.255.255.252
+R14(config-router)#neighbor 77.37.144.254 remote-as 1001
+R14(config-router)#network 77.37.144.252 mask 255.255.255.252
 ````
 **R15**
 ```
 R15>en
 R15#conf t
-R15(config)#route-map ROOT permit 10
+R15(config)#router bgp 1001
+R15(config-router)#neighbor 77.37.144.253 remote-as 1001
+R15(config-router)#network 77.37.144.252 mask 255.255.255.252
+```
+#### Настройте офиса Москва так, чтобы приоритетным провайдером стал Ламас
+```
+R15>en
+R15#conf t
+R15(config)#route-map LP permit 10
 R15(config-route-map)#set local-preference 200
 R15(config-route-map)#exit
 R15(config)#router bgp 1001
-R15(config-router)#neighbor 77.37.144.14 remote-as 1001
-R15(config-router)#neighbor 77.37.144.14 update-source loopback 15
-R15(config-router)#neighbor 77.37.144.14 next-hop-self
-R15(config-router)#network 10.10.1.24 mask 255.255.255.252
-R15(config-router)#neighbor 77.37.144.14 route-map ROOT out
+R15(config-router)#neighbor 77.37.144.253 route-map LP out
 ```
 #### **Проверим как ходит трафик**
 **R15**
 ```
-R15#traceroute 33.72.66.18
+R15#traceroute 109.72.1.38           
 Type escape sequence to abort.
-Tracing the route to 33.72.66.18
+Tracing the route to 109.72.1.38
 VRF info: (vrf in name/id, vrf out name/id)
-  1 77.94.165.1 1 msec 1 msec 0 msec
-  2 109.72.1.21 [AS 301] 1 msec 1 msec 1 msec
-  3 109.72.1.38 [AS 520] 1 msec *  1 msec
+  1 77.94.165.1 1 msec 0 msec 0 msec
+  2 109.72.1.21 1 msec 0 msec 1 msec
+  3 109.72.1.38 [AS 2042] 1 msec *  1 msec
 ```
 **R14**
 ```
-R14#traceroute 33.72.66.18
+R14#traceroute 109.72.1.38
 Type escape sequence to abort.
-Tracing the route to 33.72.66.18
+Tracing the route to 109.72.1.38
 VRF info: (vrf in name/id, vrf out name/id)
-  1 10.10.1.26 0 msec 0 msec 1 msec
-  2 77.94.165.1 0 msec 1 msec 0 msec
-  3 109.72.1.21 [AS 301] 1 msec 1 msec 1 msec
-  4 109.72.1.38 [AS 520] 1 msec *  2 msec
+  1 77.37.144.254 1 msec 0 msec 0 msec
+  2 77.94.165.1 1 msec 0 msec 1 msec
+  3 109.72.1.21 1 msec 0 msec 1 msec
+  4 109.72.1.38 [AS 2042] 1 msec *  2 msec
 ```
+```
+R14#show ip bgp 77.37.144.252/30
+BGP routing table entry for 77.37.144.252/30, version 2
+Paths: (2 available, best #2, table default)
+  Advertised to update-groups:
+     1          2         
+  Refresh Epoch 1
+  Local
+    77.37.144.254 from 77.37.144.254 (15.15.15.15)
+      Origin IGP, metric 0, localpref 200, valid, internal
+  Refresh Epoch 1
+  Local
+    0.0.0.0 from 0.0.0.0 (14.14.14.14)
+      Origin IGP, metric 0, localpref 100, weight 32768, valid, sourced, local, best
+```
+Видим что localpref поменялся с 100 на 200 и маршрут через R15 стал приоритетным
 
 #### Настроите iBGP в провайдере Триада, с использованием RR
 **R24**
@@ -72,6 +90,7 @@ R24(config)#no router bgp 520
 R24(config-router)#neighbor RR-CLIENTS peer-group
 R24(config-router)#neighbor RR-CLIENTS remote-as 520
 R24(config-router)#neighbor RR-CLIENTS update-source loopback 24
+R24(config-router)#neighbor RR-CLIENTS route-reflector-client
 R24(config-router)#neighbor RR-CLIENTS soft-reconfiguration inbound
 R24(config-router)#neighbor 109.72.255.23 peer-group RR-CLIENTS
 R24(config-router)#neighbor 109.72.255.25 peer-group RR-CLIENTS
