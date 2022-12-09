@@ -126,3 +126,44 @@ R26(config-router)#neighbor 109.72.255.24 next-hop-self
 R26(config-router)#neighbor 109.72.255.24 soft-reconfiguration inbound
 R26(config-router)#redistribute static
 ```
+#### Настройте офиса С.-Петербург так, чтобы трафик до любого офиса распределялся по двум линкам одновременно.
+**R18**
+```
+R18>en
+R18#conf t
+R18(config)#router bgp 2042
+R18(config-router)#maximum-paths 2
+```
+***Проверим***
+```
+R18#traceroute 109.72.68.27
+Type escape sequence to abort.
+Tracing the route to 109.72.68.27
+VRF info: (vrf in name/id, vrf out name/id)
+  1 109.72.1.41 1 msec
+    109.72.1.37 0 msec
+    109.72.1.41 0 msec
+  2 109.72.1.9 0 msec
+    109.72.1.5 1 msec
+    109.72.1.9 0 msec
+  3 109.72.1.26 1 msec
+    109.72.1.5 1 msec *
+```
+```
+R18#traceroute 82.138.2.2
+Type escape sequence to abort.
+Tracing the route to 82.138.2.2
+VRF info: (vrf in name/id, vrf out name/id)
+  1 109.72.1.37 1 msec
+    109.72.1.41 0 msec
+    109.72.1.37 0 msec
+  2 109.72.1.10 1 msec
+    109.72.1.22 0 msec
+    109.72.1.10 1 msec
+  3 77.94.165.2 [AS 1001] 1 msec
+    109.72.1.22 0 msec
+    77.94.165.2 [AS 1001] 1 msec
+  4 77.94.165.2 [AS 1001] 1 msec
+    77.37.144.253 [AS 1001] 2 msec
+    77.94.165.2 [AS 1001] 0 msec
+```
