@@ -8,7 +8,8 @@
 
 ## Карта сети
 
-![eBGP](https://user-images.githubusercontent.com/112701413/205439534-ae532414-9a12-4c0b-8c62-d4ee2009c3b8.jpg)
+![eBGP](https://user-images.githubusercontent.com/112701413/206729861-52e52891-6fe1-41f1-ae40-3c513aca7772.jpg)
+
 
 ### ***Настроите eBGP между офисом Москва и двумя провайдерами - Киторн и Ламас*** 
 ### ***Настроите eBGP между провайдерами Киторн и Ламас*** 
