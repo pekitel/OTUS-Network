@@ -76,17 +76,14 @@ Paths: (2 available, best #2, table default)
     0.0.0.0 from 0.0.0.0 (14.14.14.14)
       Origin IGP, metric 0, localpref 100, weight 32768, valid, sourced, local, best
 ```
-Видим что localpref поменялся с 100 на 200 и маршрут через R15 стал приоритетным
+***"Видим что localpref поменялся с 100 на 200 и маршрут через R15 стал приоритетным"***
 
 #### Настроите iBGP в провайдере Триада, с использованием RR
 **R24**
 ```
 R24>en
 R24#conf t
-R24(config)#no ro
-R24(config)#no router
-R24(config)#no router b
-R24(config)#no router bgp 520
+R24(config)#router bgp 520
 R24(config-router)#neighbor RR-CLIENTS peer-group
 R24(config-router)#neighbor RR-CLIENTS remote-as 520
 R24(config-router)#neighbor RR-CLIENTS update-source loopback 24
@@ -97,4 +94,35 @@ R24(config-router)#neighbor 109.72.255.25 peer-group RR-CLIENTS
 R24(config-router)#neighbor 109.72.255.26 peer-group RR-CLIENTS
 ```
 **R23**
+```
+R23>en
+R23#conf t
+R23(config)#router bgp 520
+R23(config-router)#neighbor 109.72.1.18 remote-as 101
+R23(config-router)#neighbor 109.72.255.24 remote-as 520
+R23(config-router)#neighbor 109.72.255.24 update-source Loopback23
+R23(config-router)#neighbor 109.72.255.24 next-hop-self
+R24(config-router)#neighbor 109.72.255.24 soft-reconfiguration inbound
+```
+**R25**
+```
+R25>en
+R25#conf t
+R25(config)#router bgp 520
+R25(config-router)#neighbor 109.72.255.24 remote-as 520
+R25(config-router)#neighbor 109.72.255.24 update-source Loopback25
+R25(config-router)#neighbor 109.72.255.24 next-hop-self
+R25(config-router)#neighbor 109.72.255.24 soft-reconfiguration inbound
+R25(config-router)#redistribute static
+```
+**R26**
+```
+R26>en
+R26#conf t
+R26(config)#router bgp 520
+R26(config-router)#neighbor 109.72.255.24 remote-as 520
+R26(config-router)#neighbor 109.72.255.24 update-source Loopback26
+R26(config-router)#neighbor 109.72.255.24 next-hop-self
+R26(config-router)#neighbor 109.72.255.24 soft-reconfiguration inbound
+R26(config-router)#redistribute static
 ```
