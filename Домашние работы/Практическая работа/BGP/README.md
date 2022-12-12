@@ -227,19 +227,39 @@ R18>en
 R18#conf t
 R18(config)#router bgp 2042
 R18(config-router)#bgp router-id 18.18.18.18
-R18(config-router)#network 109.72.1.36 mask 255.255.255.252
-R18(config-router)#network 109.72.1.40 mask 255.255.255.252
 R18(config-router)#neighbor 109.72.1.37 remote-as 520
 R18(config-router)#neighbor 109.72.1.41 remote-as 520
-
+R18(config-router)#neighbor 2002:ABCD:EEBB:FFFF:A::1 remote-as 520
+R18(config-router)#neighbor 2002:ABCD:EEBB:FFFF:B::1 remote-as 520
+R18(config-router)#address-family ipv4 unicast
+R18(config-router-af)#neighbor 109.72.1.37 activate
+R18(config-router-af)#neighbor 109.72.1.41 activate
+R18(config-router-af)#network 109.72.1.36 mask 255.255.255.252
+R18(config-router-af)#network 109.72.1.40 mask 255.255.255.252
+R18(config-router-af)#exit-address-family
+R18(config-router)#address-family ipv6 unicast
+R18(config-router-af)#neighbor 2002:ABCD:EEBB:FFFF:A::1 activate
+R18(config-router-af)#neighbor 2002:ABCD:EEBB:FFFF:B::1 activate
+R18(config-router-af)#network 2002:ABCD:EEBB:FFFF:A::0/80
+R18(config-router-af)#network 2002:ABCD:EEBB:FFFF:B::0/80
+R18(config-router-af)#end
+R18#wr
+```
+```
 R18#sh ip bgp summary
 
 Neighbor        V           AS MsgRcvd MsgSent   TblVer  InQ OutQ Up/Down  State/PfxRcd
 109.72.1.37     4          520     113     113       28    0    0 01:28:21       5
 109.72.1.41     4          520     111     112       28    0    0 01:28:08       5
 ```
+```
+R18#show ip bgp ipv6 unicast summary
 
-### ***Организуете IP доступность между пограничным роутерами офисами Москва и С.-Петербург***
+Neighbor        V           AS MsgRcvd MsgSent   TblVer  InQ OutQ Up/Down  State/PfxRcd
+2002:ABCD:EEBB:FFFF:A::1
+                4          520    1158    1157       12    0    0 17:22:26        4
+```
+### ***Организуете IP доступность между пограничным роутерами офисами Москва и С.-Петербург ( ipv4 & ipv6 )***
 
 **R14**
 
@@ -251,11 +271,11 @@ Sending 5, 100-byte ICMP Echos to 109.72.1.38, timeout is 2 seconds:
 Success rate is 100 percent (5/5), round-trip min/avg/max = 1/1/2 ms
 ```
 ```
-R14#ping 109.72.1.42
+R14#ping 2002:ABCD:EEBB:FFFF:A::2
 Type escape sequence to abort.
-Sending 5, 100-byte ICMP Echos to 109.72.1.42, timeout is 2 seconds:
+Sending 5, 100-byte ICMP Echos to 2002:ABCD:EEBB:FFFF:A::2, timeout is 2 seconds:
 !!!!!
-Success rate is 100 percent (5/5), round-trip min/avg/max = 1/1/1 ms
+Success rate is 100 percent (5/5), round-trip min/avg/max = 1/11/53 ms
 ```
 
 **R15**
@@ -268,11 +288,11 @@ Sending 5, 100-byte ICMP Echos to 109.72.1.38, timeout is 2 seconds:
 Success rate is 100 percent (5/5), round-trip min/avg/max = 1/1/1 ms
 ```
 ```
-R15#ping 109.72.1.42
+R15#ping 2002:ABCD:EEBB:FFFF:A::2
 Type escape sequence to abort.
-Sending 5, 100-byte ICMP Echos to 109.72.1.42, timeout is 2 seconds:
+Sending 5, 100-byte ICMP Echos to 2002:ABCD:EEBB:FFFF:A::2, timeout is 2 seconds:
 !!!!!
-Success rate is 100 percent (5/5), round-trip min/avg/max = 1/1/2 ms
+Success rate is 100 percent (5/5), round-trip min/avg/max = 1/1/1 ms
 ```
 
 **R18**
@@ -285,9 +305,23 @@ Sending 5, 100-byte ICMP Echos to 82.138.2.2, timeout is 2 seconds:
 Success rate is 100 percent (5/5), round-trip min/avg/max = 1/1/2 ms
 ```
 ```
+R18#ping 2000:ABCD:EEBB:FFFF:1::2
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 2000:ABCD:EEBB:FFFF:1::2, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 1/1/1 ms
+```
+```
 R18#ping 77.94.165.2
 Type escape sequence to abort.
 Sending 5, 100-byte ICMP Echos to 77.94.165.2, timeout is 2 seconds:
 !!!!!
 Success rate is 100 percent (5/5), round-trip min/avg/max = 1/1/2 ms
+```
+```
+R18#ping 1999:ABCD:EEBB:FFFF:1::2
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 1999:ABCD:EEBB:FFFF:1::2, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 1/1/1 ms
 ```
