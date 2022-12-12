@@ -19,7 +19,16 @@ R14>en
 R14#conf t
 R14(config)#router bgp 1001
 R14(config-router)#neighbor 77.37.144.254 remote-as 1001
-R14(config-router)#network 77.37.144.252 mask 255.255.255.252
+R14(config-router)#neighbor 2001:ABCD:EEBB:AAAA:7::2 remote-as 1001
+R14(config-router)#address-family ipv4 unicast
+R14(config-router-af)#neighbor 77.37.144.254 activate
+R14(config-router-af)#network 77.37.144.252 mask 255.255.255.252
+R14(config-router-af)#exit-address-family
+R14(config-router)#address-family ipv6 unicast
+R14(config-router-af)#neighbor 2001:ABCD:EEBB:AAAA:7::2 activate
+R14(config-router-af)#network 2001:ABCD:EEBB:AAAA:7::0/80
+R14(config-router-af)#end
+R14#wr
 ````
 **R15**
 ```
@@ -27,7 +36,16 @@ R15>en
 R15#conf t
 R15(config)#router bgp 1001
 R15(config-router)#neighbor 77.37.144.253 remote-as 1001
-R15(config-router)#network 77.37.144.252 mask 255.255.255.252
+R15(config-router)#neighbor 2001:ABCD:EEBB:AAAA:7::1 remote-as 1001
+R15(config-router)#address-family ipv4 unicast
+R15(config-router-af)#neighbor 77.37.144.253 activate
+R15(config-router-af)#network 77.37.144.252 mask 255.255.255.252
+R15(config-router-af)#exit-address-family
+R15(config-router)#address-family ipv6 unicast
+R15(config-router-af)#neighbor 2001:ABCD:EEBB:AAAA:7::1 activate
+R15(config-router-af)#network 2001:ABCD:EEBB:AAAA:7::0/80
+R15(config-router-af)#end
+R14#wr
 ```
 #### Настройте офиса Москва так, чтобы приоритетным провайдером стал Ламас
 ```
@@ -37,7 +55,13 @@ R15(config)#route-map LP permit 10
 R15(config-route-map)#set local-preference 200
 R15(config-route-map)#exit
 R15(config)#router bgp 1001
-R15(config-router)#neighbor 77.37.144.253 route-map LP out
+R15(config-router)#address-family ipv4 unicast
+R15(config-router-af)#neighbor 77.37.144.253 route-map LP out
+R15(config-router-af)#exit-address-family
+R15(config-router)#address-family ipv6 unicast
+R15(config-router-af)#neighbor 2001:ABCD:EEBB:AAAA:7::1 route-map LP out
+R15(config-router-af)#end
+R15#wr
 ```
 #### **Проверим как ходит трафик**
 **R15**
@@ -50,6 +74,16 @@ VRF info: (vrf in name/id, vrf out name/id)
   2 109.72.1.21 1 msec 0 msec 1 msec
   3 109.72.1.38 [AS 2042] 1 msec *  1 msec
 ```
+```
+R15#traceroute 2002:ABCD:EEBB:FFFF:A::2
+Type escape sequence to abort.
+Tracing the route to 2002:ABCD:EEBB:FFFF:A::2
+
+  1 1999:ABCD:EEBB:FFFF:1::1 0 msec 0 msec 1 msec
+  2 2002:ABCD:EEBB:FFFF:9::1 0 msec 1 msec 0 msec
+  3 2002:ABCD:EEBB:FFFF:A::2 [AS 2042] 1 msec 1 msec 0 msec
+
+```
 **R14**
 ```
 R14#traceroute 109.72.1.38
@@ -60,6 +94,16 @@ VRF info: (vrf in name/id, vrf out name/id)
   2 77.94.165.1 1 msec 0 msec 1 msec
   3 109.72.1.21 1 msec 0 msec 1 msec
   4 109.72.1.38 [AS 2042] 1 msec *  2 msec
+```
+```
+R14#traceroute 2002:ABCD:EEBB:FFFF:A::2
+Type escape sequence to abort.
+Tracing the route to 2002:ABCD:EEBB:FFFF:A::2
+
+  1 2001:ABCD:EEBB:AAAA:7::2 0 msec 1 msec 1 msec
+  2 1999:ABCD:EEBB:FFFF:1::1 1 msec 1 msec 0 msec
+  3 2002:ABCD:EEBB:FFFF:9::1 2 msec 1 msec 1 msec
+  4 2002:ABCD:EEBB:FFFF:A::2 [AS 2042] 2 msec 1 msec 1 msec
 ```
 ```
 R14#show ip bgp 77.37.144.252/30
@@ -74,6 +118,21 @@ Paths: (2 available, best #2, table default)
   Refresh Epoch 1
   Local
     0.0.0.0 from 0.0.0.0 (14.14.14.14)
+      Origin IGP, metric 0, localpref 100, weight 32768, valid, sourced, local, best
+```
+```
+R14#show ip bgp ipv6 unicast 2001:ABCD:EEBB:AAAA:7::0/80
+BGP routing table entry for 2001:ABCD:EEBB:AAAA:7::/80, version 2
+Paths: (2 available, best #2, table default)
+  Advertised to update-groups:
+     1          2
+  Refresh Epoch 4
+  Local
+    2001:ABCD:EEBB:AAAA:7::2 from 2001:ABCD:EEBB:AAAA:7::2 (15.15.15.15)
+      Origin IGP, metric 0, localpref 200, valid, internal
+  Refresh Epoch 1
+  Local
+    :: from 0.0.0.0 (14.14.14.14)
       Origin IGP, metric 0, localpref 100, weight 32768, valid, sourced, local, best
 ```
 ***"Видим что localpref поменялся с 100 на 200 и маршрут через R15 стал приоритетным"***
