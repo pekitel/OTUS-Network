@@ -107,6 +107,11 @@ RPKI validation codes: V valid, I invalid, N Not found
 
 **R18**
 ```
+interface Loopback18
+ip address 33.72.66.18 255.255.255.255
+ipv6 address 2003:ABCD:EEBB:BBBB::18/128
+Наша сети
+--------------------------------------------------------------------------------------------
 R18>en
 R18#conf t
 R18(config)#ip as-path access-list 1 permit ^$
@@ -149,3 +154,120 @@ R18(config-router-af)#neighbor 2002:ABCD:EEBB:FFFF:A::1 inherit peer-policy TRIA
 R18(config-router-af)#neighbor 2002:ABCD:EEBB:FFFF:B::1 inherit peer-policy TRIADA_POLICY_ipv6
 R18(config-router-af)#end
 R18#wr
+```
+***Теперь посмотрим,что приходит у провайдера Триада (R24/R26)***
+
+**R24**
+```
+R24#show ip bgp ipv4 unicast
+BGP table version is 49, local router ID is 24.24.24.24
+Status codes: s suppressed, d damped, h history, * valid, > best, i - internal,
+              r RIB-failure, S Stale, m multipath, b backup-path, f RT-Filter,
+              x best-external, a additional-path, c RIB-compressed,
+Origin codes: i - IGP, e - EGP, ? - incomplete
+RPKI validation codes: V valid, I invalid, N Not found
+
+     Network          Next Hop            Metric LocPrf Weight Path
+ * i 33.72.66.0/24    109.72.255.26      1024640    100      0 2042 i
+ *>                   109.72.1.38        1024640             0 2042 i
+ *>  77.37.144.252/30 109.72.1.22                            0 301 1001 i
+ * i                  109.72.255.23            0    100      0 101 1001 i
+ * i 77.94.165.0/30   109.72.255.23            0    100      0 101 1001 i
+ *>                   109.72.1.22                            0 301 1001 i
+ *>  82.138.2.0/30    109.72.1.22                            0 301 1001 i
+ * i                  109.72.255.23            0    100      0 101 1001 i
+ *>i 109.72.67.28/32  109.72.255.26            0    100      0 ?
+ * i                  109.72.255.25            0    100      0 ?
+ *>i 109.72.68.27/32  109.72.255.25            0    100      0 ?
+```
+```
+R24#show ip bgp ipv6 unicast
+BGP table version is 45, local router ID is 24.24.24.24
+Status codes: s suppressed, d damped, h history, * valid, > best, i - internal,
+              r RIB-failure, S Stale, m multipath, b backup-path, f RT-Filter,
+              x best-external, a additional-path, c RIB-compressed,
+Origin codes: i - IGP, e - EGP, ? - incomplete
+RPKI validation codes: V valid, I invalid, N Not found
+
+     Network          Next Hop            Metric LocPrf Weight Path
+ * i 1999:ABCD:EEBB:FFFF:1::/80
+                       2002:ABCD:EEBB:CCCC::23
+                                                0    100      0 101 1001 i
+ *>                   2002:ABCD:EEBB:FFFF:9::2
+                                                              0 301 1001 i
+ *>  2000:ABCD:EEBB:FFFF:1::/80
+                       2002:ABCD:EEBB:FFFF:9::2
+                                                              0 301 1001 i
+ * i                  2002:ABCD:EEBB:CCCC::23
+                                                0    100      0 101 1001 i
+ *>  2001:ABCD:EEBB:AAAA:7::/80
+                       2002:ABCD:EEBB:FFFF:9::2
+                                                              0 301 1001 i
+ * i                  2002:ABCD:EEBB:CCCC::23
+     Network          Next Hop            Metric LocPrf Weight Path
+                                                0    100      0 101 1001 i
+ * i 2002:ABCD:EEBB:AAAA::28/128
+                       2002:ABCD:EEBB:CCCC::25
+                                                0    100      0 ?
+ *>i                  2002:ABCD:EEBB:CCCC::26
+                                                0    100      0 ?
+ *>i 2002:ABCD:EEBB:BBBB::27/128
+                       2002:ABCD:EEBB:CCCC::25
+                                                0    100      0 ?
+ * i 2003:ABCD:EEBB:BBBB::/64
+                       2002:ABCD:EEBB:CCCC::26
+                                          1024640    100      0 2042 i
+ *>                   2002:ABCD:EEBB:FFFF:A::2
+                                          1024640             0 2042 i
+```
+**R26**
+```
+R26#show ip bgp ipv4 unicast
+BGP table version is 132, local router ID is 26.26.26.26
+Status codes: s suppressed, d damped, h history, * valid, > best, i - internal,
+              r RIB-failure, S Stale, m multipath, b backup-path, f RT-Filter,
+              x best-external, a additional-path, c RIB-compressed,
+Origin codes: i - IGP, e - EGP, ? - incomplete
+RPKI validation codes: V valid, I invalid, N Not found
+
+     Network          Next Hop            Metric LocPrf Weight Path
+ * i 33.72.66.0/24    109.72.255.24      1024640    100      0 2042 i
+ *>                   109.72.1.42        1024640             0 2042 i
+ *>i 77.37.144.252/30 109.72.255.24            0    100      0 301 1001 i
+ *>i 77.94.165.0/30   109.72.255.24            0    100      0 301 1001 i
+ *>i 82.138.2.0/30    109.72.255.24            0    100      0 301 1001 i
+ *>  109.72.67.28/32  109.72.1.34              0         32768 ?
+ *>i 109.72.68.27/32  109.72.255.25            0    100      0 ?
+```
+```
+R26#show ip bgp ipv6 unicast
+BGP table version is 114, local router ID is 26.26.26.26
+Status codes: s suppressed, d damped, h history, * valid, > best, i - internal,
+              r RIB-failure, S Stale, m multipath, b backup-path, f RT-Filter,
+              x best-external, a additional-path, c RIB-compressed,
+Origin codes: i - IGP, e - EGP, ? - incomplete
+RPKI validation codes: V valid, I invalid, N Not found
+
+     Network          Next Hop            Metric LocPrf Weight Path
+ *>i 1999:ABCD:EEBB:FFFF:1::/80
+                       2002:ABCD:EEBB:CCCC::24
+                                                0    100      0 301 1001 i
+ *>i 2000:ABCD:EEBB:FFFF:1::/80
+                       2002:ABCD:EEBB:CCCC::24
+                                                0    100      0 301 1001 i
+ *>i 2001:ABCD:EEBB:AAAA:7::/80
+                       2002:ABCD:EEBB:CCCC::24
+                                                0    100      0 301 1001 i
+ *>  2002:ABCD:EEBB:AAAA::28/128
+                       2002:ABCD:EEBB:FFFF:4::2
+                                                0         32768 ?
+ *>i 2002:ABCD:EEBB:BBBB::27/128
+                       2002:ABCD:EEBB:CCCC::25
+     Network          Next Hop            Metric LocPrf Weight Path
+                                                0    100      0 ?
+ * i 2003:ABCD:EEBB:BBBB::/64
+                       2002:ABCD:EEBB:CCCC::24
+                                          1024640    100      0 2042 i
+ *>                   2002:ABCD:EEBB:FFFF:B::2
+                                          1024640             0 2042 i
+```
