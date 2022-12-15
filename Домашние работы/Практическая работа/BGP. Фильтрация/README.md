@@ -104,3 +104,46 @@ RPKI validation codes: V valid, I invalid, N Not found
 ```
 
 ### Настроить фильтрацию в офисе С.-Петербург так, чтобы не появилось транзитного трафика(Prefix-list)
+
+**R18**
+```
+R18>en
+R18#conf t
+R18(config)#ip as-path access-list 1 permit ^$
+R18(config)#ip as-path access-list 1 deny .*
+R18(config)#ip prefix-list Default seq 15 permit 33.72.66.0/24 le 32
+R18(config)#ip prefix-list Default seq 20 deny 0.0.0.0/0 le 32
+R18(config)#ipv6 prefix-list Default-ipv6 seq 25 permit 2003:ABCD:EEBB:BBBB::/64 le 128
+R18(config)#ipv6 prefix-list Default-ipv6 seq 30 deny ::/0 le 32
+R18(config)#route-map Filter permit 10
+R18(config-route-map)#match ip address prefix-list Default
+R18(config-route-map)#exit
+R18(config)#route-map Filter permit 15
+R18(config-route-map)#match ipv6 address prefix-list Default-ipv6
+R18(config-route-map)#exit
+R18(config)#router bgp 2042
+R18(config-router)#template peer-policy TRIADA_POLICY_ipv6
+R18(config-router-ptmp)#route-map Filter_ipv6 out
+R18(config-router-ptmp)#filter-list 1 out
+R18(config-router-ptmp)#exit
+R18(config-router)#template peer-policy TRIADA_POLICY
+R18(config-router-ptmp)#route-map Filter out
+R18(config-router-ptmp)#filter-list 1 out
+R18(config-router-ptmp)#exit
+R18(config-router)#template peer-session TRIADA_ipv6
+R18(config-router-stmp)#remote-as 520
+R18(config-router-stmp)#exit-peer-session
+R18(config-router)#template peer-session TRIADA
+R18(config-router-stmp)#remote-as 520
+R18(config-router-stmp)#exit-peer-session
+R18(config-router)#neighbor 109.72.1.37 inherit peer-session TRIADA
+R18(config-router)#neighbor 109.72.1.41 inherit peer-session TRIADA
+R18(config-router)#neighbor 2002:ABCD:EEBB:FFFF:A::1 inherit peer-session TRIADA_ipv6
+R18(config-router)#neighbor 2002:ABCD:EEBB:FFFF:B::1 inherit peer-session TRIADA_ipv6
+R18(config-router)#address-family ipv4 unicast
+R18(config-router-af)#neighbor 109.72.1.37 inherit peer-policy TRIADA_POLICY
+R18(config-router-af)#neighbor 109.72.1.41 inherit peer-policy TRIADA_POLICY
+R18(config-router-af)#exit-address-family
+R18(config-router)#address-family ipv6 unicast
+R18(config-router-af)#neighbor 2002:ABCD:EEBB:FFFF:A::1 inherit peer-policy TRIADA_POLICY_ipv6
+R18(config-router-af)#neighbor 2002:ABCD:EEBB:FFFF:B::1 inherit peer-policy TRIADA_POLICY_ipv6
