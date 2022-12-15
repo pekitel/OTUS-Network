@@ -147,3 +147,5 @@ R18(config-router-af)#exit-address-family
 R18(config-router)#address-family ipv6 unicast
 R18(config-router-af)#neighbor 2002:ABCD:EEBB:FFFF:A::1 inherit peer-policy TRIADA_POLICY_ipv6
 R18(config-router-af)#neighbor 2002:ABCD:EEBB:FFFF:B::1 inherit peer-policy TRIADA_POLICY_ipv6
+R18(config-router-af)#end
+R18#wr
