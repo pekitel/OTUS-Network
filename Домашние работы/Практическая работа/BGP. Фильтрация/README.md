@@ -462,7 +462,13 @@ RPKI validation codes: V valid, I invalid, N Not found
  
  **R14**
  
- ```
+```
+R14>ping 77.37.144.15
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 77.37.144.15, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 1/1/1 ms
+------------------------------------------------------------------------------
 R14>ping 33.72.66.18
 Type escape sequence to abort.
 Sending 5, 100-byte ICMP Echos to 33.72.66.18, timeout is 2 seconds:
@@ -480,6 +486,12 @@ Type escape sequence to abort.
 Sending 5, 100-byte ICMP Echos to 109.72.67.28, timeout is 2 seconds:
 !!!!!
 Success rate is 100 percent (5/5), round-trip min/avg/max = 1/1/2 ms
+------------------------------------------------------------------------------
+R14>ping 2001:abcd:eebb:aaaa::15
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 2001:ABCD:EEBB:AAAA::15, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 1/1/1 ms
 ------------------------------------------------------------------------------
 R14>ping 2003:ABCD:EEBB:BBBB::18
 Type escape sequence to abort.
