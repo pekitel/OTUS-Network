@@ -311,3 +311,59 @@ R22(config-router-af)#neighbor 2000:ABCD:EEBB:FFFF:1::2 route-map MSK_Default_ip
 R22(config-router-af)#end
 R22#wr
 ```
+***Проверим что получает R14***
+```
+IPV4
+--------------------------------------------------------------------------------------------
+R14>en
+R14#show ip bgp ipv4 unicast
+BGP table version is 48, local router ID is 14.14.14.14
+Status codes: s suppressed, d damped, h history, * valid, > best, i - internal,
+              r RIB-failure, S Stale, m multipath, b backup-path, f RT-Filter,
+              x best-external, a additional-path, c RIB-compressed,
+Origin codes: i - IGP, e - EGP, ? - incomplete
+RPKI validation codes: V valid, I invalid, N Not found
+
+     Network          Next Hop            Metric LocPrf Weight Path
+ r>  0.0.0.0          82.138.2.1                             0 101 i
+ *>i 33.72.66.0/24    77.94.165.1              0    200      0 301 520 2042 i
+ * i 77.37.144.252/30 77.37.144.254            0    200      0 i
+ *>                   0.0.0.0                  0         32768 i
+ *>i 77.94.165.0/30   77.37.144.254            0    200      0 i
+ *>  82.138.2.0/30    0.0.0.0                  0         32768 i
+ *>i 109.72.67.28/32  77.94.165.1              0    200      0 301 520 ?
+ *>i 109.72.68.27/32  77.94.165.1              0    200      0 301 520 ?
+ 
+----------------------------------------------------------------------------------------------
+IPV6
+----------------------------------------------------------------------------------------------
+R14#show ip bgp ipv6 unicast
+BGP table version is 37, local router ID is 14.14.14.14
+Status codes: s suppressed, d damped, h history, * valid, > best, i - internal,
+              r RIB-failure, S Stale, m multipath, b backup-path, f RT-Filter,
+              x best-external, a additional-path, c RIB-compressed,
+Origin codes: i - IGP, e - EGP, ? - incomplete
+RPKI validation codes: V valid, I invalid, N Not found
+
+     Network          Next Hop            Metric LocPrf Weight Path
+ r>  ::/0             2000:ABCD:EEBB:FFFF:1::1
+                                                              0 101 i
+ *>i 1999:ABCD:EEBB:FFFF:1::/80
+                       2001:ABCD:EEBB:AAAA:7::2
+                                                0    200      0 i
+ *>  2000:ABCD:EEBB:FFFF:1::/80
+                       ::                       0         32768 i
+ * i 2001:ABCD:EEBB:AAAA:7::/80
+                       2001:ABCD:EEBB:AAAA:7::2
+                                                0    200      0 i
+ *>                   ::                       0         32768 i
+ *>i 2002:ABCD:EEBB:AAAA::28/128
+                       1999:ABCD:EEBB:FFFF:1::1
+                                                0    200      0 301 520 ?
+     Network          Next Hop            Metric LocPrf Weight Path
+ *>i 2002:ABCD:EEBB:BBBB::27/128
+                       1999:ABCD:EEBB:FFFF:1::1
+                                                0    200      0 301 520 ?
+ *>i 2003:ABCD:EEBB:BBBB::/64
+                       1999:ABCD:EEBB:FFFF:1::1
+                                                0    200      0 301 520 2042 i
