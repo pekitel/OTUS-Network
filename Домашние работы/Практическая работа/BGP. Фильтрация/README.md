@@ -5,6 +5,16 @@
 4. [Настроить провайдера Ламас так, чтобы в офис Москва отдавался только маршрут по умолчанию и префикс офиса С.-Петербург.](https://github.com/pekitel/OTUS-Network/blob/main/%D0%94%D0%BE%D0%BC%D0%B0%D1%88%D0%BD%D0%B8%D0%B5%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%8B/%D0%9F%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B0%D1%8F%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0/BGP.%20%D0%A4%D0%B8%D0%BB%D1%8C%D1%82%D1%80%D0%B0%D1%86%D0%B8%D1%8F/README.md#%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B8%D1%82%D1%8C-%D0%BF%D1%80%D0%BE%D0%B2%D0%B0%D0%B9%D0%B4%D0%B5%D1%80%D0%B0-%D0%BB%D0%B0%D0%BC%D0%B0%D1%81-%D1%82%D0%B0%D0%BA-%D1%87%D1%82%D0%BE%D0%B1%D1%8B-%D0%B2-%D0%BE%D1%84%D0%B8%D1%81-%D0%BC%D0%BE%D1%81%D0%BA%D0%B2%D0%B0-%D0%BE%D1%82%D0%B4%D0%B0%D0%B2%D0%B0%D0%BB%D1%81%D1%8F-%D1%82%D0%BE%D0%BB%D1%8C%D0%BA%D0%BE-%D0%BC%D0%B0%D1%80%D1%88%D1%80%D1%83%D1%82-%D0%BF%D0%BE-%D1%83%D0%BC%D0%BE%D0%BB%D1%87%D0%B0%D0%BD%D0%B8%D1%8E-%D0%B8-%D0%BF%D1%80%D0%B5%D1%84%D0%B8%D0%BA%D1%81-%D0%BE%D1%84%D0%B8%D1%81%D0%B0-%D1%81-%D0%BF%D0%B5%D1%82%D0%B5%D1%80%D0%B1%D1%83%D1%80%D0%B3)
 5. [Все сети в лабораторной работе должны иметь IP связность.](https://github.com/pekitel/OTUS-Network/blob/main/%D0%94%D0%BE%D0%BC%D0%B0%D1%88%D0%BD%D0%B8%D0%B5%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%8B/%D0%9F%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B0%D1%8F%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0/BGP.%20%D0%A4%D0%B8%D0%BB%D1%8C%D1%82%D1%80%D0%B0%D1%86%D0%B8%D1%8F/README.md#%D0%B2%D1%81%D0%B5-%D1%81%D0%B5%D1%82%D0%B8-%D0%B2-%D0%BB%D0%B0%D0%B1%D0%BE%D1%80%D0%B0%D1%82%D0%BE%D1%80%D0%BD%D0%BE%D0%B9-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B5-%D0%B4%D0%BE%D0%BB%D0%B6%D0%BD%D1%8B-%D0%B8%D0%BC%D0%B5%D1%82%D1%8C-ip-%D1%81%D0%B2%D1%8F%D0%B7%D0%BD%D0%BE%D1%81%D1%82%D1%8C)
 
+## Адреса loopback интерфейсов
+
+| host | ipv4         | ipv6                    |
+|:----:|:------------:|:-----------------------:|
+| R14  | 77.37.144.14 | 2001:ABCD:EEBB:AAAA::14 |
+| R15  | 77.37.144.15 | 2001:ABCD:EEBB:AAAA::15 |
+| R18  | 33.72.66.18  | 2003:ABCD:EEBB:BBBB::18 |
+| R27  | 109.72.68.27 | 2002:ABCD:EEBB:BBBB::27 |
+| R28  | 109.72.67.28 | 2002:ABCD:EEBB:AAAA::28 |
+
 ## Карта сети ipv4
 
 ![BGP](https://user-images.githubusercontent.com/112701413/207262186-a96153d0-f3eb-4392-84e5-7abff1d7ea61.jpg)
@@ -499,7 +509,7 @@ Sending 5, 100-byte ICMP Echos to 2003:ABCD:EEBB:BBBB::18, timeout is 2 seconds:
 !!!!!
 Success rate is 100 percent (5/5), round-trip min/avg/max = 1/1/2 ms
 ------------------------------------------------------------------------------
-R14>ping 2002:abcd:eebb:bbbb::27
+R14>ping 2002:ABCD:EEBB:BBBB::27
 Type escape sequence to abort.
 Sending 5, 100-byte ICMP Echos to 2002:ABCD:EEBB:BBBB::27, timeout is 2 seconds:
 !!!!!
