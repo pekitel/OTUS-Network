@@ -373,4 +373,24 @@ RPKI validation codes: V valid, I invalid, N Not found
 
 ### Настроить провайдера Ламас так, чтобы в офис Москва отдавался только маршрут по умолчанию и префикс офиса С.-Петербург
 
+**R21**
+```
+**Создаем prefix-list для ipv4**
+R21>en
+R21#conf t
+R21(config)#ip prefix-list MSK seq 5 permit 0.0.0.0/0
+R21(config)#ip prefix-list MSK seq 10 permit 33.72.66.0/24    // Сеть СПБ
+R21(config)#ip prefix-list MSK seq 15 deny 0.0.0.0/0 le 32
+**Добавим его к route-map для ipv4**
+R21(config)#route-map MSK_Default permit 10
+R21(config-route-map)#match ip address prefix-list MSK
+R21(config-route-map)#exit
+**Создаем prefix-list для ipv6**
+R21(config)#ipv6 prefix-list MSK_ipv6 seq 5 permit ::/0
+R21(config)#ipv6 prefix-list MSK_ipv6 seq 10 permit 2003:ABCD:EEBB:BBBB::/64   // Сеть СПБ
+R21(config)#ipv6 prefix-list MSK_ipv6 seq 15 deny ::/0 le 128
+**Добавим его к route-map для ipv6**
+R21(config)#route-map MSK_Default_ipv6 permit 15
+R21(config-route-map)#match ip address prefix-list MSK_ipv6
+R21(config-route-map)#exit
 
