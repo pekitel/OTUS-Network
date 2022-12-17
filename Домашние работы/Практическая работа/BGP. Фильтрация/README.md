@@ -459,3 +459,43 @@ RPKI validation codes: V valid, I invalid, N Not found
  ```
  
  ### Все сети в лабораторной работе должны иметь IP связность
+ 
+ **R14**
+ 
+ ```
+R14>ping 33.72.66.18
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 33.72.66.18, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 1/1/2 ms
+------------------------------------------------------------------------------
+R14>ping 109.72.68.27
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 109.72.68.27, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 1/1/2 ms
+------------------------------------------------------------------------------
+R14>ping 109.72.67.28
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 109.72.67.28, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 1/1/2 ms
+------------------------------------------------------------------------------
+R14>ping 2003:ABCD:EEBB:BBBB::18
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 2003:ABCD:EEBB:BBBB::18, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 1/1/2 ms
+------------------------------------------------------------------------------
+R14>ping 2002:abcd:eebb:bbbb::27
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 2002:ABCD:EEBB:BBBB::27, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 1/8/37 ms
+------------------------------------------------------------------------------
+R14>ping 2002:ABCD:EEBB:AAAA::28
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 2002:ABCD:EEBB:AAAA::28, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 2/10/32 ms
+```
