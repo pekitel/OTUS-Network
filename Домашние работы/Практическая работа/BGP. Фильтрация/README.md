@@ -403,3 +403,59 @@ R21(config-router)#address-family ipv6 unicast
 R21(config-router-af)#neighbor 2000:ABCD:EEBB:FFFF:1::2 route-map MSK_Default_ipv6 out
 R21(config-router-af)#end
 R21#wr
+```
+***Проверим что получает R15***
+```
+IPV4
+-------------------------------------------------------------------------------------------------
+R15#sh ip bgp ipv4 unicast
+BGP table version is 20, local router ID is 15.15.15.15
+Status codes: s suppressed, d damped, h history, * valid, > best, i - internal,
+              r RIB-failure, S Stale, m multipath, b backup-path, f RT-Filter,
+              x best-external, a additional-path, c RIB-compressed,
+Origin codes: i - IGP, e - EGP, ? - incomplete
+RPKI validation codes: V valid, I invalid, N Not found
+
+     Network          Next Hop            Metric LocPrf Weight Path
+ r>i 0.0.0.0          82.138.2.1               0    100      0 101 i
+ *>  33.72.66.0/24    77.94.165.1                            0 301 520 2042 i
+ * i 77.37.144.252/30 77.37.144.253            0    100      0 i
+ *>                   0.0.0.0                  0         32768 i
+ *>  77.94.165.0/30   0.0.0.0                  0         32768 i
+ *>i 82.138.2.0/30    77.37.144.253            0    100      0 i
+-----------------------------------------------------------------------------------------------
+IPV6
+-----------------------------------------------------------------------------------------------
+R15#sh ip bgp ipv6 unicast
+BGP table version is 15, local router ID is 15.15.15.15
+Status codes: s suppressed, d damped, h history, * valid, > best, i - internal,
+              r RIB-failure, S Stale, m multipath, b backup-path, f RT-Filter,
+              x best-external, a additional-path, c RIB-compressed,
+Origin codes: i - IGP, e - EGP, ? - incomplete
+RPKI validation codes: V valid, I invalid, N Not found
+
+     Network          Next Hop            Metric LocPrf Weight Path
+ r>i ::/0             2000:ABCD:EEBB:FFFF:1::1
+                                                0    100      0 101 i
+ *>  1999:ABCD:EEBB:FFFF:1::/80
+                       ::                       0         32768 i
+ *>i 2000:ABCD:EEBB:FFFF:1::/80
+                       2001:ABCD:EEBB:AAAA:7::1
+                                                0    100      0 i
+ * i 2001:ABCD:EEBB:AAAA:7::/80
+                       2001:ABCD:EEBB:AAAA:7::1
+                                                0    100      0 i
+ *>                   ::                       0         32768 i
+ *>  2002:ABCD:EEBB:AAAA::28/128
+                       1999:ABCD:EEBB:FFFF:1::1
+                                                              0 301 520 ?
+     Network          Next Hop            Metric LocPrf Weight Path
+ *>  2002:ABCD:EEBB:BBBB::27/128
+                       1999:ABCD:EEBB:FFFF:1::1
+                                                              0 301 520 ?
+ *>  2003:ABCD:EEBB:BBBB::/64
+                       1999:ABCD:EEBB:FFFF:1::1
+                                                              0 301 520 2042 i
+ ```
+ 
+ ### Все сети в лабораторной работе должны иметь IP связность
