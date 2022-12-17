@@ -300,6 +300,7 @@ R22(config)#ipv6 prefix-list MSK_ipv6 seq 10 deny ::/0 le 128
 R22(config)#route-map MSK_Default_ipv6 permit 15
 R22(config-route-map)#match ip address prefix-list MSK_ipv6
 R22(config-route-map)#exit
+**Добавим route-map на neighbor**
 R22(config)#router bgp 101
 R22(config-router)#address-family ipv4 unicast
 R22(config-router-af)#neighbor 82.138.2.2 default-originate
@@ -393,4 +394,12 @@ R21(config)#ipv6 prefix-list MSK_ipv6 seq 15 deny ::/0 le 128
 R21(config)#route-map MSK_Default_ipv6 permit 15
 R21(config-route-map)#match ip address prefix-list MSK_ipv6
 R21(config-route-map)#exit
-
+**Добавим route-map на neighbor**
+R21(config)#router bgp 301
+R21(config-router)#address-family ipv4 unicast
+R21(config-router-af)#neighbor 82.138.2.2 route-map MSK_Default out
+R21(config-router-af)#exit
+R21(config-router)#address-family ipv6 unicast
+R21(config-router-af)#neighbor 2000:ABCD:EEBB:FFFF:1::2 route-map MSK_Default_ipv6 out
+R21(config-router-af)#end
+R21#wr
