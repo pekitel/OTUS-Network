@@ -282,3 +282,32 @@ RPKI validation codes: V valid, I invalid, N Not found
 
 ### Настроить провайдера Киторн так, чтобы в офис Москва отдавался только маршрут по умолчанию
 
+**R22**
+```
+**Создаем prefix-list для ipv4**
+R22>en
+R22#conf t
+R22(config)#ip prefix-list MSK seq 5 permit 0.0.0.0/0
+R22(config)#ip prefix-list MSK seq 10 deny 0.0.0.0/0 le 32
+**Добавим его к route-map для ipv4**
+R22(config)#route-map MSK_Default permit 10
+R22(config-route-map)#match ip address prefix-list MSK
+R22(config-route-map)#exit
+**Создаем prefix-list для ipv6**
+R22(config)#ipv6 prefix-list MSK_ipv6 seq 5 permit ::/0
+R22(config)#ipv6 prefix-list MSK_ipv6 seq 10 deny ::/0 le 128
+**Добавим его к route-map для ipv6**
+R22(config)#route-map MSK_Default_ipv6 permit 15
+R22(config-route-map)#match ip address prefix-list MSK_ipv6
+R22(config-route-map)#exit
+R22(config)#router bgp 101
+R22(config-router)#address-family ipv4 unicast
+R22(config-router-af)#neighbor 82.138.2.2 default-originate
+R22(config-router-af)#neighbor 82.138.2.2 route-map MSK_Default out
+R22(config-router-af)#exit
+R22(config-router)#address-family ipv6 unicast
+R22(config-router-af)#neighbor 2000:ABCD:EEBB:FFFF:1::2 default-originate
+R22(config-router-af)#neighbor 2000:ABCD:EEBB:FFFF:1::2 route-map MSK_Default_ipv6 out
+R22(config-router-af)#end
+R22#wr
+```
