@@ -22,26 +22,23 @@
 **R14**
 
 ```
-interface Ethernet0/0
- ip nat inside
-
-interface Ethernet0/1
- ip nat inside
-
-interface Ethernet0/2
- ip nat outside
- 
-interface Ethernet0/3
- ip nat inside
-
-interface Ethernet1/0
- ip nat inside
- 
- // указываем на какой ip будем транслировать внутренние ip адреса локальной сети:
-ip nat pool OVRLD 200.20.20.14 200.20.20.14 netmask 255.255.252.0
-
+R14>en
+R14#conf t
+R14(config)#interface Ethernet0/0
+R14(config-if)#ip nat inside
+R14(config-if)#interface Ethernet0/1
+R14(config-if)#ip nat inside
+R14(config-if)#interface Ethernet0/2
+R14(config-if)#ip nat outside
+R14(config-if)#interface Ethernet0/3
+R14(config-if)#ip nat inside
+R14(config-if)#interface Ethernet1/0
+R14(config-if)#ip nat inside
+R14(config-if)#exit
+***указываем на какой ip будем транслировать внутренние ip адреса локальной сети:***
+R14(config)#ip nat pool OVRLD 77.37.144.14 77.37.144.14 netmask 255.255.255.0
 // включаем PAT:
-ip nat inside source list 10 pool OVRLD overload 
+R14(config)#ip nat inside source list 10 pool OVRLD overload 
 
 // указываем пул внутренних ip адресов, которые будем транслировать:
 access-list 10 permit 10.10.10.0 0.0.0.31 
