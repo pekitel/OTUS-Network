@@ -106,7 +106,10 @@ R14(config-if)#ntp broadcast client
 R14(config-if)#exit
 R14(config)#interface Ethernet0/1
 R14(config-if)#ntp broadcast client
-R14(config-if)#end
+R14(config-if)#exit
+R14(config)#ntp server 100.100.1.12
+R14(config)#ntp server 100.100.1.13
+R14(config)#exit
 R14#wr
 R14#show ntp associations 
 
@@ -126,13 +129,56 @@ R15(config-if)#ntp broadcast client
 R15(config-if)#exit
 R15(config)#interface Ethernet0/1
 R15(config-if)#ntp broadcast client
-R15(config-if)#end
+R15(config-if)#exit
+R15(config)#ntp server 100.100.1.12
+R15(config)#ntp server 100.100.1.13
+R15(config)#exit
 R15#wr
 R15#show ntp associations 
 
   address         ref clock       st   when   poll reach  delay  offset   disp
 +~100.100.1.12    127.127.1.1      5     37     64   377  1.000  -0.500  2.888
 +~100.100.1.13    127.127.1.1      5      5     64   377  0.000   0.000  3.129
+ * sys.peer, # selected, + candidate, - outlyer, x falseticker, ~ configured
+```
+
+**19**
+
+```
+R19>en
+R19#conf t
+R19(config)#interface Ethernet0/0
+R19(config-if)#ntp broadcast client
+R19(config-if)#exit
+R19(config)#ntp server 100.100.1.12
+R19(config)#ntp server 100.100.1.13
+R19(config)#exit
+R19#wr
+R19#show ntp associations 
+
+  address         ref clock       st   when   poll reach  delay  offset   disp
++~100.100.1.12    127.127.1.1      5    951   1024   377  0.000   0.000  2.033
+*~100.100.1.13    127.127.1.1      5    754   1024   377  0.000   0.000  2.084
+ * sys.peer, # selected, + candidate, - outlyer, x falseticker, ~ configured
+```
+
+**R20**
+
+```
+R20>en
+R20#conf t
+R20(config)#interface Ethernet0/0
+R20(config-if)#ntp broadcast client
+R20(config-if)#exit
+R20(config)#ntp server 100.100.1.12
+R20(config)#ntp server 100.100.1.13
+R20(config)#exit
+R20#wr
+R20#show ntp associations 
+
+  address         ref clock       st   when   poll reach  delay  offset   disp
+*~100.100.1.12    127.127.1.1      5    114   1024   377  0.000   0.000  2.072
++~100.100.1.13    127.127.1.1      5    358   1024   377  1.000   0.500  1.974
  * sys.peer, # selected, + candidate, - outlyer, x falseticker, ~ configured
 ```
  
