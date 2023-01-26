@@ -181,5 +181,22 @@ R20#show ntp associations
 +~100.100.1.13    127.127.1.1      5    358   1024   377  1.000   0.500  1.974
  * sys.peer, # selected, + candidate, - outlyer, x falseticker, ~ configured
 ```
- 
+
+***А теперь свичи:SW2 / SW3 / SW4 / SW5***
+
+**SW2**
+
+```
+SW2>en
+SW2#conf t
+SW2(config)#ntp server 172.16.30.1
+SW2(config)#end
+SW2#show ntp associations 
+
+  address         ref clock       st   when   poll reach  delay  offset   disp
+*~172.16.30.1     127.127.1.1      5     46     64   377  2.000   0.000  4.058
+ * sys.peer, # selected, + candidate, - outlyer, x falseticker, ~ configured
+```
+*** Аналогичным образом настраивает SW3 / SW4 / SW5
+
 ##### Все офисы в лабораторной работе должны иметь IP связность.
