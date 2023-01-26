@@ -41,8 +41,32 @@ R14(config)#ip nat pool OVRLD 77.37.144.14 77.37.144.14 netmask 255.255.255.0
 R14(config)#ip nat inside source list 10 pool OVRLD overload 
 //указываем пул внутренних ip адресов, которые будем транслировать://
 R14(config)#access-list 10 permit 172.16.3.0 0.0.0.15
+```
+
+**R15**
 
 ```
+R15>en
+R15#conf t
+R15(config)#interface Ethernet0/0
+R15(config-if)#ip nat inside
+R15(config-if)#interface Ethernet0/1
+R15(config-if)#ip nat inside
+R15(config-if)#interface Ethernet0/2
+R15(config-if)#ip nat outside
+R15(config-if)#interface Ethernet0/3
+R15(config-if)#ip nat inside
+R15(config-if)#interface Ethernet1/0
+R15(config-if)#ip nat inside
+R15(config-if)#exit
+//указываем на какой ip будем транслировать внутренние ip адреса локальной сети://
+R15(config)#ip nat pool OVRLD 77.37.144.15 77.37.144.15 netmask 255.255.255.0
+//включаем PAT://
+R15(config)#ip nat inside source list 10 pool OVRLD overload 
+//указываем пул внутренних ip адресов, которые будем транслировать://
+R15(config)#access-list 10 permit 172.16.3.16 0.0.0.15
+```
+
 ##### Настроите NAT(PAT) на R18. Трансляция должна осуществляться в пул из 5 адресов автономной системы AS2042.
 ##### Настроите статический NAT для R20.
 ##### Настроите NAT так, чтобы R19 был доступен с любого узла для удаленного управления.
