@@ -18,6 +18,34 @@
 
 
 ##### Настроите NAT(PAT) на R14 и R15. Трансляция должна осуществляться в адрес автономной системы AS1001.
+
+**R14**
+
+```
+interface Ethernet0/0
+ ip nat inside
+
+interface Ethernet0/1
+ ip nat inside
+
+interface Ethernet0/2
+ ip nat outside
+ 
+interface Ethernet0/3
+ ip nat inside
+
+interface Ethernet1/0
+ ip nat inside
+ 
+ // указываем на какой ip будем транслировать внутренние ip адреса локальной сети:
+ip nat pool OVRLD 200.20.20.14 200.20.20.14 netmask 255.255.252.0
+
+// включаем PAT:
+ip nat inside source list 10 pool OVRLD overload 
+
+// указываем пул внутренних ip адресов, которые будем транслировать:
+access-list 10 permit 10.10.10.0 0.0.0.31 
+
 ##### Настроите NAT(PAT) на R18. Трансляция должна осуществляться в пул из 5 адресов автономной системы AS2042.
 ##### Настроите статический NAT для R20.
 ##### Настроите NAT так, чтобы R19 был доступен с любого узла для удаленного управления.
