@@ -35,7 +35,9 @@ R14(config-if)#ip nat inside
 R14(config-if)#interface Ethernet1/0
 R14(config-if)#ip nat inside
 R14(config-if)#exit
+
 ***указываем на какой ip будем транслировать внутренние ip адреса локальной сети:***
+
 R14(config)#ip nat pool OVRLD 77.37.144.14 77.37.144.14 netmask 255.255.255.0
 // включаем PAT:
 R14(config)#ip nat inside source list 10 pool OVRLD overload 
@@ -66,6 +68,7 @@ R12(config-dhcpv6)#dns-server 2A02:6B8::FEED:FF
 R12(config-dhcpv6)#domain-name msk1.ru
 R12(config-dhcpv6)#exit
 R12(config)#do wr
+
 ```
 
 **R13**
