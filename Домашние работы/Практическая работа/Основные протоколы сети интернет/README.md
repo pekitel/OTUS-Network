@@ -63,4 +63,77 @@ R13(config)#do wr
 ```
 
 ##### Настроите NTP сервер на R12 и R13. Все устройства в офисе Москва должны синхронизировать время с R12 и R13.
+
+**R12**
+
+```
+R12>en
+R12#conf t
+R12(config)#interface Ethernet0/2
+R12(config-if)#ntp broadcast
+R12(config-if)#exit
+R12(config)#interface Ethernet0/3
+R12(config-if)#ntp broadcast
+R12(config-if)#exit
+R12(config)#ntp source Loopback12
+R12(config)#ntp master 5
+R12(config)#ntp update-calendar
+```
+
+**R13**
+
+```
+R13>en
+R13#conf t
+R13(config)#interface Ethernet0/2
+R13(config-if)#ntp broadcast
+R13(config-if)#exit
+R13(config)#interface Ethernet0/3
+R13(config-if)#ntp broadcast
+R13(config-if)#exit
+R13(config)#ntp source Loopback13
+R13(config)#ntp master 5
+R13(config)#ntp update-calendar
+```
+
+**R14**
+
+```
+R14>en
+R14#conf t
+R14(config)#interface Ethernet0/0
+R14(config-if)#ntp broadcast client
+R14(config-if)#exit
+R14(config)#interface Ethernet0/1
+R14(config-if)#ntp broadcast client
+R14(config-if)#end
+R14#wr
+R14#show ntp associations 
+
+  address         ref clock       st   when   poll reach  delay  offset   disp
++~100.100.1.12    127.127.1.1      5    228    256   377  0.000   0.000  2.252
+*~100.100.1.13    127.127.1.1      5     90    256   377  0.000   0.000  2.862
+ * sys.peer, # selected, + candidate, - outlyer, x falseticker, ~ configured
+```
+
+**R15**
+
+```
+R15>en
+R15#conf t
+R15(config)#interface Ethernet0/0
+R15(config-if)#ntp broadcast client
+R15(config-if)#exit
+R15(config)#interface Ethernet0/1
+R15(config-if)#ntp broadcast client
+R15(config-if)#end
+R15#wr
+R15#show ntp associations 
+
+  address         ref clock       st   when   poll reach  delay  offset   disp
++~100.100.1.12    127.127.1.1      5     37     64   377  1.000  -0.500  2.888
++~100.100.1.13    127.127.1.1      5      5     64   377  0.000   0.000  3.129
+ * sys.peer, # selected, + candidate, - outlyer, x falseticker, ~ configured
+```
+ 
 ##### Все офисы в лабораторной работе должны иметь IP связность.
