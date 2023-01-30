@@ -68,7 +68,33 @@ R15(config)#access-list 10 permit 172.16.3.16 0.0.0.15
 ```
 
 ##### Настроите NAT(PAT) на R18. Трансляция должна осуществляться в пул из 5 адресов автономной системы AS2042.
+
+**R18**
+
+```
+R18>en
+R18#conf t
+R18(config)#interface Ethernet0/2
+R18(config-if)#ip nat outside
+R18(config-if)#interface Ethernet0/3
+R18(config-if)#ip nat outside
+R18(config-if)#interface Ethernet0/0
+R18(config-if)#ip nat inside
+R18(config-if)#interface Ethernet0/1
+R18(config-if)#ip nat inside
+R18(config-if)#exit
+// указываем пул внутренних ip адресов, которые будем транслировать:
+R18(config)#access-list 10 permit 172.16.1.0 0.0.0.15
+R18(config)#access-list 10 permit 172.16.1.16 0.0.0.15
+// указываем на какие ip будем транслировать внутренние ip адреса локальной сети:
+R18(config)#ip nat pool OVRLD 33.72.66.10 33.72.66.14 netmask 255.255.255.0
+//Вкл самого NAT
+R18(config)#ip nat inside source list 10 pool OVRLD overload
+```
+
 ##### Настроите статический NAT для R20.
+
+
 ##### Настроите NAT так, чтобы R19 был доступен с любого узла для удаленного управления.
 ##### Настроите статический NAT(PAT) для офиса Чокурдах.
 ##### Настроите для IPv4 DHCP сервер в офисе Москва на маршрутизаторах R12 и R13. VPC1 и VPC7 должны получать сетевые настройки по DHCP.
