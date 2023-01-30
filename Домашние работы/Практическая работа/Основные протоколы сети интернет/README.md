@@ -94,6 +94,21 @@ R18(config)#ip nat inside source list 10 pool OVRLD overload
 
 ##### Настроите статический NAT для R20.
 
+**R14**
+
+```
+R14>en
+R14#conf t
+R14(config)#ip nat inside source static 100.100.1.20 77.37.144.20
+```
+
+**R15**
+
+```
+R15>en
+R15#conf t
+R15(config)#ip nat inside source static 100.100.1.20 77.37.144.20
+```
 
 ##### Настроите NAT так, чтобы R19 был доступен с любого узла для удаленного управления.
 ##### Настроите статический NAT(PAT) для офиса Чокурдах.
