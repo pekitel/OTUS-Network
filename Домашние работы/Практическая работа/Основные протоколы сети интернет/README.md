@@ -158,7 +158,8 @@ R19#
 ```
 ***проверим через роутер R27***
 
->![R19ssh](https://user-images.githubusercontent.com/112701413/215532967-ff29651f-f490-4fc4-a4c6-2c76a04e9d72.jpg)
+>![R19_ssh](https://user-images.githubusercontent.com/112701413/215788064-40bbe2c0-5b43-41e7-8f31-e690c5bcab96.jpg)
+
 
 
 ##### Настроите статический NAT(PAT) для офиса Чокурдах.
