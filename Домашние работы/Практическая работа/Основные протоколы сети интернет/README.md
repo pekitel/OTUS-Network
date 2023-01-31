@@ -162,6 +162,99 @@ R19#
 
 
 ##### Настроите статический NAT(PAT) для офиса Чокурдах.
+
+**R28**
+
+```
+R28>en
+R28#conf t
+R28(config)#interface ethernet 0/0
+R28(config-if)#ip nat outside
+R28(config-if)#exit
+R28(config)#interface ethernet 0/1
+R28(config-if)#ip nat outside
+R28(config-if)#exit
+R28(config)#interface ethernet 0/2.10
+R28(config-subif)#ip nat inside
+R28(config-subif)#exit
+R28(config)#interface ethernet 0/2.20
+R28(config-subif)#ip nat inside
+R28(config-subif)#exit
+R28(config)#ip nat inside source static 172.16.2.18 109.72.67.2
+R28(config)#ip nat inside source static 172.16.2.2 109.72.67.3
+R28(config)#exit
+R28#wr
+```
+
+**R26**
+
+```
+R26>en
+R26#conf t
+R26(config)#router bgp 520
+R26(config-router)#address-family ipv4
+R26(config-router-af)#network 109.72.67.0 mask 255.255.255.248
+R26(config-router-af)#end
+R26#conf t
+R26(config)#ip route 109.72.67.0 255.255.255.248 109.72.1.34
+R26(config)#exit
+R26#wr
+```
+
+**R25**
+
+```
+R25>en
+R25#conf t
+R25(config)#router bgp 520
+R25(config-router)#address-family ipv4
+R25(config-router-af)#network 109.72.67.0 mask 255.255.255.248
+R25(config-router-af)#end
+R25#conf t
+R25(config)#ip route 109.72.67.0 255.255.255.248 109.72.1.30
+R25(config)#exit
+R25#wr
+```
+
+**VPC30**
+
+```
+VPCS> ip 172.16.2.2 255.255.255.240 172.16.2.1
+Checking for duplicate address...
+VPCS : 172.16.2.2 255.255.255.240 gateway 172.16.2.1
+
+VPCS> save
+Saving startup configuration to startup.vpc
+.  done
+```
+
+**VPC31**
+
+```
+VPCS> ip 172.16.2.18 255.255.255.240 172.16.2.17
+Checking for duplicate address...
+VPCS : 172.16.2.18 255.255.255.240 gateway 172.16.2.17
+
+VPCS> save
+Saving startup configuration to startup.vpc
+.  done
+```
+
+***Проверка работоспособности схемы***
+
+```
+R25#ping 109.72.67.2
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 109.72.67.2, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 1/1/2 ms
+R25#ping 109.72.67.3
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 109.72.67.3, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 1/1/2 ms
+```
+
 ##### Настроите для IPv4 DHCP сервер в офисе Москва на маршрутизаторах R12 и R13. VPC1 и VPC7 должны получать сетевые настройки по DHCP.
 
 **R12**
@@ -343,3 +436,35 @@ SW2#show ntp associations
 ***Аналогичным образом настраивает SW3 / SW4 / SW5***
 
 ##### Все офисы в лабораторной работе должны иметь IP связность.
+
+**Проверим с R14**
+
+```
+R14>en
+R14#ping 109.72.1.26
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 109.72.1.26, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 1/1/2 ms
+R14#ping 109.72.1.30
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 109.72.1.30, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 1/1/1 ms
+R14#ping 109.72.1.34
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 109.72.1.34, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 1/1/1 ms
+R14#ping 109.72.1.38
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 109.72.1.38, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 1/1/1 ms
+R14#ping 109.72.1.42
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 109.72.1.42, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 1/1/1 ms
+R14#
+```
