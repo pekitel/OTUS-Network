@@ -9,4 +9,20 @@
 
 
 ### Настроить GRE между офисами Москва и С.-Петербург
+
+**R14**
+
+```
+R14>en
+R14#conf t
+interface tunnel 100
+ip address 10.10.10.1 255.255.255.252
+ip mtu 1400
+ip tcp adjust-mss 1360
+tunnel source 82.138.2.2
+tunnel destination 109.72.1.38
+exit
+exit
+wr
+
 ### Настроить DMVPN между офисами Москва и Чокурдах, Лабытнанги
