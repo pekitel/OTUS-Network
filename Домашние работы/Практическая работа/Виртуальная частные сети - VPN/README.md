@@ -41,6 +41,20 @@ R18(config-if)#exit
 R18(config)#exit
 R18#wr
 ```
+### ***Проверка***
+
+```
+R14#ping 10.10.10.1
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 10.10.10.1, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 4/4/5 ms
+R14#ping 10.10.10.2
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 10.10.10.2, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 1/1/2 ms
+```
 
 ### Настроить DMVPN между офисами Москва и Чокурдах, Лабытнанги
 
@@ -113,4 +127,24 @@ R28(config-if)#tunnel mode gre multipoint
 R28(config-if)#exit
 R28(config)#exit
 R28#wr
+```
+
+### ***Проверка***
+
+```
+R15#ping 10.20.20.1
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 10.20.20.1, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 4/4/5 ms
+R15#ping 10.20.20.2
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 10.20.20.2, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 1/1/2 ms
+R15#ping 10.20.20.3
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 10.20.20.3, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 1/1/2 ms
 ```
