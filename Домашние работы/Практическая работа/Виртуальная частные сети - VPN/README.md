@@ -131,6 +131,27 @@ R28#wr
 
 ### ***Проверка***
 
+**R15**
+
+```
+R15#show dmvpn  
+Legend: Attrb --> S - Static, D - Dynamic, I - Incomplete
+        N - NATed, L - Local, X - No Socket
+        # Ent --> Number of NHRP entries with same NBMA peer
+        NHS Status: E --> Expecting Replies, R --> Responding, W --> Waiting
+        UpDn Time --> Up or Down Time for a Tunnel
+==========================================================================
+
+Interface: Tunnel100, IPv4 NHRP Details 
+Type:Hub, NHRP Peers:3, 
+
+ # Ent  Peer NBMA Addr Peer Tunnel Add State  UpDn Tm Attrb
+ ----- --------------- --------------- ----- -------- -----
+     1 UNKNOWN              10.20.20.1  NHRP    never    IX
+     1 109.72.1.26          10.20.20.2    UP 00:01:43     D
+     1 109.72.1.34          10.20.20.3    UP 00:09:21     D
+```
+ 
 ```
 R15#ping 10.20.20.1
 Type escape sequence to abort.
@@ -143,6 +164,82 @@ Sending 5, 100-byte ICMP Echos to 10.20.20.2, timeout is 2 seconds:
 !!!!!
 Success rate is 100 percent (5/5), round-trip min/avg/max = 1/1/2 ms
 R15#ping 10.20.20.3
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 10.20.20.3, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 1/1/2 ms
+```
+
+**R28**
+
+```
+R28#show dmvpn     
+Legend: Attrb --> S - Static, D - Dynamic, I - Incomplete
+        N - NATed, L - Local, X - No Socket
+        # Ent --> Number of NHRP entries with same NBMA peer
+        NHS Status: E --> Expecting Replies, R --> Responding, W --> Waiting
+        UpDn Time --> Up or Down Time for a Tunnel
+==========================================================================
+
+Interface: Tunnel100, IPv4 NHRP Details 
+Type:Spoke, NHRP Peers:2, 
+
+ # Ent  Peer NBMA Addr Peer Tunnel Add State  UpDn Tm Attrb
+ ----- --------------- --------------- ----- -------- -----
+     1 77.94.165.2          10.20.20.1    UP 00:09:00     S
+     1 109.72.1.26          10.20.20.2    UP 00:00:03     D
+```
+
+```
+R28#ping 10.20.20.1
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 10.20.20.1, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 1/1/3 ms
+R28#ping 10.20.20.2
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 10.20.20.2, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 1/1/1 ms
+R28#ping 10.20.20.3
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 10.20.20.3, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 1/1/2 ms
+```
+
+**R27**
+
+```
+R27#sh dmvpn 
+Legend: Attrb --> S - Static, D - Dynamic, I - Incomplete
+        N - NATed, L - Local, X - No Socket
+        # Ent --> Number of NHRP entries with same NBMA peer
+        NHS Status: E --> Expecting Replies, R --> Responding, W --> Waiting
+        UpDn Time --> Up or Down Time for a Tunnel
+==========================================================================
+
+Interface: Tunnel100, IPv4 NHRP Details 
+Type:Spoke, NHRP Peers:2, 
+
+ # Ent  Peer NBMA Addr Peer Tunnel Add State  UpDn Tm Attrb
+ ----- --------------- --------------- ----- -------- -----
+     1 77.94.165.2          10.20.20.1    UP 00:04:03     S
+     1 109.72.1.34          10.20.20.3    UP 00:02:53     D
+```
+
+```
+R27#ping 10.20.20.1
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 10.20.20.1, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 1/2/3 ms
+R27#ping 10.20.20.2
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 10.20.20.2, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 2/2/4 ms
+R27#ping 10.20.20.3
 Type escape sequence to abort.
 Sending 5, 100-byte ICMP Echos to 10.20.20.3, timeout is 2 seconds:
 !!!!!
