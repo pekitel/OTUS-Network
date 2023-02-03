@@ -15,14 +15,102 @@
 ```
 R14>en
 R14#conf t
-interface tunnel 100
-ip address 10.10.10.1 255.255.255.252
-ip mtu 1400
-ip tcp adjust-mss 1360
-tunnel source 82.138.2.2
-tunnel destination 109.72.1.38
-exit
-exit
-wr
+R14(config)#interface tunnel 100
+R14(config-if)#ip address 10.10.10.1 255.255.255.252
+R14(config-if)#ip mtu 1400
+R14(config-if)#ip tcp adjust-mss 1360
+R14(config-if)#tunnel source 82.138.2.2
+R14(config-if)#tunnel destination 109.72.1.38
+R14(config-if)#exit
+R14(config)#exit
+R14#wr
+```
+
+**R18**
+
+```
+R18>en
+R18#conf t
+R18(config)#interface tunnel 100
+R18(config-if)#ip address 10.10.10.2 255.255.255.252
+R18(config-if)#ip mtu 1400
+R18(config-if)#ip tcp adjust-mss 1360
+R18(config-if)#tunnel source 109.72.1.38
+R18(config-if)#tunnel destination 82.138.2.2
+R18(config-if)#exit
+R18(config)#exit
+R18#wr
+```
 
 ### Настроить DMVPN между офисами Москва и Чокурдах, Лабытнанги
+
+**R15**
+
+```
+R15>en
+R15#conf t
+R15(config)#interface Tunnel100
+R15(config-if)#ip address 10.20.20.1 255.255.255.0
+R15(config-if)#no ip redirects
+R15(config-if)#ip mtu 1440
+R15(config-if)#ip nhrp authentication MSK
+R15(config-if)#ip nhrp map multicast dynamic
+R15(config-if)#ip nhrp network-id 1
+R15(config-if)#load-interval 30
+R15(config-if)#keepalive 5 10
+R15(config-if)#tunnel source 77.94.165.2
+R15(config-if)#tunnel mode gre multipoint
+R15(config-if)#exit
+R15(config)#exit
+R15#wr
+```
+
+**R27**
+
+```
+R27>en
+R27#conf t
+R27(config)#interface Tunnel100
+R27(config-if)#ip address 10.20.20.2 255.255.255.0
+R27(config-if)#no ip redirects
+R27(config-if)#ip mtu 1440
+R27(config-if)#ip nhrp authentication MSK
+R27(config-if)#ip nhrp map multicast dynamic
+R27(config-if)#ip nhrp map 10.20.20.1 77.94.165.2
+R27(config-if)#ip nhrp map multicast 77.94.165.2
+R27(config-if)#ip nhrp network-id 1
+R27(config-if)#ip nhrp nhs 10.20.20.1
+R27(config-if)#ip nhrp registration no-unique
+R27(config-if)#load-interval 30
+R27(config-if)#keepalive 5 10
+R27(config-if)#tunnel source Ethernet0/0
+R27(config-if)#tunnel mode gre multipoint
+R27(config-if)#exit
+R27(config)#exit
+R27#wr
+```
+
+**R28**
+
+```
+R28>en
+R28#conf t
+R28(config)#interface Tunnel100
+R28(config-if)#ip address 10.20.20.3 255.255.255.0
+R28(config-if)#no ip redirects
+R28(config-if)#ip mtu 1440
+R28(config-if)#ip nhrp authentication MSK
+R28(config-if)#ip nhrp map multicast dynamic
+R28(config-if)#ip nhrp map 10.20.20.1 77.94.165.2
+R28(config-if)#ip nhrp map multicast 77.94.165.2
+R28(config-if)#ip nhrp network-id 1
+R28(config-if)#ip nhrp nhs 10.20.20.1
+R28(config-if)#ip nhrp registration no-unique
+R28(config-if)#load-interval 30
+R28(config-if)#keepalive 5 10
+R28(config-if)#tunnel source Ethernet0/0
+R28(config-if)#tunnel mode gre multipoint
+R28(config-if)#exit
+R28(config)#exit
+R28#wr
+```
