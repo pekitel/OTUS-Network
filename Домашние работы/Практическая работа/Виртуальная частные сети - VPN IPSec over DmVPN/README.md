@@ -385,6 +385,7 @@ Sending 5, 100-byte ICMP Echos to 10.20.20.3, timeout is 2 seconds:
 !!!!!
 Success rate is 100 percent (5/5), round-trip min/avg/max = 6/7/8 ms
 ```
+
 ### Дополнительно: Для IPSec использовать CA и сертификаты
 
 
@@ -481,7 +482,6 @@ Request certificate from CA? [yes/no]: yes
 
 /// Переходим к R14
 
-```
 R14#show crypto pki server CA requests 
 Enrollment Request Database:
 
