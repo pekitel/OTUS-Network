@@ -2,7 +2,9 @@
 
 1. [Настроите GRE поверх IPSec между офисами Москва и С.-Петербург.](https://github.com/pekitel/OTUS-Network/blob/main/%D0%94%D0%BE%D0%BC%D0%B0%D1%88%D0%BD%D0%B8%D0%B5%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%8B/%D0%9F%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B0%D1%8F%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0/%D0%92%D0%B8%D1%80%D1%82%D1%83%D0%B0%D0%BB%D1%8C%D0%BD%D0%B0%D1%8F%20%D1%87%D0%B0%D1%81%D1%82%D0%BD%D1%8B%D0%B5%20%D1%81%D0%B5%D1%82%D0%B8%20-%20VPN%20IPSec%20over%20DmVPN/README.md#%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B8%D1%82%D0%B5-gre-%D0%BF%D0%BE%D0%B2%D0%B5%D1%80%D1%85-ipsec-%D0%BC%D0%B5%D0%B6%D0%B4%D1%83-%D0%BE%D1%84%D0%B8%D1%81%D0%B0%D0%BC%D0%B8-%D0%BC%D0%BE%D1%81%D0%BA%D0%B2%D0%B0-%D0%B8-%D1%81-%D0%BF%D0%B5%D1%82%D0%B5%D1%80%D0%B1%D1%83%D1%80%D0%B3)
 2. [Настроите DMVPN поверх IPSec между Москва и Чокурдах, Лабытнанги.](https://github.com/pekitel/OTUS-Network/blob/main/%D0%94%D0%BE%D0%BC%D0%B0%D1%88%D0%BD%D0%B8%D0%B5%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%8B/%D0%9F%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B0%D1%8F%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0/%D0%92%D0%B8%D1%80%D1%82%D1%83%D0%B0%D0%BB%D1%8C%D0%BD%D0%B0%D1%8F%20%D1%87%D0%B0%D1%81%D1%82%D0%BD%D1%8B%D0%B5%20%D1%81%D0%B5%D1%82%D0%B8%20-%20VPN%20IPSec%20over%20DmVPN/README.md#%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B8%D1%82%D0%B5-dmvpn-%D0%BF%D0%BE%D0%B2%D0%B5%D1%80%D1%85-ipsec-%D0%BC%D0%B5%D0%B6%D0%B4%D1%83-%D0%BC%D0%BE%D1%81%D0%BA%D0%B2%D0%B0-%D0%B8-%D1%87%D0%BE%D0%BA%D1%83%D1%80%D0%B4%D0%B0%D1%85-%D0%BB%D0%B0%D0%B1%D1%8B%D1%82%D0%BD%D0%B0%D0%BD%D0%B3%D0%B8)
-3. [Все узлы в офисах в лабораторной работе должны иметь IP связность.](https://github.com/pekitel/OTUS-Network/tree/main/%D0%94%D0%BE%D0%BC%D0%B0%D1%88%D0%BD%D0%B8%D0%B5%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%8B/%D0%9F%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B0%D1%8F%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0/%D0%92%D0%B8%D1%80%D1%82%D1%83%D0%B0%D0%BB%D1%8C%D0%BD%D0%B0%D1%8F%20%D1%87%D0%B0%D1%81%D1%82%D0%BD%D1%8B%D0%B5%20%D1%81%D0%B5%D1%82%D0%B8%20-%20VPN%20IPSec%20over%20DmVPN#%D0%B2%D1%81%D0%B5-%D1%83%D0%B7%D0%BB%D1%8B-%D0%B2-%D0%BE%D1%84%D0%B8%D1%81%D0%B0%D1%85-%D0%B2-%D0%BB%D0%B0%D0%B1%D0%BE%D1%80%D0%B0%D1%82%D0%BE%D1%80%D0%BD%D0%BE%D0%B9-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B5-%D0%B4%D0%BE%D0%BB%D0%B6%D0%BD%D1%8B-%D0%B8%D0%BC%D0%B5%D1%82%D1%8C-ip-%D1%81%D0%B2%D1%8F%D0%B7%D0%BD%D0%BE%D1%81%D1%82%D1%8C)
+3 [Дополнительно: Для IPSec использовать CA и сертификаты]()
+4 [Все узлы в офисах в лабораторной работе должны иметь IP связность.](https://github.com/pekitel/OTUS-Network/tree/main/%D0%94%D0%BE%D0%BC%D0%B0%D1%88%D0%BD%D0%B8%D0%B5%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%8B/%D0%9F%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B0%D1%8F%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0/%D0%92%D0%B8%D1%80%D1%82%D1%83%D0%B0%D0%BB%D1%8C%D0%BD%D0%B0%D1%8F%20%D1%87%D0%B0%D1%81%D1%82%D0%BD%D1%8B%D0%B5%20%D1%81%D0%B5%D1%82%D0%B8%20-%20VPN%20IPSec%20over%20DmVPN#%D0%B2%D1%81%D0%B5-%D1%83%D0%B7%D0%BB%D1%8B-%D0%B2-%D0%BE%D1%84%D0%B8%D1%81%D0%B0%D1%85-%D0%B2-%D0%BB%D0%B0%D0%B1%D0%BE%D1%80%D0%B0%D1%82%D0%BE%D1%80%D0%BD%D0%BE%D0%B9-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B5-%D0%B4%D0%BE%D0%BB%D0%B6%D0%BD%D1%8B-%D0%B8%D0%BC%D0%B5%D1%82%D1%8C-ip-%D1%81%D0%B2%D1%8F%D0%B7%D0%BD%D0%BE%D1%81%D1%82%D1%8C)
+
 
 ## Карта сети
 
@@ -383,6 +385,158 @@ Sending 5, 100-byte ICMP Echos to 10.20.20.3, timeout is 2 seconds:
 !!!!!
 Success rate is 100 percent (5/5), round-trip min/avg/max = 6/7/8 ms
 ```
+### Дополнительно: Для IPSec использовать CA и сертификаты
+
+**R14**
+
+```
+R14(config)#ip dom
+R14(config)#ip domain-n
+R14(config)#ip domain-name otus.ru
+R14(config)#ip htt
+R14(config)#ip http s
+R14(config)#ip http ser
+R14(config)#ip http server 
+R14(config)#crypto key generate rsa general-keys label CA exportable 
+The name for the keys will be: CA
+Choose the size of the key modulus in the range of 360 to 4096 for your
+  General Purpose Keys. Choosing a key modulus greater than 512 may take
+  a few minutes.
+
+How many bits in the modulus [512]: 2048
+% Generating 2048 bit RSA keys, keys will be exportable...
+[OK] (elapsed time was 1 seconds)
+
+R14(config)#
+Feb  6 15:22:09.402: %SSH-5-ENABLED: SSH 1.99 has been enabled
+
+R14(config)#crypto pki server CA
+R14(cs-server)#no shutdown 
+%Some server settings cannot be changed after CA certificate generation.
+% Please enter a passphrase to protect the private key
+% or type Return to exit
+Password: 
+
+Re-enter password: 
+% Exporting Certificate Server signing certificate and keys...
+
+% Certificate Server enabled.
+R14(cs-server)#
+Feb  6 15:23:48.037: %PKI-6-CS_ENABLED: Certificate server now enabled.
+R14(cs-server)#end
+R14#
+Feb  6 15:24:23.191: %SYS-5-CONFIG_I: Configured from console by console
+R14#
+
+/// Переходим к R18 
+
+R18>en
+R18#conf t
+R18(config)#crypto key generate rsa label VPN
+The name for the keys will be: VPN
+Choose the size of the key modulus in the range of 360 to 4096 for your
+  General Purpose Keys. Choosing a key modulus greater than 512 may take
+  a few minutes.
+
+How many bits in the modulus [512]: 2048
+% Generating 2048 bit RSA keys, keys will be non-exportable...
+[OK] (elapsed time was 1 seconds)
+
+R18(config)#
+*Feb  6 15:25:13.887: %SSH-5-ENABLED: SSH 1.99 has been enabled
+
+R18(config)#crypto pki trustpoint VPN
+R18(ca-trustpoint)#enrollment url http://82.138.2.2
+R18(ca-trustpoint)#subject-name CN=R18,OU=VPN,O=Otus.ru,C=RU
+R18(ca-trustpoint)#rsakeypair VPN
+R18(ca-trustpoint)#revocation-check none 
+R18(ca-trustpoint)#end
+R18#
+R18#conf t
+R18(config)#crypto pki authenticate VPN
+Certificate has the following attributes:
+       Fingerprint MD5: 1461A5DC 22012AE8 76AF3058 EB7AF17C 
+      Fingerprint SHA1: CC594608 A263E8E2 FC43F9C3 D784785D FFB3EE31 
+
+% Do you accept this certificate? [yes/no]: yes
+Trustpoint CA certificate accepted.
+
+R18(config)#crypto pki enroll VPN
+%
+% Start certificate enrollment .. 
+% Create a challenge password. You will need to verbally provide this
+   password to the CA Administrator in order to revoke your certificate.
+   For security reasons your password will not be saved in the configuration.
+   Please make a note of it.
+
+Password: 
+Re-enter password: 
+
+% The subject name in the certificate will include: CN=R18,OU=VPN,O=Otus.ru,C=RU
+% The subject name in the certificate will include: R18
+% Include the router serial number in the subject name? [yes/no]: no 
+% Include an IP address in the subject name? [no]: no 
+Request certificate from CA? [yes/no]: yes
+% Certificate request sent to Certificate Authority
+% The 'show crypto pki certificate verbose VPN' commandwill show the fingerprint.
+
+/// Переходим к R14
+
+```
+R14#show crypto pki server CA requests 
+Enrollment Request Database:
+
+Subordinate CA certificate requests:
+ReqID  State      Fingerprint                      SubjectName
+--------------------------------------------------------------
+
+RA certificate requests:
+ReqID  State      Fingerprint                      SubjectName
+--------------------------------------------------------------
+
+Router certificates requests:
+ReqID  State      Fingerprint                      SubjectName
+--------------------------------------------------------------
+1      pending    DF36038768BFDBAF57A48252904AF081 hostname=R18,cn=R18,ou=VPN,o=Otus.ru,c=RU
+
+R14#crypto pki server CA grant all 
+
+/// Переходим к R18
+
+```
+R18#show crypto pki certificates 
+Certificate
+  Status: Available
+  Certificate Serial Number (hex): 02
+  Certificate Usage: General Purpose
+  Issuer: 
+    cn=CA
+  Subject:
+    Name: R18
+    hostname=R18
+    cn=R18
+    ou=VPN
+    o=Otus.ru
+    c=RU
+  Validity Date: 
+    start date: 15:36:33 UTC Feb 6 2023
+    end   date: 15:36:33 UTC Feb 6 2024
+  Associated Trustpoints: VPN 
+
+CA Certificate
+  Status: Available
+  Certificate Serial Number (hex): 01
+  Certificate Usage: Signature
+  Issuer: 
+    cn=CA 
+  Subject: 
+    cn=CA
+  Validity Date: 
+    start date: 15:23:47 UTC Feb 6 2023
+    end   date: 15:23:47 UTC Feb 5 2026
+  Associated Trustpoints: VPN 
+```
+
 ### Все узлы в офисах в лабораторной работе должны иметь IP связность.
 
 ```
