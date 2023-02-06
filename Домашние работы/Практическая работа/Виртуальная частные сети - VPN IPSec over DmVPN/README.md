@@ -384,3 +384,31 @@ Sending 5, 100-byte ICMP Echos to 10.20.20.3, timeout is 2 seconds:
 Success rate is 100 percent (5/5), round-trip min/avg/max = 6/7/8 ms
 ```
 ### Все узлы в офисах в лабораторной работе должны иметь IP связность.
+
+```
+R15#ping 109.72.1.38
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 109.72.1.38, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 1/1/1 ms
+R15#ping 109.72.1.42
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 109.72.1.42, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 1/1/1 ms
+R15#ping 109.72.1.34
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 109.72.1.34, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 1/1/2 ms
+R15#ping 109.72.1.30
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 109.72.1.30, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 1/1/2 ms
+R15#ping 109.72.1.26
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 109.72.1.26, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 1/1/2 ms
+```
