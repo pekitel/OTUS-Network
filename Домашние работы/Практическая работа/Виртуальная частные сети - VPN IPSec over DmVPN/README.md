@@ -168,7 +168,32 @@ R15(ipsec-profile)#exit
 R15(config)#interface tunnel 100
 R15(config-if)#tunnel protection ipsec profile MOSCOW
 ```
+```
+R15#show crypto isakmp sa 
+IPv4 Crypto ISAKMP SA
+dst             src             state          conn-id status
+77.94.165.2     109.72.1.34     QM_IDLE           1008 ACTIVE
+77.94.165.2     109.72.1.26     QM_IDLE           1007 ACTIVE
 
+IPv6 Crypto ISAKMP SA
+
+
+R15#show dmvpn
+Legend: Attrb --> S - Static, D - Dynamic, I - Incomplete
+        N - NATed, L - Local, X - No Socket
+        # Ent --> Number of NHRP entries with same NBMA peer
+        NHS Status: E --> Expecting Replies, R --> Responding, W --> Waiting
+        UpDn Time --> Up or Down Time for a Tunnel
+==========================================================================
+
+Interface: Tunnel100, IPv4 NHRP Details 
+Type:Hub, NHRP Peers:2, 
+
+ # Ent  Peer NBMA Addr Peer Tunnel Add State  UpDn Tm Attrb
+ ----- --------------- --------------- ----- -------- -----
+     1 109.72.1.26          10.20.20.2    UP    3d01h     D
+     1 109.72.1.34          10.20.20.3    UP    3d01h     D
+```
 **R27**
 
 ```
@@ -209,7 +234,32 @@ R27(config-if)#tunnel protection ipsec profile MOSCOW
 R27(config-if)#end
 R27#wr
 ```
+```
+R15#show crypto isakmp sa 
+IPv4 Crypto ISAKMP SA
+dst             src             state          conn-id status
+77.94.165.2     109.72.1.34     QM_IDLE           1008 ACTIVE
+77.94.165.2     109.72.1.26     QM_IDLE           1007 ACTIVE
 
+IPv6 Crypto ISAKMP SA
+
+
+R15#show dmvpn
+Legend: Attrb --> S - Static, D - Dynamic, I - Incomplete
+        N - NATed, L - Local, X - No Socket
+        # Ent --> Number of NHRP entries with same NBMA peer
+        NHS Status: E --> Expecting Replies, R --> Responding, W --> Waiting
+        UpDn Time --> Up or Down Time for a Tunnel
+==========================================================================
+
+Interface: Tunnel100, IPv4 NHRP Details 
+Type:Hub, NHRP Peers:2, 
+
+ # Ent  Peer NBMA Addr Peer Tunnel Add State  UpDn Tm Attrb
+ ----- --------------- --------------- ----- -------- -----
+     1 109.72.1.26          10.20.20.2    UP    3d01h     D
+     1 109.72.1.34          10.20.20.3    UP    3d01h     D
+```
 **R28**
 
 ```
@@ -244,123 +294,7 @@ R28(config-if)#tunnel protection ipsec profile MOSCOW
 R28(config-if)#end
 R28#wr
 ```
-
-****Проверка****
-
-**R15**
-
 ```
-R15#ping 10.20.20.1
-Type escape sequence to abort.
-Sending 5, 100-byte ICMP Echos to 10.20.20.1, timeout is 2 seconds:
-!!!!!
-Success rate is 100 percent (5/5), round-trip min/avg/max = 4/4/5 ms
-R15#ping 10.20.20.2
-Type escape sequence to abort.
-Sending 5, 100-byte ICMP Echos to 10.20.20.2, timeout is 2 seconds:
-!!!!!
-Success rate is 100 percent (5/5), round-trip min/avg/max = 6/6/7 ms
-R15#ping 10.20.20.3
-Type escape sequence to abort.
-Sending 5, 100-byte ICMP Echos to 10.20.20.3, timeout is 2 seconds:
-!!!!!
-Success rate is 100 percent (5/5), round-trip min/avg/max = 6/6/7 ms
-
-
-R15#show crypto isakmp sa 
-IPv4 Crypto ISAKMP SA
-dst             src             state          conn-id status
-77.94.165.2     109.72.1.34     QM_IDLE           1008 ACTIVE
-77.94.165.2     109.72.1.26     QM_IDLE           1007 ACTIVE
-
-IPv6 Crypto ISAKMP SA
-
-
-R15#show dmvpn
-Legend: Attrb --> S - Static, D - Dynamic, I - Incomplete
-        N - NATed, L - Local, X - No Socket
-        # Ent --> Number of NHRP entries with same NBMA peer
-        NHS Status: E --> Expecting Replies, R --> Responding, W --> Waiting
-        UpDn Time --> Up or Down Time for a Tunnel
-==========================================================================
-
-Interface: Tunnel100, IPv4 NHRP Details 
-Type:Hub, NHRP Peers:2, 
-
- # Ent  Peer NBMA Addr Peer Tunnel Add State  UpDn Tm Attrb
- ----- --------------- --------------- ----- -------- -----
-     1 109.72.1.26          10.20.20.2    UP    3d01h     D
-     1 109.72.1.34          10.20.20.3    UP    3d01h     D
-```
-
-**R27**
-
-```
-R27#ping 10.20.20.1
-Type escape sequence to abort.
-Sending 5, 100-byte ICMP Echos to 10.20.20.1, timeout is 2 seconds:
-!!!!!
-Success rate is 100 percent (5/5), round-trip min/avg/max = 6/6/7 ms
-R27#ping 10.20.20.2
-Type escape sequence to abort.
-Sending 5, 100-byte ICMP Echos to 10.20.20.2, timeout is 2 seconds:
-!!!!!
-Success rate is 100 percent (5/5), round-trip min/avg/max = 6/6/7 ms
-R27#ping 10.20.20.3
-Type escape sequence to abort.
-Sending 5, 100-byte ICMP Echos to 10.20.20.3, timeout is 2 seconds:
-!!!!!
-Success rate is 100 percent (5/5), round-trip min/avg/max = 3/4/6 ms
-
-
-R27#show crypto isakmp sa
-IPv4 Crypto ISAKMP SA
-dst             src             state          conn-id status
-109.72.1.26     109.72.1.34     QM_IDLE           1008 ACTIVE
-77.94.165.2     109.72.1.26     QM_IDLE           1007 ACTIVE
-109.72.1.34     109.72.1.26     QM_IDLE           1009 ACTIVE
-
-IPv6 Crypto ISAKMP SA
-
-
-R27#show dmvpn     
-Legend: Attrb --> S - Static, D - Dynamic, I - Incomplete
-        N - NATed, L - Local, X - No Socket
-        # Ent --> Number of NHRP entries with same NBMA peer
-        NHS Status: E --> Expecting Replies, R --> Responding, W --> Waiting
-        UpDn Time --> Up or Down Time for a Tunnel
-==========================================================================
-
-Interface: Tunnel100, IPv4 NHRP Details 
-Type:Spoke, NHRP Peers:2, 
-
- # Ent  Peer NBMA Addr Peer Tunnel Add State  UpDn Tm Attrb
- ----- --------------- --------------- ----- -------- -----
-     2 77.94.165.2          10.20.20.1    UP    3d01h     S
-                            10.20.20.2    UP 00:02:02     D
-     1 109.72.1.34          10.20.20.3    UP 00:02:00     D
-```
-
-**R28**
-
-```
-R28#ping 10.20.20.1
-Type escape sequence to abort.
-Sending 5, 100-byte ICMP Echos to 10.20.20.1, timeout is 2 seconds:
-!!!!!
-Success rate is 100 percent (5/5), round-trip min/avg/max = 5/5/6 ms
-R28#ping 10.20.20.2
-Type escape sequence to abort.
-Sending 5, 100-byte ICMP Echos to 10.20.20.2, timeout is 2 seconds:
-!!!!!
-Success rate is 100 percent (5/5), round-trip min/avg/max = 5/5/6 ms
-R28#ping 10.20.20.3
-Type escape sequence to abort.
-Sending 5, 100-byte ICMP Echos to 10.20.20.3, timeout is 2 seconds:
-!!!!!
-Success rate is 100 percent (5/5), round-trip min/avg/max = 6/7/8 ms
-
-
 R28#show crypto isakmp sa 
 IPv4 Crypto ISAKMP SA
 dst             src             state          conn-id status
@@ -386,5 +320,67 @@ Type:Spoke, NHRP Peers:2,
      2 77.94.165.2          10.20.20.1    UP    3d01h     S
                             10.20.20.3    UP 00:00:03     D
      1 109.72.1.26          10.20.20.2    UP 00:06:18     D
+```
+
+****Проверка****
+
+**R15**
+
+```
+R15#ping 10.20.20.1
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 10.20.20.1, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 4/4/5 ms
+R15#ping 10.20.20.2
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 10.20.20.2, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 6/6/7 ms
+R15#ping 10.20.20.3
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 10.20.20.3, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 6/6/7 ms
+```
+
+**R27**
+
+```
+R27#ping 10.20.20.1
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 10.20.20.1, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 6/6/7 ms
+R27#ping 10.20.20.2
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 10.20.20.2, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 6/6/7 ms
+R27#ping 10.20.20.3
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 10.20.20.3, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 3/4/6 ms
+```
+
+**R28**
+
+```
+R28#ping 10.20.20.1
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 10.20.20.1, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 5/5/6 ms
+R28#ping 10.20.20.2
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 10.20.20.2, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 5/5/6 ms
+R28#ping 10.20.20.3
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 10.20.20.3, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 6/7/8 ms
 ```
 ### Все узлы в офисах в лабораторной работе должны иметь IP связность.
