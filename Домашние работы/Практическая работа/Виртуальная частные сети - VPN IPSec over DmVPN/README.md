@@ -386,7 +386,7 @@ Sending 5, 100-byte ICMP Echos to 10.20.20.3, timeout is 2 seconds:
 Success rate is 100 percent (5/5), round-trip min/avg/max = 6/7/8 ms
 ```
 
-### Дополнительно: Для IPSec использовать CA и сертификаты "Настроем на примере R14 и R18"
+### Дополнительно: Для IPSec использовать CA и сертификаты "Настроим на примере R14 и R18"
 
 
 ```
