@@ -387,7 +387,6 @@ Success rate is 100 percent (5/5), round-trip min/avg/max = 6/7/8 ms
 ```
 ### Дополнительно: Для IPSec использовать CA и сертификаты
 
-**R14**
 
 ```
 R14(config)#ip dom
@@ -503,7 +502,6 @@ R14#crypto pki server CA grant all
 
 /// Переходим к R18
 
-```
 R18#show crypto pki certificates 
 Certificate
   Status: Available
