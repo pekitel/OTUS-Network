@@ -533,6 +533,7 @@ CA Certificate
     start date: 15:23:47 UTC Feb 6 2023
     end   date: 15:23:47 UTC Feb 5 2026
   Associated Trustpoints: VPN 
+
 ```
 
 ### Все узлы в офисах в лабораторной работе должны иметь IP связность.
