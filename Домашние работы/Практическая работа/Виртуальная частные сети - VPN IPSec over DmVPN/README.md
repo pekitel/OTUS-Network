@@ -390,12 +390,7 @@ Success rate is 100 percent (5/5), round-trip min/avg/max = 6/7/8 ms
 
 
 ```
-R14(config)#ip dom
-R14(config)#ip domain-n
 R14(config)#ip domain-name otus.ru
-R14(config)#ip htt
-R14(config)#ip http s
-R14(config)#ip http ser
 R14(config)#ip http server 
 R14(config)#crypto key generate rsa general-keys label CA exportable 
 The name for the keys will be: CA
