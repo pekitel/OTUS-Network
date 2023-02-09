@@ -265,9 +265,11 @@ R18#conf t
 R18(config)#router bgp 2042
 R18(config-router)#address-family ipv4 unicast
 R18(config-router-af)#maximum-paths 2
+R18(config-router-af)#bgp bestpath as-path multipath-relax
 R18(config-router-af)#exit-address-family
 R18(config-router)#address-family ipv6 unicast
 R18(config-router-af)#maximum-paths 2
+R18(config-router-af)#bgp bestpath as-path multipath-relax
 R18(config-router-af)#end
 R18#wr
 ```
